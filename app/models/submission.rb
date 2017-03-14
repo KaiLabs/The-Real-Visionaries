@@ -6,4 +6,13 @@ class Submission < ApplicationRecord
 	validates :city, presence: true
 	validates :zipcode, presence: true
 
+	def self.search(search)
+		if search
+			where("positionTitle LIKE ?", "%#{search}%")
+			#where()
+		else
+			all
+		end
+	end
+
 end

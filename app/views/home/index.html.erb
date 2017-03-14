@@ -1,4 +1,17 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+<p>By Wes students for Wes students</p>
 
-<p><%= link_to "Add a submission", new_submissions_path %></p>
+
+
+	<%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+	<%= text_field_tag :search, params[:search], placeholder: "Enter keyword" %>
+	<%= text_field_tag :search, params[:search], placeholder: "Location" %>
+	<%= text_field_tag :search, params[:search], placeholder: "Industry/Field" %>
+	<%= text_field_tag :search, params[:search], placeholder: "Compensation" %>
+	<%= submit_tag "Search", :name => nil %>
+	<% end %> 
+
+
+
+
+<p>Share your past experience by submitting an <%= link_to "entry form", new_submissions_path %></p>
