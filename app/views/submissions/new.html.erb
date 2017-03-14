@@ -1,0 +1,11 @@
+<h1>WesSID: Submission Form</h1>
+<%= simple_form_for @submission do |form| %>
+	<%= form.input :positionTitle, label: "Position Title" %>
+	<%= form.input :hours, label: "Hours" %>
+	<%= form.input :organizationName, label: "Organization Name" %>
+	<%= form.input :mailingAddress, label: "Mailing Address" %>
+	<%= form.input :city, label: "City" %>
+	<%= form.input :zipcode, label: "Zipcode" %>
+	<%= form.button :submit %>
+<% end %>
+

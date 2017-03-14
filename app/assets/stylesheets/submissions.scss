@@ -1,0 +1,23 @@
+// Place all the styles related to the submissions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+text-align: center;
+color: black;
+font: 20px/1.5 "Comic Sans MS", cursive, sans-serif;
+margin: 20px auto;
+width: 900px;
+}
+
+a {
+color: #efaaca;
+text-decoration: none;
+}
+
+.multi-column {
+-moz-column-count: 3;
+-webkit-column-count: 3;
+column-count: 3;
+}

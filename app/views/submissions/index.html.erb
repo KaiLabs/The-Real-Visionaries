@@ -1,0 +1,15 @@
+<h1>WesSID: Search Results</h1>
+<% @submissions.each do |submission| %>
+  <div class="submission">
+  <div class="row multi-column">
+    <p><%= submission.positionTitle %></p>
+    <p><%= submission.hours %></p>
+    <p><%= submission.organizationName %></p>
+    <p><%= submission.mailingAddress %></p>
+    <p><%= submission.city %></p>
+    <p><%= submission.zipcode %></p>
+  </div>
+  </div>
+<% end %>
+<!-- <p><%= link_to "Add a submission", new_submissions_path %></p> -->
+
