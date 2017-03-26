@@ -1,3 +1,37 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+h1{
+  font-family: 'Pathway Gothic One',serif;
+  font-weight: bold;
+}
+
+h5{
+  font-family: 'Playfair Display',serif;
+}
+body {
+  background-image: url(/assets/background.jpg);
+  background-size: cover;
+}
+
+
+
+@media (min-width: 768px) {
+  .container-fluid {
+    margin-top: 250px;
+    max-width: 1000px;
+    color: white;
+    text-align: center;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+.row{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+

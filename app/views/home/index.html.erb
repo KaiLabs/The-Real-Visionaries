@@ -1,17 +1,56 @@
-<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
-<p>By Wes students for Wes students</p>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Bootstrap 101 Template</title>
+
+	<!-- Bootstrap -->
+	<link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
+	<link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+	
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+		<h5>By Wes students for Wes students</h5>
+		<div class="form-group row">
+			<div class="col-md-2">
+				<%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+				<%= text_field_tag :search, params[:search], placeholder: "Enter keyword" %>
+			</div>
+			<div class="col-md-2">
+				<%= text_field_tag :search, params[:search], placeholder: "Location" %>
+			</div>
+			<div class="col-md-3">
+				<%= select_tag 'submission[rating]', "<option>Agriculture & Natural Resources</option>
+				<option>Architecture, Real Estate & Construction</option>
+				<option>Arts, Entertainment & Recreation</option>".html_safe, prompt: "Industry/ Field", class: 'form-control' %>
+			</div>
+			<div class="col-md-3">
+				<%= select_tag 'submission[rating]', "<option>a</option>
+				<option>b</option>
+				<option>c</option>".html_safe, prompt: "Compensation", class: 'form-control' %>
+
+			</div>
+			<div class="col-md-2">
+				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+			</div>
+		</div>
+		<h6>Share your past experience by submitting an <%= link_to "entry form", new_submissions_path %></h6>
+
+		<% end %> 
+	</div>
 
 
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
 
-	<%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
-	<%= text_field_tag :search, params[:search], placeholder: "Enter keyword" %>
-	<%= text_field_tag :search, params[:search], placeholder: "Location" %>
-	<%= text_field_tag :search, params[:search], placeholder: "Industry/Field" %>
-	<%= text_field_tag :search, params[:search], placeholder: "Compensation" %>
-	<%= submit_tag "Search", :name => nil %>
-	<% end %> 
-
-
-
-
-<p>Share your past experience by submitting an <%= link_to "entry form", new_submissions_path %></p>

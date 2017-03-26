@@ -1,11 +1,49 @@
-<h1>WesSID: Submission Form</h1>
-<%= simple_form_for @submission do |form| %>
-	<%= form.input :positionTitle, label: "Position Title" %>
-	<%= form.input :hours, label: "Hours" %>
-	<%= form.input :organizationName, label: "Organization Name" %>
-	<%= form.input :mailingAddress, label: "Mailing Address" %>
-	<%= form.input :city, label: "City" %>
-	<%= form.input :zipcode, label: "Zipcode" %>
-	<%= form.button :submit %>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Bootstrap 101 Template</title>
 
+	<!-- Bootstrap -->
+	<link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
+	<link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h1>WesSID: Submission Form</h1>
+		<%= simple_form_for @submission do |form| %>
+
+
+		<div class="form-group">
+			<div class="row">
+				<%= label :submission, :rating, 'Rate your experience:', class: 'col-md-4 col-form-label' %>
+				<div class="col-md-8">
+					<%= select_tag 'submission[rating]', "<option>*</option><option>**</option><option>***</option><option>****</option><option>*****</option>".html_safe, class: 'form-control' %>
+				</div>
+			</div>
+			<div class="row">
+				<%= form.input :positionTitle, label: "Position Title", class: 'col-md-4 col-form-label' %>
+			</div>
+			<%= form.input :hours, label: "Hours" %>
+			<%= form.input :organizationName, label: "Organization Name" %>
+			<%= form.input :mailingAddress, label: "Mailing Address" %>
+			<%= form.input :city, label: "City" %>
+			<%= form.input :zipcode, label: "Zipcode" %>
+			<%= form.button :submit %>
+			<% end %>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+
+
+
+	</body>
+
+	</html>

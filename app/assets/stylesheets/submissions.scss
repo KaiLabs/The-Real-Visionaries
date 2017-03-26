@@ -3,21 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-body {
-text-align: center;
-color: black;
-font: 20px/1.5 "Comic Sans MS", cursive, sans-serif;
-margin: 20px auto;
-width: 900px;
+.descr {
+text-align: left;
+}
+@media (min-width: 768px) {
+.container-fluid {
+max-width: 730px;
+}
+}
+.container-narrow > hr {
+margin: 30px 0;
+}
+.row{
+margin-bottom: 10px;
+margin-top: 10px;
+}
+.form-check-label {
+font-size: 12px;
 }
 
-a {
-color: #efaaca;
-text-decoration: none;
-}
-
-.multi-column {
--moz-column-count: 3;
--webkit-column-count: 3;
-column-count: 3;
-}
