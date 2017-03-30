@@ -13,29 +13,52 @@
 </head>
 
 <style media="screen">
-	.descr {
-		text-align: left;
+.descr {
+	text-align: left;
+}
+@media (min-width: 768px) {
+	.container-fluid {
+		max-width: 730px;
 	}
-	@media (min-width: 768px) {
-		.container-fluid {
-			max-width: 730px;
-		}
-	}
-	.container-narrow > hr {
-		margin: 30px 0;
-	}
-	.row{
-		margin-bottom: 10px;
-		margin-top: 10px;
-	}
-	.form-check-label {
-		font-size: 12px;
-	}
-</style> 
+}
+.container-narrow > hr {
+	margin: 30px 0;
+}
+.row{
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.form-check-label {
+	font-size: 12px;
+}
+.parent {
+	margin-top: 20px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+	width: 100%;
+	height: 100%;
+	display: table;
+	text-align: left;
+
+}
+.parent > .child {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+h2 {
+	margin-left: 10px;
+}
+</style>
 
 <body>
 	<div class="container-fluid">
-		<h1>WesSID: Submission Form</h1>
+		<section class="parent">
+			<div class="child">
+				<h2 id="title">WesSID: Submission Form</h2>
+			</div>
+		</section>
 		<%= simple_form_for @submission do |form| %>
 
 
@@ -54,13 +77,12 @@
 				</div>
 			</div>
 
+			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :positionTitle, class: "form-control" %>
+			</div>
+			<% end %>
 
-			<%= form.input :positionTitle,  wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-      			<div class="col-md-8">
-      				<%= form.input_field :positionTitle, class: "form-control" %>
-      			</div>
-    		<% end %>
-			
 
 			<div class="row">
 				<%= label :submission, :outside_compensation, 'If stipend/ outside funding, please describe:', class: 'col-md-4 col-form-label' %>
@@ -71,16 +93,37 @@
 
 
 
+			<%= form.input :hours, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :hours, class: "form-control" %>
+			</div>
+			<% end %>
 
-			<%= form.input :hours, label: "Hours", class: 'col-md-4 col-form-label'%>
+			<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationName, class: "form-control" %>
+			</div>
+			<% end %>
 
+			<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :mailingAddress, class: "form-control" %>
+			</div>
+			<% end %>
 
+			<%= form.input :city, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :city, class: "form-control" %>
+			</div>
+			<% end %>
 
-			<%= form.input :organizationName, label: "Organization Name" %>
-			<%= form.input :mailingAddress, label: "Mailing Address" %>
-			<%= form.input :city, label: "City" %>
-			<%= form.input :zipcode, label: "Zipcode" %>
-			<%= form.button :submit %>
+			<%= form.input :zipcode, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :zipcode, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<%= form.button :submit, "Submit", class: "btn btn-primary" %>
 			<% end %>
 		</div>
 
