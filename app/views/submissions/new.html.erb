@@ -55,24 +55,11 @@
 			</div>
 
 
-			<%= form.input :positionTitle, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<%= form.input :positionTitle,  wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
       			<div class="col-md-8">
       				<%= form.input_field :positionTitle, class: "form-control" %>
       			</div>
     		<% end %>
-
-			
-
-
-
-
-			<div class="row">
-				<%= label :submission, :position_title, 'Position title:', class: 'col-md-4 col-form-label' %>
-				<div class="col-md-8">
-					<%= text_field_tag 'submission[position_title]', "", class: 'form-control' %>
-				</div>
-			</div>
-
 			
 
 			<div class="row">
