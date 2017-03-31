@@ -64,12 +64,12 @@
 		<div class="form-group">
 
 			<!-- Rating -->
-	<!-- 		<%= form.input :rating, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<%= form.input :rating, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :rating, collection: ["*", "**", "***", "****", "*****"], :selected => @submission.rating, class: "form-control" %>
 			</div>
 			<% end %>
- -->
+
 			<!-- Season -->
 			<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
@@ -194,7 +194,7 @@
 			<% end %>
 
 
-<!----------- Field/Industry Checkboxes ------------------------------>
+			<!----------- Field/Industry Checkboxes ------------------------------>
 
 			<!-- Agriculture -->
 			<%= form.input :agriculture, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
@@ -331,36 +331,36 @@
 <!--------------------------------------------------------------------------->
 
 			
-			<!-- Organization Mission/Description -->
-			<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationMission, class: "form-control" %>
-			</div>
-			<% end %>
+<!-- Organization Mission/Description -->
+<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-8">
+	<%= form.input_field :organizationMission, class: "form-control" %>
+</div>
+<% end %>
 
 
-			<!-- Organization Experience/Rec -->
-			<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationRecommendation, class: "form-control" %>
-			</div>
-			<% end %>
-
-
-
-			<!-- Submit -->
-			<%= form.button :submit, "Submit", class: "btn btn-primary" %>
-			<% end %>
-
-		</div>
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+<!-- Organization Experience/Rec -->
+<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-8">
+	<%= form.input_field :organizationRecommendation, class: "form-control" %>
+</div>
+<% end %>
 
 
 
-	</body>
+<!-- Submit -->
+<%= form.button :submit, "Submit", class: "btn btn-primary" %>
+<% end %>
 
-	</html>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+
+
+</body>
+
+</html>
