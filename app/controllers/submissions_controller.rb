@@ -23,7 +23,9 @@ class SubmissionsController < ApplicationController
   def create
   	@submission = Submission.new(params.require(:submission).permit(:positionTitle,
   		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-      :year, :compensation, :country))
+      :year, :compensation, :country, :organizationURL, :organizationContactName, 
+      :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
+      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation))
   	if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
   		redirect_to action:"index"

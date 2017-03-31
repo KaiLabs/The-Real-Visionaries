@@ -13,43 +13,43 @@
 </head>
 
 <style media="screen">
-.descr {
-	text-align: left;
-}
-@media (min-width: 768px) {
-	.container-fluid {
-		max-width: 730px;
+	.descr {
+		text-align: left;
 	}
-}
-.container-narrow > hr {
-	margin: 30px 0;
-}
-.row{
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-.form-check-label {
-	font-size: 12px;
-}
-.parent {
-	margin-top: 20px;
-	border-radius: 10px;
-	background-color: black;
-	color: white;
-	width: 100%;
-	height: 100%;
-	display: table;
-	text-align: left;
+	@media (min-width: 768px) {
+		.container-fluid {
+			max-width: 730px;
+		}
+	}
+	.container-narrow > hr {
+		margin: 30px 0;
+	}
+	.row{
+		margin-bottom: 10px;
+		margin-top: 10px;
+	}
+	.form-check-label {
+		font-size: 12px;
+	}
+	.parent {
+		margin-top: 20px;
+		border-radius: 10px;
+		background-color: black;
+		color: white;
+		width: 100%;
+		height: 100%;
+		display: table;
+		text-align: left;
 
-}
-.parent > .child {
-	display: table-cell;
-	vertical-align: middle;
-}
+	}
+	.parent > .child {
+		display: table-cell;
+		vertical-align: middle;
+	}
 
-h2 {
-	margin-left: 10px;
-}
+	h2 {
+		margin-left: 10px;
+	}
 </style>
 
 <body>
@@ -61,90 +61,159 @@ h2 {
 		</section>
 		<%= simple_form_for @submission do |form| %>
 
-
 		<div class="form-group">
 
+			<!-- Rating -->
 			<%= form.input :rating, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :rating, collection: ["*", "**", "***", "****", "*****"], :selected => @submission.rating, class: "form-control" %>
 			</div>
 			<% end %>
 
-		<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<!-- Season -->
+			<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input :season, collection: ["Fall", "Winter", "Spring", "Summer"], class: "form-control" %>
+				<%= form.input :season, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Year -->
 			<%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :year, :as => :date,
-				:start_year => 2000, :end_year => 2021, order: [:year], class: "form-control" %>
+				:start_year => 2000, :end_year => 2021, order: [:year], :selected => @submission.year, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Type of Compensation -->
 			<%= form.input :compensation, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input :compensation, collection: ["Paid", "Unpaid", "Stipend"], class: "form-control" %>
+				<%= form.input :compensation, collection: ["Paid", "Unpaid", "Stipend"], :selected => @submission.compensation, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Country -->
 			<%= form.input :country, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input :country, as: :country, class: "form-control" %>
+				<%= form.input :country, as: :country, :selected => @submission.country, class: "form-control" %>
 			</div>
 			<% end %>
 
 
-
+			<!-- Position Title -->
 			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :positionTitle, class: "form-control" %>
 			</div>
 			<% end %>
 
-
-			<div class="row">
-				<%= label :submission, :outside_compensation, 'If stipend/ outside funding, please describe:', class: 'col-md-4 col-form-label' %>
-				<div class="col-md-8">
-					<%= text_field_tag 'submission[outside_compensation]', "", class: 'form-control' %>
-				</div>
+			<!-- Outside Funding Explanation -->
+			<%= form.input :outsideCompensation, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :outsideCompensation, class: "form-control" %>
 			</div>
+			<% end %>
 
 
-
-			<%= form.input :hours, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<!-- Hours/Week -->
+			<%= form.input :hours, :label => "Hours Per Week", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :hours, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Organization Name -->
 			<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :organizationName, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Mailing Address -->
 			<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :mailingAddress, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- City -->
 			<%= form.input :city, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :city, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Zipcode -->
 			<%= form.input :zipcode, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :zipcode, class: "form-control" %>
 			</div>
 			<% end %>
 
+			<!-- Organization URL (optional) -->
+			<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationURL, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<!-- Organization Contact Name (optional) -->
+			<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationContactName, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<!-- Organization Contact Job Title (optional) -->
+			<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationContactJobTitle, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<!-- Organization Contact Email (optional) -->
+			<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationContactEmail, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<!-- Cardinal Internship Bool -->
+			<%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, class: "form-control" %>
+			</div>
+			<% end %>
+
+
+			<!-- Wes Alum Bool -->
+			<%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, class: "form-control" %>
+			</div>
+			<% end %>
+
+			<!-- Organization Mission/Description -->
+			<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationMission, class: "form-control" %>
+			</div>
+			<% end %>
+
+
+			<!-- Organization Experience/Rec -->
+			<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input_field :organizationRecommendation, class: "form-control" %>
+			</div>
+			<% end %>
+
+
+
+			<!-- Submit -->
 			<%= form.button :submit, "Submit", class: "btn btn-primary" %>
 			<% end %>
+
 		</div>
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

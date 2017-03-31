@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330220610) do
+ActiveRecord::Schema.define(version: 20170331020526) do
 
   create_table "submissions", force: :cascade do |t|
     t.string   "positionTitle"
@@ -19,13 +19,22 @@ ActiveRecord::Schema.define(version: 20170330220610) do
     t.string   "mailingAddress"
     t.string   "city"
     t.integer  "zipcode"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "rating"
     t.string   "season"
     t.date     "year"
     t.string   "compensation"
     t.         "country"
+    t.string   "organizationURL"
+    t.string   "organizationContactName"
+    t.string   "organizationContactJobTitle"
+    t.string   "organizationContactEmail"
+    t.string   "outsideCompensation"
+    t.boolean  "cardinalInternship"
+    t.boolean  "wesAlum"
+    t.string   "organizationMission"
+    t.string   "organizationRecommendation"
   end
 
 end
