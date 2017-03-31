@@ -25,7 +25,10 @@ class SubmissionsController < ApplicationController
   		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
       :year, :compensation, :country, :organizationURL, :organizationContactName, 
       :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
-      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation))
+      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
+      :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
+      :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
+      :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
   	if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
   		redirect_to action:"index"
