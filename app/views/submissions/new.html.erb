@@ -231,11 +231,6 @@
 			<%= form.input :energy, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :energy, as: :boolean, checked_value:true, unchecked_value: false, class: "form-control" %>
-
-			<!-- Organization Mission/Description -->
-			<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-			<div class="col-md-12">
-				<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
 			</div>
 			<% end %>
 
@@ -251,13 +246,10 @@
 			<%= form.input :foodBeverageCPG, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :foodBeverageCPG, as: :boolean, checked_value:true, unchecked_value: false, class: "form-control" %>
-
-			<!-- Organization Experience/Rec -->
-			<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-			<div class="col-md-12">
-				<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
 			</div>
 			<% end %>
+
+
 
 			<!-- Gov -->
 			<%= form.input :government, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
@@ -343,6 +335,22 @@
 			</div>
 			<% end %>
 <!--------------------------------------------------------------------------->
+
+
+<!-- Organization Mission/Description -->
+<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<div class="col-md-12">
+	<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
+</div>
+<% end %>
+
+
+<!-- Organization Experience/Rec -->
+<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<div class="col-md-12">
+	<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
+</div>
+<% end %>
 
 
 <!-- Submit -->
