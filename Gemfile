@@ -16,6 +16,9 @@ end
 group :production do
   gem 'pg'
 end
+
+
+gem 'country_select'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

@@ -63,19 +63,39 @@ h2 {
 
 
 		<div class="form-group">
-			<div class="row">
-				<%= label :submission, :rating, 'Rate your experience:', class: 'col-md-4 col-form-label' %>
-				<div class="col-md-8">
-					<%= select_tag 'submission[rating]', "<option>*</option><option>**</option><option>***</option><option>****</option><option>*****</option>".html_safe, class: 'form-control' %>
-				</div>
-			</div>
 
-			<div class="row">
-				<%= label :submission, :season, 'Season:', class: 'col-md-4 col-form-label' %>
-				<div class="col-md-8">
-					<%= select_tag 'submission[season]', "<option>*</option><option>**</option><option>***</option><option>****</option><option>*****</option>".html_safe, class: 'form-control' %>
-				</div>
+			<%= form.input :rating, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :rating, collection: ["*", "**", "***", "****", "*****"], :selected => @submission.rating, class: "form-control" %>
 			</div>
+			<% end %>
+
+		<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :season, collection: ["Fall", "Winter", "Spring", "Summer"], class: "form-control" %>
+			</div>
+			<% end %>
+
+			<%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :year, :as => :date,
+				:start_year => 2000, :end_year => 2021, order: [:year], class: "form-control" %>
+			</div>
+			<% end %>
+
+			<%= form.input :compensation, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :compensation, collection: ["Paid", "Unpaid", "Stipend"], class: "form-control" %>
+			</div>
+			<% end %>
+
+			<%= form.input :country, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<div class="col-md-8">
+				<%= form.input :country, as: :country, class: "form-control" %>
+			</div>
+			<% end %>
+
+
 
 			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">

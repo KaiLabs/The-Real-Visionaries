@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314170331) do
+ActiveRecord::Schema.define(version: 20170330220610) do
 
   create_table "submissions", force: :cascade do |t|
     t.string   "positionTitle"
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20170314170331) do
     t.integer  "zipcode"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "rating"
+    t.string   "season"
+    t.date     "year"
+    t.string   "compensation"
+    t.         "country"
   end
 
 end
