@@ -1,4 +1,5 @@
 class LoginController < ApplicationController
-  def index
-  end
+	before_filter :save_login_state, :only => [:index]
+	def index
+	end
 end

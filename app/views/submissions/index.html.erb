@@ -1,8 +1,13 @@
 <h1>WesSID: Search Results</h1>
+
+
+<%= link_to "Sign out", signout_path, id: "sign_out" %>
+
+
+
 <% @submissions.each do |submission| %>
 <div class="submission">
 	<div class="row multi-column">
-
 		<% if @submissions.blank? %>
 		<h4>There are no quotes containing the term <%= params[:search] %></h4>
 		<% end %>
@@ -27,12 +32,6 @@
 
 	</div>
 
-	<%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% @users.each do |user| %>
-      <%= user.provider %>
-      <%= user.uid %>
-      <%= user.name %>
-    <% end %>
 </div>
 <% end %>
 
