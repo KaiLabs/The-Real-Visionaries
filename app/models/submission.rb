@@ -10,6 +10,8 @@ class Submission < ApplicationRecord
 	validates :mailingAddress, presence: true
 	validates :city, presence: true
 	validates :zipcode, presence: true
+	validates :organizationMission, presence:true
+	validates :organizationRecommendation, presence: true
 
 	def self.search(search)
 		if search

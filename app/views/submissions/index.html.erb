@@ -26,6 +26,13 @@
 		<p><%= submission.agriculture %></p>
 
 	</div>
+
+	<%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <% @users.each do |user| %>
+      <%= user.provider %>
+      <%= user.uid %>
+      <%= user.name %>
+    <% end %>
 </div>
 <% end %>
 
