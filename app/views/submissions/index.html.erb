@@ -1,11 +1,13 @@
 <h1>WesSID: Search Results</h1>
+<% if @submissions.blank? %>
+	<h4>There are no quotes containing the term <%= params[:search] %></h4>
+
+<% else %>
 <% @submissions.each do |submission| %>
 <div class="submission">
 	<div class="row multi-column">
 
-		<% if @submissions.blank? %>
-		<h4>There are no quotes containing the term <%= params[:search] %></h4>
-		<% end %>
+
 		<p><%= submission.rating %></p>
 		<p><%= submission.season %></p>
 		<p><%= submission.year %></p>
@@ -28,5 +30,4 @@
 	</div>
 </div>
 <% end %>
-
-
+<% end %>

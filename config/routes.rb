@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'submissions/index'
 
   # get 'submissions/new'
-  resource :submissions
   resource :home
+  resources :submissions
   #root 'submissions#index'
   root 'home#index'
 

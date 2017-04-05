@@ -1,22 +1,22 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show]
+#  before_action :set_submission, only: [:show]
 
   def index
   	@submissions = Submission.all
   	if params[:search]
-  		@submissions = Submission.search(params[:search])#.order("created_at DESC")
-#  	else
-#  		@submissions = Submission.all.order("created_at DESC")
+  		@submissions = Submission.search(params[:search]).order("created_at DESC")
+  	else
+  		@submissions = Submission.all.order("created_at DESC")
   	end
 
   	# @submissions = Submission.search(params[:search])
   	# render `submissions/index`
   end
 
-  # def show
-  # 	@submssion = Submission.find(params[:id])
+   def show
+#   	@submssion = Submission.find(params[:search])
 
-  # end
+   end
 
   def new
   	@submission = Submission.new
@@ -40,11 +40,10 @@ class SubmissionsController < ApplicationController
   	end
   end
 
-  def show
-  end
 
-  private
-  def set_submission
-    @submission = Submission.find(params[:positionTitle])
-  end
+
+#  private
+#  def set_submission
+#    @submission = Submission.find(params[:positionTitle])
+#  end
 end

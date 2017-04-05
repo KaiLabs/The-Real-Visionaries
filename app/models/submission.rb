@@ -13,7 +13,7 @@ class Submission < ApplicationRecord
 
 	def self.search(search)
 		if search
-			where("positionTitle LIKE ?", "%#{search}%")
+			where("country LIKE ? OR positionTitle LIKE ? OR organizationName LIKE ? OR city LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}")
 			#where()
 		else
 			all
