@@ -18,6 +18,9 @@ group :production do
 end
 
 
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
+
 gem 'country_select'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

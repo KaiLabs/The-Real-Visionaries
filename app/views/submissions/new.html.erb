@@ -66,7 +66,7 @@
 			<!-- Rating -->
 			<%= form.input :rating, :label => "Rate your experience", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input :rating, label: false, collection: ["*", "**", "***", "****", "*****"], :selected => @submission.rating, class: "form-control" %>
+				<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "form-control" %>
 			</div>
 			<% end %>
 
@@ -145,6 +145,8 @@
 				<%= form.input_field :city, class: "form-control" %>
 			</div>
 			<% end %>
+
+			<!-- MISSING STATE -->
 
 			<!-- Zipcode -->
 			<%= form.input :zipcode, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
