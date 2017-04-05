@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  before_filter :authenticate_user
   def index
   	@submissions = Submission.all
   	if params[:search]
@@ -13,7 +14,7 @@ class SubmissionsController < ApplicationController
 
   # def show
   # 	@submssion = Submission.find(params[:id])
- 
+  
   # end
 
   def new
