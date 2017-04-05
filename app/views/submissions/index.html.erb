@@ -73,12 +73,21 @@
 	border: solid 0.5px;
 }
 
+#sign {
+	text-align: right;
+}
+
 </style>
-<%= link_to "Sign out", signout_path, id: "sign_out" %>
+
 <body>
 	<section class="parent">
-		<div class="child">
-			<h2 id="bigtitle">WesSID: Internship Details</h2>
+		<div class="child row">
+			<div class="col-md-6">
+				<h2 id="bigtitle">WesSID: Internship Details</h2>
+			</div>
+			<div class="col-md-6" id="sign">
+				<%= link_to "Sign out", signout_path, id: "sign_out" %>
+			</div>
 		</div>
 	</section>
 	<% @submissions.each do |submission| %>
@@ -92,11 +101,17 @@
 				<div class="col-md-6">
 					<!-- general information -->
 					<div class="general">
-						<h2><%= submission.positionTitle %></h2>
-						<h3><%= submission.organizationName %> <%= submission.rating %></h3>
-						<h4><%= submission.city %>, <!-- missing state -->, <%= submission.country %></h4>
-						<h4><%= submission.compensation %></h4>
-						<h4>Organization link: <%= submission.organizationURL %></h4>
+						<div class="col-md-6">
+							SOMETHING!
+						</div>
+						<div class="col-md-6">
+							<h2><%= submission.positionTitle %></h2>
+							<h3><%= submission.organizationName %> <%= submission.rating %></h3>
+							<h4><%= submission.city %>, <!-- missing state -->, <%= submission.country %></h4>
+							<h4><%= submission.compensation %></h4>
+							<h4>Organization link: <%= submission.organizationURL %></h4>
+						</div>
+
 					</div>
 
 					<!-- Experience review -->
@@ -117,47 +132,32 @@
 						</div>
 						<div class="display">
 							<p>Was this a Cardinal internship: <%= submission.cardinalInternship %></p>
+							<p>Is the contact a Wes alum: <%= submission.wesAlum %></p>
+							<p>Wesleyan student contact email: <%= submission.organizationContactEmail %></p>
 						</div>
 					</div>
-
+				</br>
 					<div class="mission">
 						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
+							<div id="child2"><h3 class="title-text">Organization Mission</h3></div>
 						</div>
 						<div class="display">
-							<p></p>
+							<%= submission.organizationMission %>
 						</div>
 					</div>
-
+				</br>
 					<div class="contact">
 						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
+							<div id="child2"><h3 class="title-text">Organization Contact Information</h3></div>
 						</div>
 						<div class="display">
-							<p></p>
+							<p>Contact name: <%= submission.organizationContactName %></p>
+							<p>Contact title: <%= submission.organizationContactJobTitle %></p>
+							<p>Contact email: <%= submission.organizationContactEmail %></p>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<p></p>
-			<p><%= submission.season %></p>
-			<p><%= submission.year %></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p><%= submission.hours %></p>
-			<p></p>
-			<p><%= submission.mailingAddress %></p>
-			<p></p>
-			<p><%= submission.zipcode %></p>
-			<p><%= submission.organizationURL %></p>
-			<p><%= submission.organizationContactName %></p>
-			<p><%= submission.organizationContactJobTitle %></p>
-			<p><%= submission.organizationContactEmail %></p>
-			<p></p>
-			<p><%= submission.organizationMission %></p>
-			<p><%= submission.agriculture %></p>
 
 		</div>
 		<% end %>
