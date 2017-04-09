@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get 'submissions/index'
 
+  #reroute after searching
+  get 'home/submissions' => 'submissions#index'
+
   # get 'submissions/new'
   resource :home
   resources :submissions
@@ -23,8 +26,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
 
-  # root "login#index"
-  root "home#index"
+  root "login#index"
+  #root "home#index"
 
 
 end
