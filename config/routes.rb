@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'submissions/index'
 
+  get 'submissions/thankyou'
+
   #reroute after searching
   get 'home/submissions' => 'submissions#index'
 
