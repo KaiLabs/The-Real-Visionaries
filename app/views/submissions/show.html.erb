@@ -1,171 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Bootstrap 101 Template</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap 101 Template</title>
 
-	<!-- Bootstrap -->
-	<link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
-	<link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
+  <link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Pathway Gothic One' rel='stylesheet'>
+  <link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
 </head>
 
 <style media="screen">
-.container {
-	width: 101%;
+.header {
+  width:100%;
+  position:fixed;
+  left: 0; right: 0;
+  top: 0;
+  z-index: 1;
 }
-.descr {
-	text-align: left;
+h1{
+  font-family: 'EB Garamond';
+  font-weight: lighter;
+  font-size: 40px;
 }
-
+*{
+  font-family: 'Pathway Gothic One';
+  font-size: 25px;
+}
 .row{
-	margin-bottom: 10px;
-	margin-top: 10px;
-}
-.form-check-label {
-	font-size: 12px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  /*push down the top!!*/
 }
 .parent {
-	margin-top: 20px;
-	border-radius: 10px;
-	background-color: black;
-	color: white;
-	width: 100%;
-	height: 100%;
-	display: table;
-	text-align: left;
-
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 200%;
+  display: table;
+  text-align: center;
 }
 .parent > .child {
-	display: table-cell;
-	vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
+}
+.search-title{
+  background-color: #8B0000;
+  color: white;
+  width: 100%;
+  height: 50%;
+  text-align: left;
+}
+#sign {
+  text-align: right;
 }
 
+/*above: need for every page */
+
+.container {
+  width: 101%;
+}
+.descr {
+  text-align: left;
+}
+
+
+.form-check-label {
+  font-size: 12px;
+}
+
+
 #bigtitle {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 #parent2 {
-	display: table;
+  display: table;
 }
 #child2 {
-	display: table-cell;
-	vertical-align: middle;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.search-title{
-	background-color: #8B0000;
-	color: white;
-	width: 100%;
-	height: 120%;
-}
+
 
 .title-text {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 .left {
-	float: left;
+  float: left;
 }
 .display {
-	border: solid 0.5px;
+  border: solid 0.5px;
 }
 
-#sign {
-	text-align: right;
-}
+
 
 </style>
 
 <body>
-	<section class="parent">
-		<div class="child row">
-			<div class="col-md-6">
-				<h2 id="bigtitle">WesSID: Internship Details</h2>
-			</div>
-			<div class="col-md-6" id="sign">
-				<%= link_to "Sign out", signout_path, id: "sign_out" %>
-			</div>
-		</div>
-	</section>
-	<div class="submission">
-		<div class="row multi-column">
-
-			<div class="container">
-				<div class="col-md-6">
-					<!-- general information -->
-					<div class="general">
-						<div class="col-md-6">
-							<h2><%= @submission.positionTitle %></h2>
-							<h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
-							<h4><%= @submission.city %>, <!-- missing state -->, <%= @submission.country %></h4>
-							<h4><%= @submission.compensation %></h4>
-							<h4>Organization link: <%= @submission.organizationURL %></h4>
-		</div>
-
-					</div>
-
-					<!-- Experience review -->
-					<div class="exp">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Experience Review</h3></div>
-						</div>
-						<div class="display">
-							<!-- needs a default msg when empty -->
-						 <%= @submission.organizationRecommendation %>
-
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="network">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
-						</div>
-						<div class="display">
-					<p>Was this a Cardinal internship: <%= @submission.cardinalInternship %></p>
-							<p>Is the contact a Wes alum: <%= @submission.wesAlum %></p>
-							<p>Wesleyan student contact email: <%= @submission.organizationContactEmail %></p>
-
-						</div>
-					</div>
-				</br>
-					<div class="mission">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Organization Mission</h3></div>
-						</div>
-						<div class="display">
-							<%= @submission.organizationMission %>
-
-						</div>
-					</div>
-				</br>
-					<div class="contact">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Organization Contact Information</h3></div>
-						</div>
-						<div class="display">
-							<p>Contact name: <%= @submission.organizationContactName %></p>
-							<p>Contact title: <%= @submission.organizationContactJobTitle %></p>
-							<p>Contact email: <%= @submission.organizationContactEmail %></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
+  <div class="header">
+    <section class="parent">
+      <div class="child row">
+        <div class="col-md-11.5">
+          <h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+        </div>
+        <div class="col-md-0.5" id="sign">
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        </div>
+        <div class="search-title">
+          <h3 style="font-size: 35px; margin-left: 5px;">INTERNSHIP DETAILS</h3>
+        </div>
+      </div>
+    </section>
+  </div>
 
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+  <div class="submission">
+    <div class="row multi-column" style="margin-top: 200px;">
+
+      <div class="container">
+        <div class="col-md-6">
+          <!-- general information -->
+          <div class="general">
+            <div class="col-md-6">
+              <h2><%= @submission.positionTitle %></h2>
+              <h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
+              <h4><%= @submission.city %>, <!-- missing state -->, <%= @submission.country %></h4>
+              <h4><%= @submission.compensation %></h4>
+              <h4>Organization link: <%= @submission.organizationURL %></h4>
+            </div>
+
+          </div>
+
+          <!-- Experience review -->
+          <div class="exp">
+            <div class="search-title" id="parent2">
+              <div id="child2"><h3 class="title-text">Experience Review</h3></div>
+            </div>
+            <div class="display">
+              <!-- needs a default msg when empty -->
+              <%= @submission.organizationRecommendation %>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="network">
+            <div class="search-title" id="parent2">
+              <div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
+            </div>
+            <div class="display">
+              <p>Was this a Cardinal internship: <%= @submission.cardinalInternship %></p>
+              <p>Is the contact a Wes alum: <%= @submission.wesAlum %></p>
+              <p>Wesleyan student contact email: <%= @submission.organizationContactEmail %></p>
+
+            </div>
+          </div>
+        </br>
+        <div class="mission">
+          <div class="search-title" id="parent2">
+            <div id="child2"><h3 class="title-text">Organization Mission</h3></div>
+          </div>
+          <div class="display">
+            <%= @submission.organizationMission %>
+
+          </div>
+        </div>
+      </br>
+      <div class="contact">
+        <div class="search-title" id="parent2">
+          <div id="child2"><h3 class="title-text">Organization Contact Information</h3></div>
+        </div>
+        <div class="display">
+          <p>Contact name: <%= @submission.organizationContactName %></p>
+          <p>Contact title: <%= @submission.organizationContactJobTitle %></p>
+          <p>Contact email: <%= @submission.organizationContactEmail %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 
 
 
-	</body>
+</body>
 
-	</html>
-
+</html>
