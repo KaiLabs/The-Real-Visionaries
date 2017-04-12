@@ -90,27 +90,20 @@
 			</div>
 		</div>
 	</section>
-	<% @submissions.each do |submission| %>
 	<div class="submission">
 		<div class="row multi-column">
 
-			<% if @submissions.blank? %>
-			<h4>There are no quotes containing the term <%= params[:search] %></h4>
-			<% end %>
 			<div class="container">
 				<div class="col-md-6">
 					<!-- general information -->
 					<div class="general">
 						<div class="col-md-6">
-							SOMETHING!
-						</div>
-						<div class="col-md-6">
-							<h2><%= submission.positionTitle %></h2>
-							<h3><%= submission.organizationName %> <%= submission.rating %></h3>
-							<h4><%= submission.city %>, <!-- missing state -->, <%= submission.country %></h4>
-							<h4><%= submission.compensation %></h4>
-							<h4>Organization link: <%= submission.organizationURL %></h4>
-						</div>
+							<h2><%= @submission.positionTitle %></h2>
+							<h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
+							<h4><%= @submission.city %>, <!-- missing state -->, <%= @submission.country %></h4>
+							<h4><%= @submission.compensation %></h4>
+							<h4>Organization link: <%= @submission.organizationURL %></h4>
+		</div>
 
 					</div>
 
@@ -121,7 +114,8 @@
 						</div>
 						<div class="display">
 							<!-- needs a default msg when empty -->
-						 <%= submission.organizationRecommendation %>
+						 <%= @submission.organizationRecommendation %>
+
 						</div>
 					</div>
 				</div>
@@ -131,9 +125,10 @@
 							<div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
 						</div>
 						<div class="display">
-							<p>Was this a Cardinal internship: <%= submission.cardinalInternship %></p>
-							<p>Is the contact a Wes alum: <%= submission.wesAlum %></p>
-							<p>Wesleyan student contact email: <%= submission.organizationContactEmail %></p>
+					<p>Was this a Cardinal internship: <%= @submission.cardinalInternship %></p>
+							<p>Is the contact a Wes alum: <%= @submission.wesAlum %></p>
+							<p>Wesleyan student contact email: <%= @submission.organizationContactEmail %></p>
+
 						</div>
 					</div>
 				</br>
@@ -142,7 +137,8 @@
 							<div id="child2"><h3 class="title-text">Organization Mission</h3></div>
 						</div>
 						<div class="display">
-							<%= submission.organizationMission %>
+							<%= @submission.organizationMission %>
+
 						</div>
 					</div>
 				</br>
@@ -151,16 +147,15 @@
 							<div id="child2"><h3 class="title-text">Organization Contact Information</h3></div>
 						</div>
 						<div class="display">
-							<p>Contact name: <%= submission.organizationContactName %></p>
-							<p>Contact title: <%= submission.organizationContactJobTitle %></p>
-							<p>Contact email: <%= submission.organizationContactEmail %></p>
+							<p>Contact name: <%= @submission.organizationContactName %></p>
+							<p>Contact title: <%= @submission.organizationContactJobTitle %></p>
+							<p>Contact email: <%= @submission.organizationContactEmail %></p>
 						</div>
 					</div>
 				</div>
 			</div>
 
 		</div>
-		<% end %>
 
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -173,3 +168,4 @@
 	</body>
 
 	</html>
+

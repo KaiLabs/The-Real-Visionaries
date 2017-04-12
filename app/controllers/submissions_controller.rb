@@ -1,26 +1,15 @@
 class SubmissionsController < ApplicationController
 
-  # before_action :set_submission, only: [:show]
-
-
   before_filter :authenticate_user
 
   def index
   	@submissions = Submission.all
   	if params[:search]
-  		@submissions = Submission.search(params[:search])#.order("created_at DESC")
-#  	else
-#  		@submissions = Submission.all.order("created_at DESC")
+  		@submissions = Submission.search(params[:search])
+
   	end
 
-  	# @submissions = Submission.search(params[:search])
-  	# render `submissions/index`
   end
-
-  # def show
-  # 	@submssion = Submission.find(params[:id])
-
-  # end
 
   def new
   	@submission = Submission.new
@@ -37,7 +26,7 @@ class SubmissionsController < ApplicationController
       :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
   	if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-  		redirect_to action:"index"
+  	  redirect_to action:"thankyou"
   		return
   	else
   		render "new"
@@ -45,6 +34,14 @@ class SubmissionsController < ApplicationController
   end
 
   def show
+    # @submissions = Submission.all
+    # if params[:search]
+    #   @submissions = Submission.search(params[:search])
+    # end
+    @submission = Submission.find(params[:id])
+  end
+
+  def thankyou
   end
 
   private

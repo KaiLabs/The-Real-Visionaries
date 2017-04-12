@@ -134,7 +134,7 @@ td{
 									<tbody>
 										<% @submissions.each do |submission| %>
 										<tr>
-											<td><%= submission.positionTitle %></td>
+											<td><%= link_to submission.positionTitle, submission %></td>
 											<td><%= submission.rating %></td>
 											<td>INDUSTRY</td>
 											<td><%= submission.organizationName %></td>
@@ -144,6 +144,7 @@ td{
 										</tr>
 										<% end %>
 									</tbody>
+
 								</table>
 							</div>
 						</div>

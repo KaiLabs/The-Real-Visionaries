@@ -17,8 +17,11 @@ group :production do
   gem 'pg'
 end
 
-
+#authorization
 gem "omniauth-google-oauth2", "~> 0.2.1"
+
+#confirmation pop-up (after submission)
+gem 'data-confirm-modal'
 
 
 gem 'country_select'
