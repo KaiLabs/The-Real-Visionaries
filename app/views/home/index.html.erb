@@ -23,14 +23,16 @@
 <style media="screen">
 @import url(https://fonts.google.com/specimen/Pathway+Gothic+One);
 @import url(https://fonts.google.com/specimen/Playfair+Display);
+@import url(https://fonts.google.com/specimen/EB+Garamond);
 
 h1{
-  font-family: 'Pathway Gothic One',serif;
-  font-weight: bold;
+  font-family: 'EB Garamond',serif;
+  font-weight: lighter;
 }
 
-h5{
-  font-family: 'Playfair Display',serif;
+h4{
+  font-family: 'Pathway Gothic One',serif;
+  font-weight: lighter;
 }
 body {
   background-image: url(/assets/background.jpg);
@@ -55,36 +57,69 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+
+.change-height{
+  margin-top: 25px;
+}
+
+.searchclass {
+  text-align: left;
+}
+
+.height {
+  height: 120%;
+}
 </style>
 
 <body>
 	<div class="container-fluid">
 		<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
-		<h5>By Wes students for Wes students</h5>
-		<div class="form-group row">
+    <div class="height">
+      <h4>By Wes students for Wes students</h4>
+    </div>
+
+		<div class="form-group row height">
 			<div class="col-md-2">
 				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
-				<%= text_field_tag :search, params[:search], placeholder: "Enter keyword" %>
+				<%= text_field_tag :search, params[:search], placeholder: "Enter keyword", class: 'form-control' %>
 			</div>
 			<div class="col-md-2">
-				<%= text_field_tag :search, params[:search], placeholder: "Location" %>
+				<%= text_field_tag :search, params[:search], placeholder: "Location", class: 'form-control' %>
 			</div>
 			<div class="col-md-3">
 				<%= select_tag 'submission[rating]', "<option>Agriculture & Natural Resources</option>
 				<option>Architecture, Real Estate & Construction</option>
-				<option>Arts, Entertainment & Recreation</option>".html_safe, prompt: "Industry/ Field", class: 'form-control' %>
+				<option>Arts, Entertainment & Recreation</option>
+        <option>Education</option>
+        <option>Energy</option>
+        <option>Financial Services</option>
+        <option>Food, Beverage & CPG</option>
+        <option>Government, Law & Politics</option>
+        <option>Healthcare & Services</option>
+        <option>Hospitality</option>
+        <option>Manufacturing</option>
+        <option>Media & Marketing</option>
+        <option>Non-Profit</option>
+        <option>Pharma & Medical Devices</option>
+        <option>Professional Services</option>
+        <option>Retail Stores & Trade</option>
+        <option>Technology</option>
+        <option>Transportation & Logistics</option>".html_safe, prompt: "Industry/ Field", class: 'form-control' %>
 			</div>
 			<div class="col-md-3">
-				<%= select_tag 'submission[rating]', "<option>a</option>
-				<option>b</option>
-				<option>c</option>".html_safe, prompt: "Compensation", class: 'form-control' %>
+				<%= select_tag 'submission[rating]', "<option>Unpaid</option>
+				<option>Paid</option>
+				<option>Stipend</option>".html_safe, prompt: "Compensation", class: 'form-control' %>
 
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-2 searchclass">
 				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
 			</div>
 		</div>
-		<h6>Share your past experience by submitting an <%= link_to "entry form", new_submission_path %></h6>
+
+    <div class="change-height">
+		<h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path %></h4>
+    </div>
 
 		<% end %>
 	</div>
