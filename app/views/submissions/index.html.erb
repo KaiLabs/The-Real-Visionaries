@@ -100,79 +100,70 @@ td{
 			</div>
 		</div>
 	</section>
-	<% @submissions.each do |submission| %>
+
 	<div class="submission">
 		<div class="row multi-column">
-
 			<% if @submissions.blank? %>
 			<h4>There are no quotes containing the term <%= params[:search] %></h4>
 			<% end %>
 			<div class="container">
 				<div class="col-md-3">
-					<!-- general information -->
-
-
-					<!-- Experience review -->
 					<div class="filter">
 						<div class="search-title" id="parent2">
 							<div id="child2"><h4 class="title-text">FILTERS</h4></div>
 						</div>
-						<div class="display">
-						</div>
 					</div>
 				</div>
-
 
 				<div class="col-md-9">
 					<div class="network">
 						<div class="search-title" id="parent2">
 							<div id="child2">
 								<table style="width:100%">
-									<tr>
+									<thead>
+										<tr>
+											<th>Position Title</th>
+											<th>Rating</th>
+											<th>Industry</th>
+											<th>Organization</th>
+											<th>Location</th>
+											<th>Comp.</th>
+											<th>Date</th>
+										</tr>
+									</thead>
+									<tbody>
 										<% @submissions.each do |submission| %>
-										<th>Position Title</th>
-										<th>Rating</th>
-										<th>Industry</th>
-										<th>Organization</th>
-										<th>Location</th>
-										<th>Comp.</th>
-										<th>Date</th>
-									</tr>
-									<tr>
-										<td><%= link_to submission.positionTitle, submission %></td>
-										<td><%= submission.rating %></td>
-										<td>INDUSTRY</td>
-										<td><%= submission.organizationName %></td>
-										<td><%= submission.city %></td>
-										<td><%= submission.compensation %></td>
-										<td><%= submission.year %></td>
-									</tr>
+
+										<tr>
+											<td><%= link_to submission.positionTitle, submission %></td>
+											<td><%= submission.rating %></td>
+											<td>INDUSTRY</td>
+											<td><%= submission.organizationName %></td>
+											<td><%= submission.city %></td>
+											<td><%= submission.compensation %></td>
+											<td><%= submission.year %></td>
+										</tr>
+										<% end %>
+									</tbody>
+
 								</table>
 							</div>
-
-
-
 						</div>
-
 					</div>
+				</div>
 
-
-
+			</div>
 		</div>
 	</div>
 
-</div>
-<% end %>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
 
 
 
 </body>
-
 </html>
-<% end %>
