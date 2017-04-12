@@ -13,6 +13,13 @@
 </head>
 
 <style media="screen">
+table, th, td{
+	border: 0.5px solid grey;
+}
+td{
+	color: black;
+	background-color: white;
+}
 .container {
 	width: 101%;
 }
@@ -27,15 +34,16 @@
 .form-check-label {
 	font-size: 12px;
 }
+
+
+
 .parent {
-	margin-top: 20px;
-	border-radius: 10px;
 	background-color: black;
 	color: white;
 	width: 100%;
-	height: 100%;
+	height: 200%;
 	display: table;
-	text-align: left;
+	text-align: center;
 
 }
 .parent > .child {
@@ -43,9 +51,7 @@
 	vertical-align: middle;
 }
 
-#bigtitle {
-	margin-left: 10px;
-}
+
 
 #parent2 {
 	display: table;
@@ -59,7 +65,8 @@
 	background-color: #8B0000;
 	color: white;
 	width: 100%;
-	height: 120%;
+	height: 50%;
+	text-align: left;
 }
 
 .title-text {
@@ -82,11 +89,14 @@
 <body>
 	<section class="parent">
 		<div class="child row">
-			<div class="col-md-6">
-				<h2 id="bigtitle">WesSID: Internship Details</h2>
+			<div class="col-md-11.5">
+				<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
 			</div>
-			<div class="col-md-6" id="sign">
+			<div class="col-md-0.5" id="sign">
 				<%= link_to "Sign out", signout_path, id: "sign_out" %>
+			</div>
+			<div class="search-title" id="parent2">
+				<div id="child2"><h3>SEARCH RESULTS</h3></div>
 			</div>
 		</div>
 	</section>
@@ -98,78 +108,70 @@
 			<h4>There are no quotes containing the term <%= params[:search] %></h4>
 			<% end %>
 			<div class="container">
-				<div class="col-md-6">
+				<div class="col-md-3">
 					<!-- general information -->
-					<div class="general">
-						<div class="col-md-6">
-							SOMETHING!
-						</div>
-						<div class="col-md-6">
-							<h2><%= submission.positionTitle %></h2>
-							<h3><%= submission.organizationName %> <%= submission.rating %></h3>
-							<h4><%= submission.city %>, <!-- missing state -->, <%= submission.country %></h4>
-							<h4><%= submission.compensation %></h4>
-							<h4>Organization link: <%= submission.organizationURL %></h4>
-						</div>
 
-					</div>
 
 					<!-- Experience review -->
-					<div class="exp">
+					<div class="filter">
 						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Experience Review</h3></div>
+							<div id="child2"><h4 class="title-text">FILTERS</h4></div>
 						</div>
 						<div class="display">
-							<!-- needs a default msg when empty -->
-						 <%= submission.organizationRecommendation %>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+
+
+				<div class="col-md-9">
 					<div class="network">
 						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Wesleyan Network Information</h3></div>
+							<div id="child2">
+								<table style="width:100%">
+									<tr>
+										<% @submissions.each do |submission| %>
+										<th>Position Title</th>
+										<th>Rating</th>
+										<th>Industry</th>
+										<th>Organization</th>
+										<th>Location</th>
+										<th>Comp.</th>
+										<th>Date</th>
+									</tr>
+									<tr>
+										<td><%= submission.positionTitle %></td>
+										<td><%= submission.rating %></td>
+										<td>INDUSTRY</td>
+										<td><%= submission.organizationName %></td>
+										<td><%= submission.city %></td>
+										<td><%= submission.compensation %></td>
+										<td><%= submission.year %></td>
+									</tr>
+								</table>
+							</div>
+
+
+
 						</div>
-						<div class="display">
-							<p>Was this a Cardinal internship: <%= submission.cardinalInternship %></p>
-							<p>Is the contact a Wes alum: <%= submission.wesAlum %></p>
-							<p>Wesleyan student contact email: <%= submission.organizationContactEmail %></p>
-						</div>
+
 					</div>
-				</br>
-					<div class="mission">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Organization Mission</h3></div>
-						</div>
-						<div class="display">
-							<%= submission.organizationMission %>
-						</div>
-					</div>
-				</br>
-					<div class="contact">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h3 class="title-text">Organization Contact Information</h3></div>
-						</div>
-						<div class="display">
-							<p>Contact name: <%= submission.organizationContactName %></p>
-							<p>Contact title: <%= submission.organizationContactJobTitle %></p>
-							<p>Contact email: <%= submission.organizationContactEmail %></p>
-						</div>
-					</div>
-				</div>
-			</div>
+
+
 
 		</div>
-		<% end %>
+	</div>
+
+</div>
+<% end %>
 
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 
 
 
-	</body>
+</body>
 
-	</html>
+</html>
