@@ -17,6 +17,7 @@ group :production do
   gem 'pg'
 end
 
+
 #authorization
 gem "omniauth-google-oauth2", "~> 0.2.1"
 

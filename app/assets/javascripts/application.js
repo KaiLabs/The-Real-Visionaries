@@ -17,3 +17,4 @@
 
 //= require bootstrap.min
 //= require data-confirm-modal
+

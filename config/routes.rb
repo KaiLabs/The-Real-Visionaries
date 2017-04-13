@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resource :home
   resources :submissions
 
+
   #root 'submissions#index'
   # root 'home#index'
 

@@ -46,6 +46,6 @@ class SubmissionsController < ApplicationController
 
   private
   def set_submission
-    @submission = Submission.find(params[:positionTitle])
+    @submission = Submission.find(params[:positionTitle, :compensation, :city])
   end
 end

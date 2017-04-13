@@ -16,7 +16,8 @@ class Submission < ApplicationRecord
 	def self.search(search)
 		if search
 			where("positionTitle LIKE ?", "%#{search}%")
-			#where()
+			where("compensation LIKE ?", "%#{search}%")
+			where("city LIKE ?", "%#{search}%")
 		else
 			all
 		end
