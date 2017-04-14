@@ -11,103 +11,103 @@
 	<link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
 	<link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
 	<link href='//fonts.googleapis.com/css?family=Pathway Gothic One' rel='stylesheet'>
-  <link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+	<link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
 </head>
 
 <style media="screen">
-.header {
-  width:100%;
-  position:fixed;
-  left: 0; right: 0;
-  top: 0;
-  z-index: 1;
-}
+	.header {
+		width:100%;
+		position:fixed;
+		left: 0; right: 0;
+		top: 0;
+		z-index: 1;
+	}
 
-h1{
-  font-family: 'EB Garamond';
-  font-weight: lighter;
-  font-size: 40px;
-}
+	h1{
+		font-family: 'EB Garamond';
+		font-weight: lighter;
+		font-size: 40px;
+	}
 
-.search-title{
-	background-color: #8B0000;
-	color: white;
-	width: 100%;
-	height: 50%;
-	text-align: left;
+	.search-title{
+		background-color: #8B0000;
+		color: white;
+		width: 100%;
+		height: 50%;
+		text-align: left;
 
-}
+	}
 
-*{
-	font-family: 'Pathway Gothic One';
-  font-size: 25px;
-}
-table, th, td{
-	border: 0.5px solid grey;
-}
-td{
-	color: black;
-	background-color: white;
-}
-.container {
-	width: 101%;
-}
-.descr {
-	text-align: left;
-}
+	*{
+		font-family: 'Pathway Gothic One';
+		font-size: 25px;
+	}
+	table, th, td{
+		border: 0.5px solid grey;
+	}
+	td{
+		color: black;
+		background-color: white;
+	}
+	.container {
+		width: 101%;
+	}
+	.descr {
+		text-align: left;
+	}
 
-.row{
-  margin-bottom: 10px;
-  margin-top: 20px;
-  /*push down the top!!*/
-}
-.form-check-label {
-	font-size: 12px;
-}
-
-
-
-.parent {
-	background-color: black;
-	color: white;
-	width: 100%;
-	height: 200%;
-	display: table;
-	text-align: center;
-
-}
-.parent > .child {
-	display: table-cell;
-	vertical-align: middle;
-}
+	.row{
+		margin-bottom: 10px;
+		margin-top: 20px;
+		/*push down the top!!*/
+	}
+	.form-check-label {
+		font-size: 12px;
+	}
 
 
 
-#parent2 {
-	display: table;
-}
-#child2 {
-	display: table-cell;
-	vertical-align: middle;
-}
+	.parent {
+		background-color: black;
+		color: white;
+		width: 100%;
+		height: 200%;
+		display: table;
+		text-align: center;
+
+	}
+	.parent > .child {
+		display: table-cell;
+		vertical-align: middle;
+	}
 
 
 
-.title-text {
-	margin-left: 10px;
-	font-size: 25px;
-}
+	#parent2 {
+		display: table;
+	}
+	#child2 {
+		display: table-cell;
+		vertical-align: middle;
+	}
 
-.left {
-	float: left;
-}
-.display {
-	border: solid 0.5px;
-}
 
-#sign {
-	text-align: right;
-}
+
+	.title-text {
+		margin-left: 10px;
+		font-size: 25px;
+	}
+
+	.left {
+		float: left;
+	}
+	.display {
+		border: solid 0.5px;
+	}
+
+	#sign {
+		text-align: right;
+	}
 
 </style>
 
@@ -165,11 +165,72 @@ td{
 										<tr>
 											<td><%= link_to submission.positionTitle, submission %></td>
 											<td><%= submission.rating %></td>
-											<td>INDUSTRY</td>
+
+											<!-- Do all industry boolean searching manually......... -->
+											<td><% if  submission.agriculture  %> 
+												Agriculture
+												<% end %>
+												<% if  submission.architecture  %>
+												Architecture
+												<% end %>
+												<% if  submission.artsEntertainment %>
+												Arts/Entertainment
+												<% end %>
+												<% if  submission.education  %>
+												Education
+												<% end %>
+												<% if  submission.energy  %>
+												Energy
+												<% end %>
+												<% if  submission.financialServices  %>
+												Financial Services
+												<% end %>
+												<% if  submission.foodBeverageCPG  %>
+												Food/Beverage
+												<% end %>
+												<% if  submission.government  %>
+												Government
+												<% end %>
+												<% if  submission.healthcare  %>
+												Healthcare
+												<% end %>
+												<% if  submission.hospitality  %>
+												Hospitality
+												<% end %>
+												<% if  submission.manufacturing  %>
+												Manufacturing
+												<% end %>
+												<% if  submission.mediaMarketing  %>
+												Media Marketing
+												<% end %>
+												<% if  submission.nonProfit  %>
+												Non-Profit
+												<% end %>
+												<% if  submission.pharma  %>
+												Pharmaceutical
+												<% end %>
+												<% if  submission.professionalServices  %>
+												Professional Services
+												<% end %>
+												<% if  submission.retailStores  %>
+												Retail Stores
+												<% end %>
+												<% if  submission.technology %>
+												Technology
+												<% end %>
+												<% if  submission.transportation  %>
+												Transportation
+												<% end %>
+												<% if  submission.other  %>  
+												<% end %>
+											</td>
+											
+
+											<!-- All other fields -->
 											<td><%= submission.organizationName %></td>
 											<td><%= submission.city %></td>
 											<td><%= submission.compensation %></td>
-											<td><%= submission.year %></td>
+											<td><%= submission.year.year %></td>
 										</tr>
 										<% end %>
 									</tbody>
@@ -183,7 +244,6 @@ td{
 			</div>
 		</div>
 	</div>
-
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

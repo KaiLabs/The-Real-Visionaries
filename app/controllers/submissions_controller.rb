@@ -34,10 +34,6 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    # @submissions = Submission.all
-    # if params[:search]
-    #   @submissions = Submission.search(params[:search])
-    # end
     @submission = Submission.find(params[:id])
   end
 
