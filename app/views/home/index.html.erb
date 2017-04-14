@@ -83,37 +83,37 @@ body {
 		<div class="form-group row height">
 			<div class="col-md-2">
 				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
-				<%= text_field_tag :search, params[:search], placeholder: "Enter keyword", class: 'form-control' %>
+				<%= text_field_tag :search, params[:search], placeholder: "Keyword", class: 'form-control' %>
 			</div>
 			<div class="col-md-2">
-				<%= text_field_tag :search, params[:search], placeholder: "Location", class: 'form-control' %>
+				<%= text_field_tag :search, params[:search], placeholder: "Location (City)", class: 'form-control' %>
 			</div>
-			<div class="col-md-3">
-				<%= select_tag 'submission[rating]', "<option>Agriculture & Natural Resources</option>
-				<option>Architecture, Real Estate & Construction</option>
-				<option>Arts, Entertainment & Recreation</option>
-        <option>Education</option>
-        <option>Energy</option>
-        <option>Financial Services</option>
-        <option>Food, Beverage & CPG</option>
-        <option>Government, Law & Politics</option>
-        <option>Healthcare & Services</option>
-        <option>Hospitality</option>
-        <option>Manufacturing</option>
-        <option>Media & Marketing</option>
-        <option>Non-Profit</option>
-        <option>Pharma & Medical Devices</option>
-        <option>Professional Services</option>
-        <option>Retail Stores & Trade</option>
-        <option>Technology</option>
-        <option>Transportation & Logistics</option>".html_safe, prompt: "Industry/ Field", class: 'form-control' %>
-			</div>
-			<div class="col-md-3">
-				<%= select_tag 'submission[rating]', "<option>Unpaid</option>
-				<option>Paid</option>
-				<option>Stipend</option>".html_safe, prompt: "Compensation", class: 'form-control' %>
 
+      <!-- Industry/Field Search -->
+			<div class="col-md-3">
+      <%= select_tag "search", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction", 
+        "Stipend",
+        "Arts, Entertainment & Recreation","Education",
+        "Energy", "Financial Services",
+        "Food, Beverage & CPG",
+        "Government, Law & Politics",
+        "Healthcare & Services",
+        "Hospitality",
+        "Manufacturing", "Media & Marketing", "Non-Profit",
+        "Pharma & Medical Devices", "Professional Services",
+        "Retail Stores & Trade", "Technology",
+        "Transportation & Logistics"],
+      params[:search]), class: 'form-control', prompt: "Industry/Field" %>
+      </div>
+
+      <!-- Compensation Search -->
+			<div class="col-md-3">
+			<%= select_tag "search", options_for_select(["Unpaid", "Paid", "Stipend"],
+      params[:search]), class: 'form-control', prompt: "Compensation" %>
 			</div>
+
+
+      <!-- Search button -->
 			<div class="col-md-2 searchclass">
 				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
 			</div>

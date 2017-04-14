@@ -18,6 +18,8 @@ class Submission < ApplicationRecord
 			where("positionTitle LIKE ?", "%#{search}%")
 			where("compensation LIKE ?", "%#{search}%")
 			where("city LIKE ?", "%#{search}%")
+			where("agriculture LIKE ?", "%#{search}%")
+
 		else
 			all
 		end
