@@ -118,7 +118,7 @@ h1{
 			<%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :year, :input_html => {:style=> 'width: 800%'}, label: false, :as => :date,
-				:start_year => 2000, :end_year => 2021, order: [:year], :selected => @submission.year, class: "form-control" %>
+				:start_year => 2010, :end_year => 2021, order: [:year], :selected => @submission.year, class: "form-control" %>
 			</div>
 			<% end %>
 
@@ -213,8 +213,8 @@ h1{
 			</div>
 			<% end %>
 
-			<!-- Organization Contact Email (optional) -->
-			<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+			<!-- Contact Email...(optional) -->
+			<%= form.input :organizationContactEmail, :label => "Wesleyan Student Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input_field :organizationContactEmail, class: "form-control" %>
 			</div>

@@ -150,12 +150,12 @@
 								<table style="width:100%; text-align: center;">
 									<thead>
 										<tr>
-											<th style="text-align:center">Position Title</th>
-											<th style="text-align:center">Rating</th>
+											<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle')%></th>
+											<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating')%></th>
 											<th style="text-align:center">Industry</th>
-											<th style="text-align:center">Organization</th>
+											<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName')%></th>
 											<th style="text-align:center">Location</th>
-											<th style="text-align:center">Comp.</th>
+											<th style="text-align:center">Compensation</th>
 											<th style="text-align:center">Date</th>
 										</tr>
 									</thead>
@@ -173,7 +173,7 @@
 												<% if  submission.architecture  %>
 												Architecture
 												<% end %>
-												<% if  submission.artsEntertainment %>
+												<% if  submission.artsEntertainment%>
 												Arts/Entertainment
 												<% end %>
 												<% if  submission.education  %>
@@ -230,7 +230,7 @@
 											<td><%= submission.organizationName %></td>
 											<td><%= submission.city %></td>
 											<td><%= submission.compensation %></td>
-											<td><%= submission.year.year %></td>
+											<td><%= submission.year %></td>
 										</tr>
 										<% end %>
 									</tbody>

@@ -4,10 +4,21 @@ class SubmissionsController < ApplicationController
 
   def index
   	@submissions = Submission.all
+    #SEARCH
   	if params[:search]
   		@submissions = Submission.search(params[:search])
-
   	end
+    #SORT---TEST!!!
+    if params[:sorting] == 'positionTitle'
+      @submissions = @submissions.order('positionTitle ASC')
+    elsif params[:sorting] == 'rating'
+      @submissions = @submissions.order('rating ASC')
+    elsif params[:sorting] == 'organizationName'
+      @submissions = @submissions.order('organizationName ASC')
+        
+    end
+
+
 
   end
 
@@ -39,6 +50,7 @@ class SubmissionsController < ApplicationController
 
   def thankyou
   end
+
 
   private
   def set_submission
