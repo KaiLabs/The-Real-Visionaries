@@ -5,9 +5,9 @@ class SubmissionsController < ApplicationController
   def index
   	@submissions = Submission.all
     #SEARCH
-  	if params[:search]
-  		@submissions = Submission.search(params[:search])
-  	end
+    if params[:search]
+      @submissions = Submission.search(params[:search])
+    end
     #SORT---TEST!!!
     if params[:sorting] == 'positionTitle'
       @submissions = @submissions.order('positionTitle ASC')
@@ -15,7 +15,15 @@ class SubmissionsController < ApplicationController
       @submissions = @submissions.order('rating ASC')
     elsif params[:sorting] == 'organizationName'
       @submissions = @submissions.order('organizationName ASC')
-        
+    elsif params[:sorting] == 'city'
+      @submissions = @submissions.order('city ASC')
+    elsif params[:sorting] == 'compensation'
+      @submissions = @submissions.order('compensation ASC')
+    elsif params[:sorting] == 'year'
+      @submissions = @submissions.order('year ASC')
+    #Industry sorting.....
+     elsif params[:sorting] == 'agriculture'
+      @submissions = @submissions.order('agriculture ASC')
     end
 
 
@@ -37,23 +45,23 @@ class SubmissionsController < ApplicationController
       :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
   	if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-  	  redirect_to action:"thankyou"
-  		return
-  	else
-  		render "new"
-  	end
+     redirect_to action:"thankyou"
+     return
+   else
+    render "new"
   end
+end
 
-  def show
-    @submission = Submission.find(params[:id])
-  end
+def show
+  @submission = Submission.find(params[:id])
+end
 
-  def thankyou
-  end
+def thankyou
+end
 
 
-  private
-  def set_submission
-    @submission = Submission.find(params[:positionTitle, :compensation, :city])
-  end
+private
+def set_submission
+  @submission = Submission.find(params[:positionTitle, :compensation, :city])
+end
 end

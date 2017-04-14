@@ -150,13 +150,20 @@
 								<table style="width:100%; text-align: center;">
 									<thead>
 										<tr>
+										<!-- Sort by Position Title -->
 											<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle')%></th>
+											<!-- Sort by Rating -->
 											<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating')%></th>
-											<th style="text-align:center">Industry</th>
+											<!-- Sort by Industry -->
+											<th style="text-align:center"><%= link_to "Industry", submissions_path(:sorting => 'agriculture')%></th>
+											<!-- Sort by Organization -->
 											<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName')%></th>
-											<th style="text-align:center">Location</th>
-											<th style="text-align:center">Compensation</th>
-											<th style="text-align:center">Date</th>
+											<!-- Sort by Location -->
+											<th style="text-align:center"><%= link_to "Location", submissions_path(:sorting => 'city')%></th>
+											<!-- Sort by Compensation -->
+											<th style="text-align:center"><%= link_to "Compensation", submissions_path(:sorting => 'compensation')%></th>
+											<!-- Sort by Date -->
+											<th style="text-align:center"><%= link_to "Date", submissions_path(:sorting => 'year')%></th>
 										</tr>
 									</thead>
 									<tbody>
