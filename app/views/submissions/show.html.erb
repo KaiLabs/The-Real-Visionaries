@@ -22,14 +22,29 @@
   top: 0;
   z-index: 1;
 }
-h1{
+.headcontainer {
+  color: black;
+  height: 60px;
+  line-height: 75px;
+}
+.head{
   font-family: 'EB Garamond';
   font-weight: lighter;
-  font-size: 40px;
+  font-size: 37px;
+  color: white;
 }
+.head:hover {
+  color: white;
+  text-decoration: none;
+}
+.signout {
+  color: white;
+  font-size: 14px;
+}
+
 *{
   font-family: 'Pathway Gothic One';
-  font-size: 25px;
+  font-size: 21px;
 }
 .row{
   margin-bottom: 10px;
@@ -62,7 +77,7 @@ h1{
 /*above: need for every page */
 
 .container {
-  width: 101%;
+  width: 90%;
 }
 .descr {
   text-align: left;
@@ -98,6 +113,15 @@ h1{
 .display {
   border: solid 0.5px;
 }
+.pictureholder {
+  background: black;
+  height: 200px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+.general {
+  font-weight: bolder;
+}
 
 
 
@@ -107,12 +131,16 @@ h1{
   <div class="header">
     <section class="parent">
       <div class="child row">
-        <div class="col-md-11.5">
-          <h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+        <div class="headcontainer">
+          <%= content_tag :div, class: "col-md-11" do -%>
+            <%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
+          <% end -%>
+          <%= content_tag :div, class: "col-md-1" do -%>
+            <%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
+          <% end -%>
         </div>
-        <div class="col-md-0.5" id="sign">
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
-        </div>
+
+
         <div class="search-title">
           <h3 style="font-size: 35px; margin-left: 5px;">INTERNSHIP DETAILS</h3>
         </div>
@@ -128,12 +156,16 @@ h1{
         <div class="col-md-6">
           <!-- general information -->
           <div class="general">
-            <div class="col-md-6">
+            <div class="pictureholder col-md-6">
+
+            </div>
+            <div class="col-md-6 general">
               <h2><%= @submission.positionTitle %></h2>
               <h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
               <h4><%= @submission.city %>, <!-- missing state -->, <%= @submission.country %></h4>
               <h4><%= @submission.compensation %></h4>
               <h4>Organization link: <%= @submission.organizationURL %></h4>
+            </br>
             </div>
 
           </div>
@@ -157,15 +189,15 @@ h1{
             </div>
             <div class="display">
             <!-- if else instead of boolean display -->
-              <p>Was this a Cardinal internship: 
+              <p>Was this a Cardinal internship:
               <% if @submission.cardinalInternship %>
               Yes
               <% else %>
-              No  
+              No
               <% end %>
               </p>
 
-              <p>Is the contact a Wes alum: 
+              <p>Is the contact a Wes alum:
               <% if @submission.wesAlum %> Yes
               <% else %>
               No
