@@ -13,16 +13,21 @@ class Submission < ApplicationRecord
 	validates :organizationMission, presence:true
 	validates :organizationRecommendation, presence: true
 
-	def self.search(search)
-		if search
-			where("positionTitle LIKE ?", "%#{search}%")
-			where("compensation LIKE ?", "%#{search}%")
-			where("city LIKE ?", "%#{search}%")
-			where("agriculture LIKE ?", "%#{search}%")
+	def self.search(search, compensationSearch, locationSearch)
+		# if search
+		# positions = Submission.where("positionTitle LIKE ?", "%#{searchs}%")
+		positions = Submission.where(positionTitle: search)
+		return positions
+			# where("positionTitle LIKE ? OR compensation LIKE ? OR city LIKE ?", "%#{search}%", "%#{compensationSearch}%", "%#{locationSearch}%")
+			# where("compensation LIKE ?", "%#{search}%")
+			# where("city LIKE ?", "%#{search}%")
+			# where("agriculture LIKE ?", "%#{search}%")
 
-		else
-			all
-		end
+			
+
+		# else
+		# 	all
+		# end
 	end
 
 end

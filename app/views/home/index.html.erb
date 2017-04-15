@@ -80,19 +80,20 @@ body {
       <h4>By Wes students for Wes students</h4>
     </div>
 
+    <!-- Keyword Search -->
 		<div class="form-group row height">
 			<div class="col-md-2">
 				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
 				<%= text_field_tag :search, params[:search], placeholder: "Keyword", class: 'form-control' %>
 			</div>
+      <!-- Location Search -->
 			<div class="col-md-2">
-				<%= text_field_tag :search, params[:search], placeholder: "Location (City)", class: 'form-control' %>
+				<%= text_field_tag :search, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
 			</div>
 
       <!-- Industry/Field Search -->
 			<div class="col-md-3">
-      <%= select_tag "search", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction", 
-        "Stipend",
+      <%= select_tag "search", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
         "Arts, Entertainment & Recreation","Education",
         "Energy", "Financial Services",
         "Food, Beverage & CPG",
@@ -103,13 +104,13 @@ body {
         "Pharma & Medical Devices", "Professional Services",
         "Retail Stores & Trade", "Technology",
         "Transportation & Logistics"],
-      params[:search]), class: 'form-control', prompt: "Industry/Field" %>
+      params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
       </div>
 
       <!-- Compensation Search -->
 			<div class="col-md-3">
 			<%= select_tag "search", options_for_select(["Unpaid", "Paid", "Stipend"],
-      params[:search]), class: 'form-control', prompt: "Compensation" %>
+      params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
 			</div>
 
 

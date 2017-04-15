@@ -5,10 +5,21 @@ class SubmissionsController < ApplicationController
   def index
   	@submissions = Submission.all
     #SEARCH
+    # if params[:search]
+    #   @submissions = Submission.search(params[:search])
+    # end
+    # if params[:compensationSearch]
+    #   @submissions = Submission.search(params[:compensationSearch])
+    # end
+    # if params[:locationSearch]
+    #   @submissions = Submission.search(params[:locationSearch])
+    # end
     if params[:search]
-      @submissions = Submission.search(params[:search])
+      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
-    #SORT---TEST!!!
+
+
+    #SORT
     if params[:sorting] == 'positionTitle'
       @submissions = @submissions.order('positionTitle ASC')
     elsif params[:sorting] == 'rating'
@@ -22,25 +33,25 @@ class SubmissionsController < ApplicationController
     elsif params[:sorting] == 'year'
       @submissions = @submissions.order('year ASC')
     #Industry sorting.....
-     elsif params[:sorting] == 'agriculture'
-      @submissions = @submissions.order('agriculture ASC')
-    end
+  elsif params[:sorting] == 'agriculture'
+    @submissions = @submissions.order('agriculture ASC')
   end
+end
 
-  def new
-  	@submission = Submission.new
-  end
+def new
+ @submission = Submission.new
+end
 
-  def create
-  	@submission = Submission.new(params.require(:submission).permit(:positionTitle,
-  		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-      :year, :compensation, :country, :organizationURL, :organizationContactName,
-      :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
-      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
-      :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
-      :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
-      :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
-  	if @submission.save
+def create
+ @submission = Submission.new(params.require(:submission).permit(:positionTitle,
+  :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
+  :year, :compensation, :country, :organizationURL, :organizationContactName,
+  :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
+  :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
+  :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
+  :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
+  :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
+ if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
      redirect_to action:"thankyou"
      return
