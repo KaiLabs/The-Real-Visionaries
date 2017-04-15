@@ -25,9 +25,6 @@ class SubmissionsController < ApplicationController
      elsif params[:sorting] == 'agriculture'
       @submissions = @submissions.order('agriculture ASC')
     end
-
-
-
   end
 
   def new
