@@ -164,7 +164,7 @@
               <h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
               <h4><%= @submission.city %>, <!-- missing state -->, <%= @submission.country %></h4>
               <h4><%= @submission.compensation %></h4>
-              <h4>Organization link: <%= @submission.organizationURL %></h4>
+              <h4>Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}" %></h4>
             </br>
             </div>
 

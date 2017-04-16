@@ -139,7 +139,7 @@
 			<%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
 				<%= form.input :year, :input_html => {:style=> 'width: 800%'}, label: false, :as => :date,
-				:start_year => 2010, :end_year => 2021, order: [:year], :selected => @submission.year, class: "form-control" %>
+				:start_year => 2010, :end_year => 2017, order: [:year], :selected => @submission.year, class: "form-control" %>
 			</div>
 			<% end %>
 
@@ -168,7 +168,7 @@
 			<% end %>
 
 			<!----------- Field/Industry Checkboxes ------------------------------>
-			<p>Field / Industry: </p>
+			<p>* Field / Industry: </p>
 
 			<!-- Agriculture -->
 			<%= form.input :agriculture, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
@@ -407,7 +407,7 @@
 
 
 <!-- Organization Experience/Rec -->
-<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wesleyan students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
 <div class="col-md-12">
 	<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
 </div>
