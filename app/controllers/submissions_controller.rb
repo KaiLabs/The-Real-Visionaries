@@ -67,6 +67,17 @@ end
 def thankyou
 end
 
+ def destroy
+    @submission = Submission.find(params[:id])
+    if @submission.destroy
+      #redirect_to root_path
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "Error deleting"
+    end
+  end
+
+
 
 private
 def set_submission

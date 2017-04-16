@@ -86,14 +86,15 @@ body {
 				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
 				<%= text_field_tag :search, params[:search], placeholder: "Keyword", class: 'form-control' %>
 			</div>
+      
       <!-- Location Search -->
 			<div class="col-md-2">
-				<%= text_field_tag :search, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
+				<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
 			</div>
 
       <!-- Industry/Field Search -->
 			<div class="col-md-3">
-      <%= select_tag "search", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
+      <%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
         "Arts, Entertainment & Recreation","Education",
         "Energy", "Financial Services",
         "Food, Beverage & CPG",
@@ -109,7 +110,7 @@ body {
 
       <!-- Compensation Search -->
 			<div class="col-md-3">
-			<%= select_tag "search", options_for_select(["Unpaid", "Paid", "Stipend"],
+			<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
       params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
 			</div>
 
