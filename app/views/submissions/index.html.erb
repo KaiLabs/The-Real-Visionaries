@@ -52,6 +52,13 @@
 
 	}
 
+	.tabletitle {
+		color: white;
+	}
+	.tabletitle:hover {
+		color: white;
+	}
+
 	*{
 		font-family: 'Pathway Gothic One';
 		font-size: 21px;
@@ -149,20 +156,20 @@
 
 
 		<div class="submission">
-			<div class="row multi-column" style="margin-top: 200px;">
+			<div class="row multi-column" style="margin-top: 180px;">
 				<% if @submissions.blank? %>
 				<h4>There are no quotes containing the term <%= params[:search] %></h4>
 				<% end %>
 				<div class="container">
-					<div class="col-md-3">
+					<!-- <div class="col-md-3">
 						<div class="filter">
 							<div class="search-title" id="parent2">
 								<div id="child2"><h4 class="title-text">FILTERS</h4></div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
-					<div class="col-md-9">
+					<div class="col-md-12">
 						<div class="network">
 							<div class="search-title" id="parent2">
 								<div id="child2">
@@ -170,19 +177,19 @@
 										<thead>
 											<tr>
 											<!-- Sort by Position Title -->
-												<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle')%></th>
+												<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle'), class: "tabletitle"%></th>
 												<!-- Sort by Rating -->
-												<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating')%></th>
+												<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating'), class: "tabletitle"%></th>
 												<!-- Sort by Industry -->
-												<th style="text-align:center"><%= link_to "Industry", submissions_path(:sorting => 'agriculture')%></th>
+												<th style="text-align:center"><%= link_to "Industry", submissions_path(:sorting => 'agriculture'), class: "tabletitle"%></th>
 												<!-- Sort by Organization -->
-												<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName')%></th>
+												<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName'), class: "tabletitle"%></th>
 												<!-- Sort by Location -->
-												<th style="text-align:center"><%= link_to "Location", submissions_path(:sorting => 'city')%></th>
+												<th style="text-align:center"><%= link_to "Location", submissions_path(:sorting => 'city'), class: "tabletitle"%></th>
 												<!-- Sort by Compensation -->
-												<th style="text-align:center"><%= link_to "Compensation", submissions_path(:sorting => 'compensation')%></th>
+												<th style="text-align:center"><%= link_to "Compensation", submissions_path(:sorting => 'compensation'), class: "tabletitle"%></th>
 												<!-- Sort by Date -->
-												<th style="text-align:center"><%= link_to "Date", submissions_path(:sorting => 'year')%></th>
+												<th style="text-align:center"><%= link_to "Date", submissions_path(:sorting => 'year'), class: "tabletitle"%></th>
 											</tr>
 										</thead>
 										<tbody>
