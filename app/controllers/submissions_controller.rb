@@ -5,15 +5,6 @@ class SubmissionsController < ApplicationController
   def index
   	@submissions = Submission.all
     #SEARCH
-    # if params[:search]
-    #   @submissions = Submission.search(params[:search])
-    # end
-    # if params[:compensationSearch]
-    #   @submissions = Submission.search(params[:compensationSearch])
-    # end
-    # if params[:locationSearch]
-    #   @submissions = Submission.search(params[:locationSearch])
-    # end
     if params[:search]
       @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
@@ -67,9 +58,9 @@ end
 def thankyou
 end
 
- def destroy
-    @submission = Submission.find(params[:id])
-    if @submission.destroy
+def destroy
+  @submission = Submission.find(params[:id])
+  if @submission.destroy
       #redirect_to root_path
       redirect_back(fallback_location: root_path)
     else
@@ -78,9 +69,8 @@ end
   end
 
 
-
-private
-def set_submission
-  @submission = Submission.find(params[:positionTitle, :compensation, :city])
-end
+  private
+  def set_submission
+    @submission = Submission.find(params[:positionTitle, :compensation, :city])
+  end
 end
