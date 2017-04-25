@@ -41,7 +41,10 @@ body {
   background-size: cover;
 }
 
-
+.head {
+  color: white;
+  text-decoration: underline;
+}
 
 @media (min-width: 768px) {
   .container-fluid {
@@ -71,6 +74,11 @@ body {
 .height {
   height: 120%;
 }
+
+.tag {
+  width: 120%;
+  height: 120%;
+}
 </style>
 
 <body>
@@ -78,54 +86,57 @@ body {
 		<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
     <div class="height">
       <h4>By Wes students for Wes students</h4>
+    </br>
     </div>
+    <form class="form-inline">
+      <!-- Keyword Search -->
 
-    <!-- Keyword Search -->
-		<div class="form-group row height">
-			<div class="col-md-2">
-				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
-				<%= text_field_tag :search, params[:search], placeholder: "Job Title", class: 'form-control' %>
-			</div>
-      
-      <!-- Location Search -->
-			<div class="col-md-2">
-				<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
-			</div>
+  			<div class="form-group">
+  				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
+  				<%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
+  			</div>
 
-      <!-- Industry/Field Search -->
-			<div class="col-md-3">
-      <%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
-        "Arts, Entertainment & Recreation","Education",
-        "Energy", "Financial Services",
-        "Food, Beverage & CPG",
-        "Government, Law & Politics",
-        "Healthcare & Services",
-        "Hospitality",
-        "Manufacturing", "Media & Marketing", "Non-Profit",
-        "Pharma & Medical Devices", "Professional Services",
-        "Retail Stores & Trade", "Technology",
-        "Transportation & Logistics"],
-      params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
+        <!-- Location Search -->
+  			<div class="form-group">
+  				<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
+  			</div>
+
+        <!-- Industry/Field Search -->
+  			<div class="form-group">
+        <%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
+          "Arts, Entertainment & Recreation","Education",
+          "Energy", "Financial Services",
+          "Food, Beverage & CPG",
+          "Government, Law & Politics",
+          "Healthcare & Services",
+          "Hospitality",
+          "Manufacturing", "Media & Marketing", "Non-Profit",
+          "Pharma & Medical Devices", "Professional Services",
+          "Retail Stores & Trade", "Technology",
+          "Transportation & Logistics"],
+        params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
+        </div>
+
+        <!-- Compensation Search -->
+  			<div class="form-group">
+  			<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
+        params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
+  			</div>
+
+
+        <!-- Search button -->
+  			<div class="form-group searchclass">
+  				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+  			</div>
+
+
+      <div class="change-height">
+  		<h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path, class: "head" %></h4>
       </div>
 
-      <!-- Compensation Search -->
-			<div class="col-md-3">
-			<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
-      params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
-			</div>
+  		<% end %>
+    </form>
 
-
-      <!-- Search button -->
-			<div class="col-md-2 searchclass">
-				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
-			</div>
-		</div>
-
-    <div class="change-height">
-		<h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path %></h4>
-    </div>
-
-		<% end %>
 	</div>
 
 
