@@ -14,63 +14,57 @@
   <link href='//fonts.googleapis.com/css?family=Pathway Gothic One' rel='stylesheet'>
   <link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
 </head>
 
 <style media="screen">
 
-h1{
-  font-family: 'EB Garamond';
-  font-weight: lighter;
-  font-size: 40px;
-}
-
-h4{
-  font-family: 'Pathway Gothic One';
-  font-weight: lighter;
-  font-size: 25px;
-  font-weight: lighter;
-}
-body {
-  background-image: url(/assets/background.jpg);
-  background-size: cover;
-}
-
-
-
-@media (min-width: 768px) {
-  .container-fluid {
-    margin-top: 250px;
-    max-width: 1000px;
-    color: white;
-    text-align: center;
+  h1{
+    font-family: 'EB Garamond';
+    font-weight: lighter;
+    font-size: 40px;
   }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
 
-.row{
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+  h4{
+    font-family: 'Pathway Gothic One';
+    font-weight: lighter;
+    font-size: 25px;
+    font-weight: lighter;
+  }
+  body {
+    background-image: url(/assets/background.jpg);
+    background-size: cover;
+  }
 
-.change-height{
-  margin-top: 25px;
-}
 
-.searchclass {
-  text-align: left;
-}
 
-.height {
-  height: 120%;
-}
+  @media (min-width: 768px) {
+    .container-fluid {
+      margin-top: 250px;
+      max-width: 1000px;
+      color: white;
+      text-align: center;
+    }
+  }
+  .container-narrow > hr {
+    margin: 30px 0;
+  }
+
+  .row{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .change-height{
+    margin-top: 25px;
+  }
+
+  .searchclass {
+    text-align: left;
+  }
+
+  .height {
+    height: 120%;
+  }
 </style>
 
 <body>
@@ -81,19 +75,19 @@ body {
     </div>
 
     <!-- Keyword Search -->
-		<div class="form-group row height">
-			<div class="col-md-2">
-				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
-				<%= text_field_tag :search, params[:search], placeholder: "Job Title", class: 'form-control' %>
-			</div>
-      
-      <!-- Location Search -->
-			<div class="col-md-2">
-				<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
-			</div>
+    <div class="form-group row height">
+     <div class="col-md-2">
+      <%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Job Title", class: 'form-control' %>
+    </div>
+    
+    <!-- Location Search -->
+    <div class="col-md-2">
+      <%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
+    </div>
 
-      <!-- Industry/Field Search -->
-			<div class="col-md-3">
+    <!-- Industry/Field Search -->
+    <div class="col-md-3">
       <%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
         "Arts, Entertainment & Recreation","Education",
         "Energy", "Financial Services",
@@ -105,33 +99,33 @@ body {
         "Pharma & Medical Devices", "Professional Services",
         "Retail Stores & Trade", "Technology",
         "Transportation & Logistics"],
-      params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
+        params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
       </div>
 
       <!-- Compensation Search -->
-			<div class="col-md-3">
-			<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
-      params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
-			</div>
+      <div class="col-md-3">
+       <%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
+       params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
+     </div>
 
 
-      <!-- Search button -->
-			<div class="col-md-2 searchclass">
-				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
-			</div>
-		</div>
-
-    <div class="change-height">
-		<h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path %></h4>
+     <!-- Search button -->
+     <div class="col-md-2 searchclass">
+      <%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
     </div>
+  </div>
 
-		<% end %>
-	</div>
+  <!-- Submit entry form -->
+  <div class="change-height">
+    <h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path %></h4>
+  </div>
+
+  <% end %>
+</div>
 
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
