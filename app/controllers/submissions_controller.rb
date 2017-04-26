@@ -43,25 +43,34 @@ class SubmissionsController < ApplicationController
       :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
       :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
       :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
-  	if @submission.save
-  		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-     redirect_to action:"thankyou"
-     return
-   else
-    render "new"
+    @submission.current_step = session[:submission_step]
+    if params[:back_button]
+      @submission.previous_step
+    else
+      @submission.next_step
+    end
+    session[:submission_step] = @submission.current_step
+    #
+  	# if @submission.save
+  	# 	#redirect_to url_for(:controller => :submissions_controller, :action => :index)
+    #  redirect_to action:"thankyou"
+    #  return
+    # else
+      render "new"
+    # end
   end
-end
 
-def show
-  @submission = Submission.find(params[:id])
-end
+  def show
+    @submission = Submission.find(params[:id])
+  end
 
-def thankyou
-end
+  def thankyou
+  end
 
 
-private
-def set_submission
-  @submission = Submission.find(params[:positionTitle, :compensation, :city])
-end
+
+  private
+  def set_submission
+    @submission = Submission.find(params[:positionTitle, :compensation, :city])
+  end
 end

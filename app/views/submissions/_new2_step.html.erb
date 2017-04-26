@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 150px;">
+
+	<!-- Organization Mission/Description -->
+	<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+	<div class="col-md-12">
+		<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
+	</div>
+	<% end %>
+
+	<!-- Rating -->
+
+	<%= form.input :rating, :label => "Rate your experience", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "form-control" %>
+	</div>
+	<% end %>
+
+	<!-- Organization Experience/Rec -->
+	<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wes students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+	<div class="col-md-12">
+		<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
+	</div>
+	<% end %>
+
+	<!-- Cardinal Internship Bool -->
+	<%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, class: "form-control" %>
+	</div>
+	<% end %>
+
+			<p style="height: 8px"></p>
+
+
+</div>
