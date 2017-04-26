@@ -23,10 +23,24 @@
 		z-index: 1;
 	}
 
-	h1{
-		font-family: 'EB Garamond';
-		font-weight: lighter;
-		font-size: 40px;
+	.headcontainer {
+	  color: black;
+	  height: 60px;
+	  line-height: 75px;
+	}
+	.head{
+	  font-family: 'EB Garamond';
+	  font-weight: lighter;
+	  font-size: 37px;
+	  color: white;
+	}
+	.head:hover {
+	  color: white;
+	  text-decoration: none;
+	}
+	.signout {
+	  color: white;
+	  font-size: 14px;
 	}
 
 	.search-title{
@@ -38,19 +52,26 @@
 
 	}
 
+	.tabletitle {
+		color: white;
+	}
+	.tabletitle:hover {
+		color: white;
+	}
+
 	*{
 		font-family: 'Pathway Gothic One';
-		font-size: 25px;
+		font-size: 21px;
 	}
 	table, th, td{
-		border: 0.5px solid grey;
+
 	}
 	td{
 		color: black;
 		background-color: white;
 	}
 	.container {
-		width: 101%;
+		width: 100%;
 	}
 	.descr {
 		text-align: left;
@@ -112,145 +133,157 @@
 </style>
 
 <body>
-	<div class="header">
-		<section class="parent">
-			<div class="child row">
-				<div class="col-md-11.5">
-					<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
-				</div>
-				<div class="col-md-0.5" id="sign">
-					<%= link_to "Sign out", signout_path, id: "sign_out" %>
-				</div>
-				<div class="search-title">
-					<h3 style="font-size: 35px; margin-left: 5px;">SEARCH RESULTS</h3>
-				</div>
-			</div>
-		</section>
-	</div>
-
-
-	<div class="submission">
-		<div class="row multi-column" style="margin-top: 200px;">
-			<% if @submissions.blank? %>
-			<h4>There are no quotes containing the term <%= params[:search] %></h4>
-			<% end %>
-			<div class="container">
-				<div class="col-md-3">
-					<div class="filter">
-						<div class="search-title" id="parent2">
-							<div id="child2"><h4 class="title-text">FILTERS</h4></div>
-						</div>
+	<div class="container">
+		<div class="header">
+			<section class="parent">
+				<div class="child row">
+					<div class="headcontainer">
+	          <%= content_tag :div, class: "col-md-11" do -%>
+	            <%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
+	          <% end -%>
+	          <%= content_tag :div, class: "col-md-1" do -%>
+	            <%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
+	          <% end -%>
+	        </div>
+					<div class="search-title">
+						<h3 style="font-size: 35px; margin-left: 5px;">SEARCH RESULTS</h3>
 					</div>
 				</div>
+			</section>
+		</div>
 
-				<div class="col-md-9">
-					<div class="network">
-						<div class="search-title" id="parent2">
-							<div id="child2">
-								<table style="width:100%; text-align: center;">
-									<thead>
-										<tr>
-										<!-- Sort by Position Title -->
-											<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle')%></th>
-											<!-- Sort by Rating -->
-											<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating')%></th>
-											<!-- Sort by Industry -->
-											<th style="text-align:center"><%= link_to "Industry", submissions_path(:sorting => 'agriculture')%></th>
-											<!-- Sort by Organization -->
-											<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName')%></th>
-											<!-- Sort by Location -->
-											<th style="text-align:center"><%= link_to "Location", submissions_path(:sorting => 'city')%></th>
-											<!-- Sort by Compensation -->
-											<th style="text-align:center"><%= link_to "Compensation", submissions_path(:sorting => 'compensation')%></th>
-											<!-- Sort by Date -->
-											<th style="text-align:center"><%= link_to "Date", submissions_path(:sorting => 'year')%></th>
-										</tr>
-									</thead>
-									<tbody>
-										<% @submissions.each do |submission| %>
 
-										<tr>
-											<td><%= link_to submission.positionTitle, submission %></td>
-											<td><%= submission.rating %></td>
 
-											<!-- Do all industry boolean searching manually......... -->
-											<td><% if  submission.agriculture  %> 
-												Agriculture
-												<% end %>
-												<% if  submission.architecture  %>
-												Architecture
-												<% end %>
-												<% if  submission.artsEntertainment%>
-												Arts/Entertainment
-												<% end %>
-												<% if  submission.education  %>
-												Education
-												<% end %>
-												<% if  submission.energy  %>
-												Energy
-												<% end %>
-												<% if  submission.financialServices  %>
-												Financial Services
-												<% end %>
-												<% if  submission.foodBeverageCPG  %>
-												Food/Beverage
-												<% end %>
-												<% if  submission.government  %>
-												Government
-												<% end %>
-												<% if  submission.healthcare  %>
-												Healthcare
-												<% end %>
-												<% if  submission.hospitality  %>
-												Hospitality
-												<% end %>
-												<% if  submission.manufacturing  %>
-												Manufacturing
-												<% end %>
-												<% if  submission.mediaMarketing  %>
-												Media Marketing
-												<% end %>
-												<% if  submission.nonProfit  %>
-												Non-Profit
-												<% end %>
-												<% if  submission.pharma  %>
-												Pharmaceutical
-												<% end %>
-												<% if  submission.professionalServices  %>
-												Professional Services
-												<% end %>
-												<% if  submission.retailStores  %>
-												Retail Stores
-												<% end %>
-												<% if  submission.technology %>
-												Technology
-												<% end %>
-												<% if  submission.transportation  %>
-												Transportation
-												<% end %>
-												<% if  submission.other  %>  
-												<% end %>
-											</td>
-											
+		<div class="submission">
+			<div class="row multi-column" style="margin-top: 180px;">
 
-											<!-- All other fields -->
-											<td><%= submission.organizationName %></td>
-											<td><%= submission.city %></td>
-											<td><%= submission.compensation %></td>
-											<td><%= submission.year %></td>
-										</tr>
-										<% end %>
-									</tbody>
+				<% if @submissions.blank? %>
+				<h4>There are no quotes containing the term <%= params[:search] %></h4>
+				<% end %>
 
-								</table>
+				<div class="container">
+					<!-- <div class="col-md-3">
+						<div class="filter">
+							<div class="search-title" id="parent2">
+								<div id="child2"><h4 class="title-text">FILTERS</h4></div>
+							</div>
+						</div>
+					</div> -->
+
+					<div class="col-md-12">
+						<div class="network">
+							<div class="search-title" id="parent2">
+								<div id="child2">
+									<table class="table table-bordered" style="width:100%; text-align: center;">
+										<thead>
+											<tr>
+											<!-- Sort by Position Title -->
+												<th style="text-align:center"><%= link_to "Position Title", submissions_path(:sorting => 'positionTitle'), class: "tabletitle"%></th>
+												<!-- Sort by Rating -->
+												<th style="text-align:center"><%= link_to "Rating", submissions_path(:sorting => 'rating'), class: "tabletitle"%></th>
+												<!-- Sort by Industry -->
+												<th style="text-align:center"><%= link_to "Industry", submissions_path(:sorting => 'agriculture'), class: "tabletitle"%></th>
+												<!-- Sort by Organization -->
+												<th style="text-align:center"><%= link_to "Organization", submissions_path(:sorting => 'organizationName'), class: "tabletitle"%></th>
+												<!-- Sort by Location -->
+												<th style="text-align:center"><%= link_to "Location", submissions_path(:sorting => 'city'), class: "tabletitle"%></th>
+												<!-- Sort by Compensation -->
+												<th style="text-align:center"><%= link_to "Compensation", submissions_path(:sorting => 'compensation'), class: "tabletitle"%></th>
+												<!-- Sort by Date -->
+												<th style="text-align:center"><%= link_to "Date", submissions_path(:sorting => 'year'), class: "tabletitle"%></th>
+											</tr>
+										</thead>
+										<tbody>
+											<% @submissions.each do |submission| %>
+
+											<tr>
+												<td><%= link_to submission.positionTitle, submission %></td>
+												<td><%= submission.rating %></td>
+										<!-- <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+												<!-- Do all industry boolean searching manually......... -->
+												<td><% if  submission.agriculture  %>
+													Agriculture
+													<% end %>
+													<% if  submission.architecture  %>
+													Architecture
+													<% end %>
+													<% if  submission.artsEntertainment %>
+													Arts/Entertainment
+													<% end %>
+													<% if  submission.education  %>
+													Education
+													<% end %>
+													<% if  submission.energy  %>
+													Energy
+													<% end %>
+													<% if  submission.financialServices  %>
+													Financial Services
+													<% end %>
+													<% if  submission.foodBeverageCPG  %>
+													Food/Beverage
+													<% end %>
+													<% if  submission.government  %>
+													Government
+													<% end %>
+													<% if  submission.healthcare  %>
+													Healthcare
+													<% end %>
+													<% if  submission.hospitality  %>
+													Hospitality
+													<% end %>
+													<% if  submission.manufacturing  %>
+													Manufacturing
+													<% end %>
+													<% if  submission.mediaMarketing  %>
+													Media Marketing
+													<% end %>
+													<% if  submission.nonProfit  %>
+													Non-Profit
+													<% end %>
+													<% if  submission.pharma  %>
+													Pharmaceutical
+													<% end %>
+													<% if  submission.professionalServices  %>
+													Professional Services
+													<% end %>
+													<% if  submission.retailStores  %>
+													Retail Stores
+													<% end %>
+													<% if  submission.technology %>
+													Technology
+													<% end %>
+													<% if  submission.transportation  %>
+													Transportation
+													<% end %>
+													<% if  submission.other  %>
+													Other
+
+													<% end %>
+												</td>
+
+
+												<!-- All other fields -->
+												<td><%= submission.organizationName %></td>
+												<td><%= submission.city %></td>
+												<td><%= submission.compensation %></td>
+												<td><%= submission.season %>    <%=submission.year.to_s.slice(0..3) %>  </td>
+
+											</tr>
+											<% end %>
+
+										</tbody>
+
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
+						
 				</div>
-
 			</div>
 		</div>
 	</div>
+
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

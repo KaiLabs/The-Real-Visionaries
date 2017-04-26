@@ -6,9 +6,11 @@ class SubmissionsController < ApplicationController
   	@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.search(params[:search])
+      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
-    #SORT---TEST!!!
+
+
+    #SORT
     if params[:sorting] == 'positionTitle'
       @submissions = @submissions.order('positionTitle ASC')
     elsif params[:sorting] == 'rating'
@@ -22,18 +24,16 @@ class SubmissionsController < ApplicationController
     elsif params[:sorting] == 'year'
       @submissions = @submissions.order('year ASC')
     #Industry sorting.....
-     elsif params[:sorting] == 'agriculture'
-      @submissions = @submissions.order('agriculture ASC')
-    end
-
-
-
+  elsif params[:sorting] == 'agriculture'
+    @submissions = @submissions.order('agriculture ASC')
   end
+end
 
-  def new
-  	@submission = Submission.new
-  end
+def new
+ @submission = Submission.new
+end
 
+<<<<<<< HEAD
   def create
   	@submission = Submission.new(params.require(:submission).permit(:positionTitle,
   		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
@@ -58,6 +58,23 @@ class SubmissionsController < ApplicationController
     # else
       render "new"
     # end
+=======
+def create
+ @submission = Submission.new(params.require(:submission).permit(:positionTitle,
+  :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
+  :year, :compensation, :country, :organizationURL, :organizationContactName,
+  :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
+  :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
+  :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
+  :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
+  :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
+ if @submission.save
+  		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
+     redirect_to action:"thankyou"
+     return
+   else
+    render "new"
+>>>>>>> 5bef2ab190ed744b6a8a4399d2521c3b95cfe99a
   end
 
   def show
@@ -67,6 +84,15 @@ class SubmissionsController < ApplicationController
   def thankyou
   end
 
+def destroy
+  @submission = Submission.find(params[:id])
+  if @submission.destroy
+      #redirect_to root_path
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "Error deleting"
+    end
+  end
 
 
   private

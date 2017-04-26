@@ -1,19 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Google Auth Example App</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
+<head>
+  <title>Google Auth Example App</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap 101 Template</title>
+
+  <!-- Bootstrap -->
+  <link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
+  <link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Pathway Gothic One' rel='stylesheet'>
+  <link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+
+</head>
+
+
+<style media="screen">
+
+  h1{
+    font-family: 'EB Garamond';
+    font-weight: lighter;
+    font-size: 40px;
+  }
+
+  h4{
+    font-family: 'Pathway Gothic One';
+    font-weight: lighter;
+    font-size: 25px;
+    font-weight: lighter;
+  }
+  body {
+    background-image: url(/assets/background.jpg);
+    background-size: cover;
+  }
+
+
+
+  @media (min-width: 768px) {
+    .container-fluid {
+      margin-top: 250px;
+      max-width: 1000px;
+      color: white;
+      text-align: center;
+    }
+  }
+  .container-narrow > hr {
+    margin: 30px 0;
+  }
+
+  .row{
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .change-height{
+    margin-top: 25px;
+  }
+
+  .searchclass {
+    text-align: left;
+  }
+
+  .height {
+    height: 120%;
+  }
+</style>
+
+
+<body>
+
+  <div class="container-fluid">
+    <h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+    <div class="height">
+      <h4>By Wes students for Wes students</h4>
+    </div>
+
     <div>
       <% if current_user %>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      Signed in as <strong><%= current_user.name %></strong>!
+      <%= link_to "Sign out", signout_path, id: "sign_out" %>
       <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <h4><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class: 'btn btn-primary' %></h4>
       <% end %>
     </div>
-  </body>
+
+  </div>
+</body>
 </html>

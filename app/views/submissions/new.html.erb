@@ -10,6 +10,8 @@
 	<!-- Bootstrap -->
 	<link href="/assets/custom.css?body=1" media="screen" rel="stylesheet">
 	<link href="/assets/bootstrap.css?body=1" media="screen" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Pathway Gothic One' rel='stylesheet'>
+	<link href='//fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
 </head>
 
 <style media="screen">
@@ -20,20 +22,30 @@
   top: 0;
   z-index: 1;
 }
-h1{
+.headcontainer {
+  color: black;
+  height: 60px;
+  line-height: 75px;
+}
+.head{
   font-family: 'EB Garamond';
   font-weight: lighter;
-  font-size: 40px;
+  font-size: 37px;
+  color: white;
+}
+.head:hover {
+  color: white;
+  text-decoration: none;
+}
+.signout {
+  color: white;
+  font-size: 14px;
 }
 *{
   font-family: 'Pathway Gothic One';
-  font-size: 25px;
+  font-size: 21px;
 }
-.row{
-  margin-bottom: 10px;
-  margin-top: 20px;
-  /*push down the top!!*/
-}
+
 .parent {
   background-color: black;
   color: white;
@@ -84,11 +96,13 @@ h1{
 		<div class="header">
 	    <section class="parent">
 	      <div class="child row">
-	        <div class="col-md-11.5">
-	          <h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
-	        </div>
-	        <div class="col-md-0.5" id="sign">
-	          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+					<div class="headcontainer">
+	          <%= content_tag :div, class: "col-md-11" do -%>
+	            <%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
+	          <% end -%>
+	          <%= content_tag :div, class: "col-md-1" do -%>
+	            <%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
+	          <% end -%>
 	        </div>
 	        <div class="search-title">
 	          <h3 style="font-size: 35px; margin-left: 5px;">SUBMISSION FORM</h3>
@@ -98,8 +112,8 @@ h1{
 	  </div>
 		<%= simple_form_for @submission do |form| %>
 
-		<%= render "#{@submission.current_step}_step", :form => form %>
 
+		<%= render "#{@submission.current_step}_step", :form => form %>
 		<%= form.button :button, "Continue" %>
 		<%= form.button :button, "Back", :name => "previous_button" unless @submission.first_step? %>
 
@@ -110,11 +124,10 @@ h1{
     <% session[:submission_step] = @submission.current_step %>
 		<% end %> -->
 
+
 		<!-- Submit -->
 		<!-- <%= form.button :submit, "Submit", class: "btn btn-primary", data: {title: 'Thanks for your submission!'} %> -->
 		<% end %>
-
-
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -14,13 +14,9 @@ Rails.application.routes.draw do
   #reroute after searching
   get 'home/submissions' => 'submissions#index'
 
-  # get 'submissions/new'
   resource :home
   resources :submissions
 
-
-  #root 'submissions#index'
-  # root 'home#index'
 
 
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -30,7 +26,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
 
   root "login#index"
-  #root "home#index"
+  # root "home#index"
 
 
 end
