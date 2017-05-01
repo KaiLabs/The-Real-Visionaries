@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
   	@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.search(params[:search])
+      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
     #SORT---TEST!!!
     if params[:sorting] == 'positionTitle'
@@ -25,9 +25,6 @@ class SubmissionsController < ApplicationController
      elsif params[:sorting] == 'agriculture'
       @submissions = @submissions.order('agriculture ASC')
     end
-
-
-
   end
 
   def new
@@ -71,7 +68,15 @@ class SubmissionsController < ApplicationController
   def thankyou
   end
 
-
+  def destroy
+    @submission = Submission.find(params[:id])
+    if @submission.destroy
+        #redirect_to root_path
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:alert] = "Error deleting"
+      end
+    end
 
   private
   def set_submission
