@@ -32,6 +32,7 @@ class SubmissionsController < ApplicationController
 
   def new
     session[:submission_params] ||= {}
+    session[:submission_step] = "new1"
   	@submission = Submission.new
     # (session[:submission_params])
     # @submission.current_step = session[:submission_step]
@@ -48,10 +49,9 @@ class SubmissionsController < ApplicationController
       :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
       :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
     @submission.current_step = session[:submission_step]
-    if params[:back_button]
+    if params[:previous_button]
       @submission.previous_step
-    else
-      @submission.next_step
+      @submission.previous_step
     end
     session[:submission_step] = @submission.current_step
     #
