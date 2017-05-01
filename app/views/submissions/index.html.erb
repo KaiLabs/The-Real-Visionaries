@@ -77,11 +77,7 @@
 		text-align: left;
 	}
 
-	.row{
-		margin-bottom: 10px;
-		margin-top: 20px;
-		/*push down the top!!*/
-	}
+
 	.form-check-label {
 		font-size: 12px;
 	}
@@ -130,6 +126,7 @@
 		text-align: right;
 	}
 
+
 </style>
 
 <body>
@@ -155,20 +152,60 @@
 
 
 		<div class="submission">
-			<div class="row multi-column" style="margin-top: 180px;">
+			<div class="container" style="margin-top: 150px;">
+				<div class="row" style="text-align:center; width: 100%;">
+					<!-- Keyword Search -->
+
+						<div class="col-md-3 ">
+							<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
+							<%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
+						</div>
+
+						<!-- Location Search -->
+						<div class="col-md-3 ">
+							<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
+						</div>
+
+						<!-- Industry/Field Search -->
+						<div class="col-md-3 ">
+						<%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
+							"Arts, Entertainment & Recreation","Education",
+							"Energy", "Financial Services",
+							"Food, Beverage & CPG",
+							"Government, Law & Politics",
+							"Healthcare & Services",
+							"Hospitality",
+							"Manufacturing", "Media & Marketing", "Non-Profit",
+							"Pharma & Medical Devices", "Professional Services",
+							"Retail Stores & Trade", "Technology",
+							"Transportation & Logistics"],
+						params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
+						</div>
+
+						<!-- Compensation Search -->
+						<div class="col-md-2 ">
+						<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
+						params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
+						</div>
+
+
+						<!-- Search button -->
+						<div class="col-md-1 searchclass">
+							<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+						</div>
+
+
+					<% end %>
+				</div>
+
 
 				<% if @submissions.blank? %>
 				<h4 style="text-align: center">There are no quotes containing the term <%= params[:search] %></h4>
 
 				<% else %>
-				<div class="container">
-					<!-- <div class="col-md-3">
-						<div class="filter">
-							<div class="search-title" id="parent2">
-								<div id="child2"><h4 class="title-text">FILTERS</h4></div>
-							</div>
-						</div>
-					</div> -->
+
+				<div class="container" style="margin-top: 25px;">
+
 
 					<div class="col-md-12">
 						<div class="network">
