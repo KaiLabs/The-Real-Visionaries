@@ -199,7 +199,9 @@
 
 
 					<% if @submissions.blank? %>
-					<h4 style="text-align: center">There are no quotes containing the term <%= params[:search] %></h4>
+					<h4 style="text-align: center">There are no quotes containing the term <%= params[:search] %> <%= params[:compensationSearch] %>
+					<%= params[:locationSearch] %>
+					</h4>
 
 					<% else %>
 
