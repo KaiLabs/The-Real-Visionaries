@@ -17,7 +17,7 @@
 <b> Outside Compensation: </b> <%= @submission.outsideCompensation %> <br>
 <% end %>
 
-<b> Hours per Week: </b> <%= @submission.hours %> <br>
+<b> Hours Per Week: </b> <%= @submission.hours %> <br>
 
 <b> Field/Industry: </b> <br>
 
@@ -52,7 +52,8 @@
 
 
 </p>
-<p> To approve, deny, or edit this link request, please follow this link: xxxx, 
-and log in with your administrative credentials. </p>
+<p> To approve, deny, or edit this link request, please follow this link: 
+
+http://localhost:3000/submissions/<%= @submission.id %> and log in with your administrative credentials. </p>
 </body>
 </html>

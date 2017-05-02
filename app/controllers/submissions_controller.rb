@@ -33,6 +33,7 @@ def new
  @submission = Submission.new
 end
 
+
 def create
  @submission = Submission.new(params.require(:submission).permit(:positionTitle,
   :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
@@ -52,6 +53,21 @@ def create
     render "new"
   end
 end
+
+
+def edit
+  @submission = Submission.find(params[:id])
+end
+
+def update
+  if @submission.update(submission_params)
+    #redirect_to @submission
+    redirect_to(:submissions => 'index')
+  else
+    render 'edit'
+  end
+end
+
 
 def show
   @submission = Submission.find(params[:id])
