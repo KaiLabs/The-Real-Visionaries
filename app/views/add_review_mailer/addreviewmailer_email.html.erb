@@ -4,12 +4,53 @@
 </head>
 
 <body>
-<p> A user has requested the following review to be added to the Wesleyan Internship Website: 
+<p> A new review has been requested to be added to the Wesleyan Internship Website! 
 </p>
 
 <p>
-<b> Position Title: </b> 
-Position Title <br>
+<b> Position Title: </b> <%= @submission.positionTitle %> <br>
+<b> Rating: </b> <%= @submission.rating %> <br>
+<b> Season: </b> <%= @submission.season %> <br>
+<b> Year: </b> <%= @submission.year.to_s.slice(0..3) %> <br>
+<b> Compensation Type: </b> <%= @submission.compensation %> <br>
+<% if @submission.outsideCompensation %>
+<b> Outside Compensation: </b> <%= @submission.outsideCompensation %> <br>
+<% end %>
+
+<b> Hours per Week: </b> <%= @submission.hours %> <br>
+
+<b> Field/Industry: </b> <br>
+
+<b> Country: </b> <%= @submission.country %> <br>
+
+<b> Organization Name: </b> <%= @submission.organizationName %> <br>
+<b> Mailing Address: </b> <%= @submission.mailingAddress %> <br>
+<b> City: </b> <%= @submission.city %> <br>
+<b> Zipcode: </b> <%= @submission.zipcode %> <br>
+
+<!-- optional -->
+<% if @submission.organizationURL %>
+<b> Organization URL: </b> <%= @submission.organizationURL %> <br>
+<% end %>
+
+<% if @submission.organizationContactJobTitle %>
+<b> Contact Job Title: </b> <%= @submission.organizationContactJobTitle %> <br>
+<% end %>
+
+<% if @submission.organizationContactEmail %>
+<b> Contact Email: </b> <%= @submission.organizationContactEmail %> <br>
+<% end %>
+
+
+<!-- Not optional -->
+<b> Cardinal Internship: </b> <%= @submission.cardinalInternship %> <br>
+<b> Wesleyan Alum: </b> <%= @submission.wesAlum %> <br>
+
+<b> Organization Mission/Description: </b> <%= @submission.organizationMission %> <br>
+<b> Organization Experience: </b> <%= @submission.organizationRecommendation %> <br>
+
+
+
 </p>
 <p> To approve, deny, or edit this link request, please follow this link: xxxx, 
 and log in with your administrative credentials. </p>

@@ -44,7 +44,7 @@ def create
   :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
  if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-      AddReviewMailer.addreviewmailer_email(@submission).deliver
+      AddReviewMailer.addreviewmailer_email(@submission).deliver_now
       flash[:success] = "SENT EMAIL"
      redirect_to action:"thankyou"
      return

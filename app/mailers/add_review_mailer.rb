@@ -8,9 +8,9 @@ class AddReviewMailer < ApplicationMailer
 
   default from: 'admin@example.com'
 
-  def addreviewmailer_email(review)
-    @review = review
-
-    mail to: "she@wesleyan.edu", subject: "New Internship Review Request"
+  def addreviewmailer_email(submission)
+    @submission = submission
+  
+    mail(to: "she@wesleyan.edu", subject: "New Internship Review Request")
   end
 end
