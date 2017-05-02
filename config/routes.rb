@@ -28,5 +28,8 @@ Rails.application.routes.draw do
   root "login#index"
   # root "home#index"
 
+  #required for country-state-select gem
+  #mount CountryStateSelect::Rails::Engine, at: "/"
+
 
 end

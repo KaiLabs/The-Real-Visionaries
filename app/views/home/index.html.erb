@@ -86,7 +86,7 @@
   			<div class="form-group">
   				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
   				<%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
-  			</div>
+  			
 
         <!-- Location Search -->
   			<div class="form-group">
@@ -120,6 +120,7 @@
   			<div class="form-group searchclass">
   				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
   			</div>
+        </div>
 
 
       <div class="change-height">
