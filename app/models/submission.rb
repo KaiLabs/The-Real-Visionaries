@@ -19,13 +19,21 @@ class Submission < ApplicationRecord
 	def self.search(search, compensationSearch, locationSearch)
 		# if search
 		positions = Submission.where("positionTitle LIKE ? AND city LIKE ? AND compensation LIKE ?", "%#{search}%", "%#{locationSearch}%", "%#{compensationSearch}")
-		
+
 		return positions
 
 	end
 
 	def current_step
 		@current_step || steps.first
+	end
+
+	def last_step?
+	  current_step != steps[1] && current_step != steps[2]
+	end
+
+	def last_step1?
+		current_step == steps.last
 	end
 
 	def steps

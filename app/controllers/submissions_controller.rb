@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
   	@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
+      @submissions = Submission.search(params[:search])
     end
     #SORT---TEST!!!
     if params[:sorting] == 'positionTitle'
@@ -25,6 +25,9 @@ class SubmissionsController < ApplicationController
      elsif params[:sorting] == 'agriculture'
       @submissions = @submissions.order('agriculture ASC')
     end
+
+
+
   end
 
   def new
@@ -49,6 +52,10 @@ class SubmissionsController < ApplicationController
     if params[:previous_button]
       @submission.previous_step
       @submission.previous_step
+    elsif @submission.last_step?
+      @submission.save
+      redirect_to action:"thankyou"
+      return
     end
     session[:submission_step] = @submission.current_step
     #
@@ -68,15 +75,7 @@ class SubmissionsController < ApplicationController
   def thankyou
   end
 
-  def destroy
-    @submission = Submission.find(params[:id])
-    if @submission.destroy
-        #redirect_to root_path
-        redirect_back(fallback_location: root_path)
-      else
-        flash[:alert] = "Error deleting"
-      end
-    end
+
 
   private
   def set_submission

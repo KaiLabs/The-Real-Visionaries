@@ -118,7 +118,8 @@
 
 
 		<%= render "#{@submission.current_step}_step", :form => form %>
-		<%= form.button :button, "Continue" %>
+		<%= form.button :button, "Submit" if @submission.last_step1?%>
+		<%= form.button :button, "Continue" unless @submission.last_step1?%>
 		<%= form.button :button, "Back", :name => "previous_button" unless @submission.first_step? %>
 
 
