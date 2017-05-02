@@ -347,10 +347,9 @@
 			<% end %>
 
 			<!-- Cardinal Internship Bool -->
-			<a title="Cardinal Internships are select opportunities offered by Wesleyan alumni and parents seeking to hire Wesleyan students to intern for their company or organization"><%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
-			<div class="col-md-8">
-
+			<%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
 				<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+
 			<% end %>
 
 
