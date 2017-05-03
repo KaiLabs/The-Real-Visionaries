@@ -1,5 +1,9 @@
 <div class="container" style="margin-top: 150px;">
 
+	<p>
+	  <strong>Position Title:</strong>
+	  <%= h @submission.positionTitle %>
+	</p>
 
 	<!-- Organization Mission/Description -->
 	<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
