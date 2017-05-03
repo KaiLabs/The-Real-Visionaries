@@ -26,6 +26,8 @@ gem 'data-confirm-modal'
 
 
 gem 'country_select'
+#gem 'country_state_select'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets

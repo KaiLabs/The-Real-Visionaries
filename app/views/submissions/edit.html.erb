@@ -1,0 +1,10 @@
+<h1> Edit Submission </h1>
+
+<%= form_for @submission do |f| %>
+
+
+<%= link_to("New", new_submission_path(@submission.id)) %>
+
+<%= link_to 'Back', submissions_path %>
+
+<% end %>

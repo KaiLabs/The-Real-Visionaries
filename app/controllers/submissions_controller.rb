@@ -27,15 +27,27 @@ class SubmissionsController < ApplicationController
     end
 
 
-
   end
+
+
+def edit
+  @submission = Submission.find(params[:id])
+end
+
+def update
+  if @submission.update(submission_params)
+    #redirect_to @submission
+    redirect_to(:submissions => 'index')
+  else
+    render 'edit'
+  end
+end
 
   def new
     session[:submission_params] ||= {}
     session[:submission_step] = "new1"
-  	@submission = Submission.new
-    # (session[:submission_params])
-    # @submission.current_step = session[:submission_step]
+  	@submission = Submission.new(session[:submission_params])
+    @submission.current_step = session[:submission_step]
   end
 
   def create
@@ -54,6 +66,8 @@ class SubmissionsController < ApplicationController
       @submission.previous_step
     elsif @submission.last_step?
       @submission.save
+      AddReviewMailer.addreviewmailer_email(@submission).deliver_now
+      flash[:success] = "SENT EMAIL"
       redirect_to action:"thankyou"
       return
     end

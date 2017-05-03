@@ -9,5 +9,12 @@ class User < ApplicationRecord
 			user.oauth_expires_at = Time.at(auth.credentials.expires_at)
 			user.save!
 		end
+		
+		#add user admin check
+		if user.name == "Shirley He"
+			user.admin =  true
+		else
+			user.admin = false
+		end
 	end
 end
