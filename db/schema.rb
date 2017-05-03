@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425233005) do
+ActiveRecord::Schema.define(version: 20170502233914) do
 
   create_table "submissions", force: :cascade do |t|
     t.string   "positionTitle"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170425233005) do
     t.boolean  "technology"
     t.boolean  "transportation"
     t.boolean  "other"
+    t.boolean  "submissionReview"
   end
 
   create_table "users", force: :cascade do |t|

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   resource :home
   resources :submissions
 
+  #flag boolean as true
+  get 'submissions/approvereview'
 
 
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -26,10 +28,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
 
   root "login#index"
-  # root "home#index"
-
-  #required for country-state-select gem
-  #mount CountryStateSelect::Rails::Engine, at: "/"
 
 
 end

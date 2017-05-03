@@ -52,8 +52,7 @@
 
 
 </p>
-<p> To approve, deny, or edit this link request, please follow this link: 
-
-http://localhost:3000/submissions/<%= @submission.id %> and log in with your administrative credentials. </p>
+<p> To approve this internship review, click <%= link_to "here", submissions_approvereview_url(@submission)%>. </p>
 </body>
 </html>
+

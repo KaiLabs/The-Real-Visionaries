@@ -3,7 +3,8 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-  	@submissions = Submission.all
+  	@submissions = Submission.where(submissionReview: true)
+    #submissions = Submission.all
     #SEARCH
     if params[:search]
       @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
@@ -75,6 +76,16 @@ end
 
 def thankyou
 end
+
+#approving review through email...
+def approvereview
+  @submission = Submission.find(params[:id])
+  @submission.update_attribute(submissionReview: true)
+ 
+end
+
+
+
 
 def destroy
   @submission = Submission.find(params[:id])
