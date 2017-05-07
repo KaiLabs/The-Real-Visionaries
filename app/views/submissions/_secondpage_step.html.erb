@@ -1,35 +1,31 @@
-<div class="container" style="margin-top: 150px;">
+<div class="container" style="margin-top: 100px;">
 
-	<!-- Organization Mission/Description -->
-	<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-	<div class="col-md-12">
-		<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
-	</div>
-	<% end %>
+	<!--------------------------------------------------------------------------->
+<!-- Organization Experience/Rec -->
+<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wesleyan students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<div class="col-md-12">
+	<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
+</div>
+<% end %>
 
-	<!-- Rating -->
+<!-- Rating -->
+<%= form.input :rating, :label => "How would you rate your experience?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-2">
+	<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "" %>
+</div>
+<% end %>
 
-	<%= form.input :rating, :label => "Rate your experience", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-	<div class="col-md-8">
-		<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "form-control" %>
-	</div>
-	<% end %>
+<!-- Cardinal Internship Bool -->
+<%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
+	<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 
-	<!-- Organization Experience/Rec -->
-	<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wesleyan students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-	<div class="col-md-12">
-		<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
-	</div>
-	<% end %>
+<% end %>
 
-	<!-- Cardinal Internship Bool -->
-	<a title="Cardinal Internships are select opportunities offered by Wesleyan alumni and parents seeking to hire Wesleyan students to intern for their company or organization"><%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
-	<div class="col-md-8">
 
-		<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
-	<% end %>
-
-			<p style="height: 8px"></p>
+<!-- Wes Alum Bool -->
+<%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+<% end %>
 
 
 </div>

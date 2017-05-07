@@ -1,77 +1,89 @@
-<div class="container" style="margin-top: 150px;">
+<div class="container" style="margin-top: 100px;">
 
-			<!-- Organization Name -->
-			<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationName, class: "form-control" %>
-			</div>
-			<% end %>
+	<!-- Organization Name -->
+	<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationName, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
 
-			<!-- Mailing Address -->
-			<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :mailingAddress, class: "form-control" %>
-			</div>
-			<% end %>
+	<!-- Mailing Address -->
+	<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :mailingAddress, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
 
+	<div class="row">
+		<!-- City -->
+		<%= form.input :city, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
+		<div class="col-md-3">
+			<%= form.input_field :city, class: "margintop" , style: ""%>
+		</div>
+		<% end %>
 
-			<!-- Country -->
-			<%= form.input :country, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :country, label: false, as: :country, :selected => @submission.country, class: "form-control" %>
-			</div>
-			<% end %>
+		<!-- MISSING STATE -->
 
-			<!-- City -->
-			<%= form.input :city, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :city, class: "form-control" %>
-			</div>
-			<% end %>
+		<!-- Country -->
+		<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+		<div class="col-md-2">
+			<%= form.input :country, :input_html => {:style=> 'background: white;
+			-webkit-appearance: square-button;
+			-webkit-border-radius: 2px;'}, label: false, as: :country, :selected => @submission.country, class: "" %>
+		</div>
+		<% end %>
 
-      <!-- MISSING STATE -->
-
-			<!-- Zipcode -->
-			<%= form.input :zipcode, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :zipcode, class: "form-control" %>
-			</div>
-			<% end %>
-
-			<!-- Organization URL (optional) -->
-			<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationURL, class: "form-control" %>
-			</div>
-			<% end %>
-
-			<!-- Organization Contact Name (optional) -->
-			<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactName, class: "form-control" %>
-			</div>
-			<% end %>
-
-			<!-- Organization Contact Job Title (optional) -->
-			<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactJobTitle, class: "form-control" %>
-			</div>
-			<% end %>
-
-			<!-- Contact Email...(optional) -->
-			<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactEmail, class: "form-control" %>
-			</div>
-			<% end %>
+		<!-- Zipcode -->
+		<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+		<div class="col-md-1">
+			<%= form.input_field :zipcode, style: "width: 170px;", class: "" %>
+		</div>
+		<% end %>
+	</div>
 
 
 
 
-			<!-- Wes Alum Bool -->
-			<%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-				<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
-			<% end %>
+	<!-- Organization URL (optional) -->
+	<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationURL, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Organization Contact Name (optional) -->
+	<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactName, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Organization Contact Job Title (optional) -->
+	<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactJobTitle, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Contact Email...(optional) -->
+	<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactEmail, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+
+
+
+
+
+
+<!-- Organization Mission/Description -->
+<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<div class="col-md-12">
+<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
+</div>
+<% end %>
+
 
 </div>
