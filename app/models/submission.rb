@@ -37,7 +37,7 @@ class Submission < ApplicationRecord
 	end
 
 	def steps
-		%w[new1 new2 new3]
+		%w[firstpage secondpage thirdpage]
 	end
 
 	def next_step

@@ -45,40 +45,51 @@ end
 
   def new
     session[:submission_params] ||= {}
-    session[:submission_step] = "new1"
+    session[:submission_step] = "firstpage"
   	@submission = Submission.new(session[:submission_params])
     @submission.current_step = session[:submission_step]
   end
 
   def create
     session[:submission_params].deep_merge!(params[:submission]) if params[:submission]
-  	@submission = Submission.new(params.require(:submission).permit(:positionTitle,
-  		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-      :year, :compensation, :country, :organizationURL, :organizationContactName,
-      :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
-      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
-      :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
-      :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
-      :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
+    @submission = Submission.new(session[:submission_params])
+    # (params.require(:submission).permit(:positionTitle,
+    # :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
+    # :year, :compensation, :country, :organizationURL, :organizationContactName,
+    # :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
+    # :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
+    # :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
+    # :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
+    # :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
     @submission.current_step = session[:submission_step]
-    if params[:previous_button]
+
+    if params[:back_button]
       @submission.previous_step
       @submission.previous_step
     elsif @submission.last_step?
       @submission.save
+      # AddReviewMailer.addreviewmailer_email(@submission).deliver_now
+      # flash[:success] = "SENT EMAIL"
+      # redirect_to action:"thankyou"
+      # return
+    end
+
+    session[:submission_step] = @submission.current_step
+    if @submission.new_record?
+      render "new"
+    else
+      session[:submission_step] = session[:submission_params] = nil
       AddReviewMailer.addreviewmailer_email(@submission).deliver_now
       flash[:success] = "SENT EMAIL"
       redirect_to action:"thankyou"
       return
     end
-    session[:submission_step] = @submission.current_step
     #
   	# if @submission.save
   	# 	#redirect_to url_for(:controller => :submissions_controller, :action => :index)
     #  redirect_to action:"thankyou"
     #  return
     # else
-      render "new"
     # end
   end
 
