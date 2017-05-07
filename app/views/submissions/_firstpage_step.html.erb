@@ -1,0 +1,150 @@
+<div class="container" style="margin-top: 150px;">
+
+	<!-- Position Title -->
+	<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :positionTitle, class: "form-control" %>
+	</div>
+	<% end %>
+
+	<!-- Season -->
+	<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input :season, label: false, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "form-control" %>
+	</div>
+	<% end %>
+
+	<!-- Year -->
+	<!-- <%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+	</div>
+	<% end %> -->
+
+	<!-- Hours/Week -->
+	<%= form.input :hours, :label => "Hours Per Week", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :hours, class: "form-control" %>
+	</div>
+	<% end %>
+
+	<!-- Type of Compensation -->
+	<%= form.input :compensation, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input :compensation, label: false, collection: ["Paid", "Unpaid", "Stipend"], :selected => @submission.compensation, class: "form-control" %>
+	</div>
+	<% end %>
+
+
+	<!-- Outside Funding Explanation -->
+	<%= form.input :outsideCompensation, :label => "If stipend/ outside funding, please describe:", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :outsideCompensation, class: "form-control" %>
+	</div>
+	<% end %>
+
+	<!----------- Field/Industry Checkboxes ------------------------------>
+	<p>* Field / Industry: </p>
+
+	<div class="row">
+		<!-- Agriculture -->
+		<%= form.input :agriculture, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :agriculture, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Architecture -->
+		<%= form.input :architecture, wrapper_html: { class: 'col-md-4 ' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :architecture, as: :boolean, checked_value:true, unchecked_value: false, :label => false, class: "form-control" %>
+		<% end %>
+
+		<!-- Arts/Entertainment -->
+		<%= form.input :artsEntertainment,:label => "Arts/Entertainment", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Education -->
+		<%= form.input :education, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :education, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Energy -->
+		<%= form.input :energy, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :energy, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Financial Services -->
+		<%= form.input :financialServices, :label => "Financial Services", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :financialServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Food/Beverage -->
+		<%= form.input :foodBeverageCPG, :label => "Food/Beverage", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :foodBeverageCPG, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Gov -->
+		<%= form.input :government, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :government, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Healthcare -->
+		<%= form.input :healthcare, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :healthcare, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Hospitality -->
+		<%= form.input :hospitality, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :hospitality, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Manufacturing -->
+		<%= form.input :manufacturing, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :manufacturing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Media Marketing -->
+		<%= form.input :mediaMarketing, :label => "Media Marketing", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :mediaMarketing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Nonprofit -->
+		<%= form.input :nonProfit, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :nonProfit, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Pharma -->
+		<%= form.input :pharma, :label => "Pharmaceuticals", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :pharma, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Professional Services -->
+		<%= form.input :professionalServices, :label => "Professional Services", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :professionalServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Retail Stores -->
+		<%= form.input :retailStores, :label => "Retail Stores", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Technology -->
+		<%= form.input :technology, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :technology, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Transportation -->
+		<%= form.input :transportation, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :transportation, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+
+		<!-- Other -->
+		<%= form.input :other, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
+			<%= form.input :other, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+		<% end %>
+	</div>
+<!--------------------------------------------------------------------------->
+
+
+
+
+
+</div>
