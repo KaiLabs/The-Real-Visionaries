@@ -19,13 +19,6 @@ Rails.application.routes.draw do
     member { get :approvereview }
   end
 
-  #flag boolean as true
-<<<<<<< HEAD
-  get 'submissions/approvereview'
-  put 'submissions/approvereview'
-=======
->>>>>>> 165cfb6d140ad8b694fa1c5774488afc8f4dd1ed
-
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

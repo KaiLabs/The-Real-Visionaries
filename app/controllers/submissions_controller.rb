@@ -3,11 +3,11 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-  	@submissions = Submission.where(submissionReview: false)
+  	@submissions = Submission.where(submissionReview: true)
     #@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.where(submissionReview: false).search(params[:search],params[:compensationSearch],params[:locationSearch])
+      @submissions = Submission.where(submissionReview: true).search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
 
     #SORT
@@ -80,13 +80,11 @@ end
 def approvereview
   @submission = Submission.find(params[:id])
   if @submission.update_attribute(:submissionReview, true)
-    redirect_to 'index'
+    redirect_to url_for(:controller => :submissions_controller, :action => :index)
   else
     render 'edit'
   end
 end
-
-
 
 
 def destroy
@@ -98,7 +96,6 @@ def destroy
       flash[:alert] = "Error deleting"
     end
   end
-
 
   private
   def set_submission
