@@ -69,6 +69,11 @@
   .height {
     height: 120%;
   }
+  .searchbutton {
+    width: 38%;
+    height: 38%;
+
+  }
 
 </style>
 
@@ -80,13 +85,13 @@
     </br>
     </div>
 
-    <form class="form-inline">
+    <div class="form-inline">
       <!-- Keyword Search -->
 
-  			<div class="form-group">
+  			<div class="col-md-offset-1 form-group">
   				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
   				<%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
-  			</div>
+
 
         <!-- Location Search -->
   			<div class="form-group">
@@ -118,8 +123,9 @@
 
         <!-- Search button -->
   			<div class="form-group searchclass">
-  				<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+  				<%= image_submit_tag ("/assets/search.png"), class: 'searchbutton' %>
   			</div>
+        </div>
 
 
       <div class="change-height">

@@ -33,53 +33,25 @@ def new
  @submission = Submission.new
 end
 
-<<<<<<< HEAD
-  def create
-  	@submission = Submission.new(params.require(:submission).permit(:positionTitle,
-  		:hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-      :year, :compensation, :country, :organizationURL, :organizationContactName,
-      :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
-      :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
-      :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
-      :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
-      :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
-    @submission.current_step = session[:submission_step]
-    if params[:back_button]
-      @submission.previous_step
-    else
-      @submission.next_step
-    end
-    session[:submission_step] = @submission.current_step
-    #
-  	# if @submission.save
-  	# 	#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-    #  redirect_to action:"thankyou"
-    #  return
-    # else
-      render "new"
-    # end
-=======
-def create
- @submission = Submission.new(params.require(:submission).permit(:positionTitle,
-  :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-  :year, :compensation, :country, :organizationURL, :organizationContactName,
-  :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
-  :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
-  :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
-  :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
-  :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
- if @submission.save
-  		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-     redirect_to action:"thankyou"
-     return
-   else
-    render "new"
->>>>>>> 5bef2ab190ed744b6a8a4399d2521c3b95cfe99a
-  end
 
-  def show
-    @submission = Submission.find(params[:id])
+
+def edit
+  @submission = Submission.find(params[:id])
+end
+
+def update
+  if @submission.update(submission_params)
+    #redirect_to @submission
+    redirect_to(:submissions => 'index')
+  else
+    render 'edit'
   end
+end
+
+
+def show
+  @submission = Submission.find(params[:id])
+end
 
   def thankyou
   end
