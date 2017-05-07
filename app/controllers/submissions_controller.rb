@@ -3,11 +3,11 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-  	@submissions = Submission.where(submissionReview: true)
-    #submissions = Submission.all
+  	@submissions = Submission.where(submissionReview: false)
+    #@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
+      @submissions = Submission.where(submissionReview: false).search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
 
 
