@@ -125,7 +125,10 @@
 	#sign {
 		text-align: right;
 	}
-
+	.searchbutton {
+    width: 45%;
+    height: 45%;
+  }
 
 </style>
 
@@ -136,7 +139,7 @@
 				<div class="child row">
 					<div class="headcontainer">
 						<%= content_tag :div, class: "col-md-11" do -%>
-						<%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %> 
+						<%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
 						<% end %>
 						<%= content_tag :div, class: "col-md-1" do -%>
 						<%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
@@ -148,6 +151,8 @@
 				</div>
 			</section>
 		</div>
+
+
 
 
 		<div class="submission">
@@ -190,7 +195,7 @@
 
 						<!-- Search button -->
 						<div class="col-md-1 searchclass">
-							<%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+							<%= image_submit_tag ("/assets/search.png"), class: 'searchbutton' %>
 						</div>
 
 
@@ -238,6 +243,8 @@
 													<td><%= link_to submission.positionTitle, submission %></td>
 													<td><%= submission.rating %></td>
 													<!-- <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
+													<!-- <td><%= link_to 'Edit', edit_submission_path(submission) %></td> -->
 
 
 													<!-- Do all industry boolean searching manually......... -->

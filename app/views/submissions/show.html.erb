@@ -45,6 +45,7 @@
 *{
   font-family: 'Pathway Gothic One';
   font-size: 21px;
+  letter-spacing: 0.4px;
 }
 .row{
   margin-bottom: 10px;
@@ -64,6 +65,15 @@
   vertical-align: middle;
 }
 .search-title{
+  background-color: #8B0000;
+  color: white;
+  width: 100%;
+  height: 50%;
+  text-align: left;
+  border: 2px solid black;
+  border-bottom: none;
+}
+.top-title{
   background-color: #8B0000;
   color: white;
   width: 100%;
@@ -111,7 +121,8 @@
   float: left;
 }
 .display {
-  border: solid 0.5px;
+  border: solid 2px;
+  padding-left: 5px;
 }
 .pictureholder {
   background: black;
@@ -120,6 +131,8 @@
   margin-top: 10px;
 }
 .general {
+  line-height: 0.7;
+  font-size: 40px;
   font-weight: bolder;
 }
 
@@ -141,7 +154,7 @@
         </div>
 
 
-        <div class="search-title">
+        <div class="top-title">
           <h3 style="font-size: 35px; margin-left: 5px;">INTERNSHIP DETAILS</h3>
         </div>
       </div>
@@ -156,18 +169,16 @@
         <div class="col-md-6">
           <!-- general information -->
           <div class="general">
-            <div class="pictureholder col-md-6">
-
-            </div>
-            <div class="col-md-6 general">
-              <h2><%= @submission.positionTitle %></h2>
-              <h3><%= @submission.organizationName %> <%= @submission.rating %></h3>
-              <h4><%= @submission.city %>, <%= @submission.country %></h4>
-              <h4><%= @submission.compensation %></h4>
-              <h4>Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}" %></h4>
+            <div class="general">
+              <p class= "general">
+                <p class="general"><%= @submission.positionTitle %></p>
+                <p class="general"><%= @submission.organizationName %> <%= @submission.rating %></p>
+                <p class="general"><%= @submission.city %>, <%= @submission.country %></p>
+                <p class="general"><%= @submission.compensation %></p>
+                <p class="general">Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}", style: "font-size: 35px; color: black; text-decoration: underline;" %></p>
+              </p>
             </br>
             </div>
-
           </div>
 
           <!-- Experience review -->
@@ -175,13 +186,14 @@
             <div class="search-title" id="parent2">
               <div id="child2"><h3 class="title-text">Experience Review</h3></div>
             </div>
-            <div class="display">
+            <div class="display", style="width: 524px;">
               <!-- needs a default msg when empty -->
               <%= @submission.organizationRecommendation %>
-
             </div>
           </div>
         </div>
+
+
         <div class="col-md-6">
           <div class="network">
             <div class="search-title" id="parent2">
@@ -204,7 +216,7 @@
               <% end %>
 
               </p>
-           <!--    <p>Wesleyan student contact email: <%= @submission.organizationContactEmail %></p> --> 
+           <!--    <p>Wesleyan student contact email: <%= @submission.organizationContactEmail %></p> -->
 
             </div>
           </div>

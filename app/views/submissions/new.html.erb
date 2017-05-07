@@ -47,6 +47,7 @@
 *{
   font-family: 'Pathway Gothic One';
   font-size: 24px;
+	
 }
 
 
@@ -94,6 +95,16 @@
 	h2 {
 		margin-left: 10px;
 	}
+
+	.margintop {
+		margin-top: 15px;
+	}
+	.select {
+	    background: white;
+			-webkit-appearance: square-button;
+			-webkit-border-radius: 2px;
+	}
+
 </style>
 
 <body>
@@ -119,57 +130,63 @@
 		<div class="container" style="margin-top: 150px;">
 
 			<!-- Position Title -->
-			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :positionTitle, class: "form-control" %>
+			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-2 col-form-label'} do %>
+			<div class="col-md-10">
+				<%= form.input_field :positionTitle, class: "", style: "width: 950px;" %>
 			</div>
 			<% end %>
 
-			<!-- Rating -->
-			<%= form.input :rating, :label => "Rate your experience", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "form-control" %>
-			</div>
-			<% end %>
 
-			<!-- Season -->
-			<%= form.input :season, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :season, label: false, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "form-control" %>
-			</div>
-			<% end %>
 
-			<!-- Year -->
-			<%= form.input :year, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :year, :input_html => {:style=> 'width: 800%'}, label: false, :as => :date,
-				:start_year => 2010, :end_year => 2017, order: [:year], :selected => @submission.year, class: "form-control" %>
+
+			<div class="row">
+				<!-- Season -->
+				<%= form.input :season, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
+				<div class="col-md-1 margintop">
+					<%= form.input :season, label: false, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "margintop" %>
+				</div>
+				<% end %>
+
+				<!-- Year -->
+				<%= form.input :year, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
+				<div class="col-md-2" style="margin-top: -3px;">
+					<%= form.input :year, :input_html => {:style=> 'width: 80px; background: white;
+					-webkit-appearance: square-button;
+					-webkit-border-radius: 2px;'}, label: false, :as => :date,
+					:start_year => 2010, :end_year => 2017, order: [:year], :selected => @submission.year, class: "" %>
+				</div>
+				<% end %>
+
+				<!-- Hours/Week -->
+				<%= form.input :hours, :label => "Hours Per Week", wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+				<div class="col-md-2">
+					<%= form.input_field :hours, class: "", style: "width: 80px;" %>
+				</div>
+				<% end %>
+
+				<!-- Type of Compensation -->
+				<%= form.input :compensation, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+				<div class="col-md-1">
+					<%= form.input :compensation, label: false, collection: ["Paid", "Unpaid", "Stipend"], :selected => @submission.compensation, class: "" %>
+				</div>
+				<% end %>
+
 			</div>
-			<% end %>
+
 
 			<p style="height: 8px"></p>
 
 
-			<!-- Type of Compensation -->
-			<%= form.input :compensation, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :compensation, label: false, collection: ["Paid", "Unpaid", "Stipend"], :selected => @submission.compensation, class: "form-control" %>
-			</div>
-			<% end %>
+
 
 			<!-- Outside Funding Explanation -->
 			<%= form.input :outsideCompensation, :label => "If stipend/ outside funding, please describe:", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :outsideCompensation, class: "form-control" %>
+				<%= form.input_field :outsideCompensation, class: "", style: "width: 755px;" %>
 			</div>
 			<% end %>
 
-			<!-- Hours/Week -->
-			<%= form.input :hours, :label => "Hours Per Week", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :hours, class: "form-control" %>
-			</div>
-			<% end %>
+
 
 			<!----------- Field/Industry Checkboxes ------------------------------>
 			<p>* Field / Industry: </p>
@@ -278,86 +295,112 @@
 
 <!--------------------------------------------------------------------------->
 
+<!-- Organization Experience/Rec -->
+<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wesleyan students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+<div class="col-md-12">
+	<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
+</div>
+<% end %>
+
+<!-- Rating -->
+<%= form.input :rating, :label => "How would you rate your experience?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-2">
+	<%= form.input :rating, label: false, collection: ["★", "★★", "★★★", "★★★★", "★★★★★"], :selected => @submission.rating, class: "" %>
+</div>
+<% end %>
+
+<!-- Cardinal Internship Bool -->
+<%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
+	<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+
+<% end %>
 
 
-			<!-- Country -->
-			<%= form.input :country, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input :country, label: false, as: :country, :selected => @submission.country, class: "form-control" %>
-			</div>
-			<% end %>
+<!-- Wes Alum Bool -->
+<%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+<% end %>
+
+
+<!-------------------------------------------------------------------------->
+
+
+
 
 
 			<!-- Organization Name -->
 			<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :organizationName, class: "form-control" %>
+				<%= form.input_field :organizationName, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
 			<!-- Mailing Address -->
 			<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :mailingAddress, class: "form-control" %>
+				<%= form.input_field :mailingAddress, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
-			<!-- City -->
-			<%= form.input :city, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :city, class: "form-control" %>
-			</div>
-			<% end %>
+			<div class="row">
+				<!-- City -->
+				<%= form.input :city, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
+				<div class="col-md-3">
+					<%= form.input_field :city, class: "margintop" , style: ""%>
+				</div>
+				<% end %>
 
-			<!-- MISSING STATE -->
+				<!-- MISSING STATE -->
 
-			<!-- Zipcode -->
-			<%= form.input :zipcode, wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :zipcode, class: "form-control" %>
+				<!-- Country -->
+				<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+				<div class="col-md-2">
+					<%= form.input :country, :input_html => {:style=> 'background: white;
+					-webkit-appearance: square-button;
+					-webkit-border-radius: 2px;'}, label: false, as: :country, :selected => @submission.country, class: "" %>
+				</div>
+				<% end %>
+
+				<!-- Zipcode -->
+				<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+				<div class="col-md-1">
+					<%= form.input_field :zipcode, style: "width: 170px;", class: "" %>
+				</div>
+				<% end %>
 			</div>
-			<% end %>
+
+
+
 
 			<!-- Organization URL (optional) -->
 			<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :organizationURL, class: "form-control" %>
+				<%= form.input_field :organizationURL, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
 			<!-- Organization Contact Name (optional) -->
 			<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :organizationContactName, class: "form-control" %>
+				<%= form.input_field :organizationContactName, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
 			<!-- Organization Contact Job Title (optional) -->
 			<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :organizationContactJobTitle, class: "form-control" %>
+				<%= form.input_field :organizationContactJobTitle, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
 			<!-- Contact Email...(optional) -->
 			<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
 			<div class="col-md-8">
-				<%= form.input_field :organizationContactEmail, class: "form-control" %>
+				<%= form.input_field :organizationContactEmail, class: "" , style: "width: 755px;"%>
 			</div>
 			<% end %>
 
-			<!-- Cardinal Internship Bool -->
-			<a title="Cardinal Internships are select opportunities offered by Wesleyan alumni and parents seeking to hire Wesleyan students to intern for their company or organization"><%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
-			<div class="col-md-8">
 
-				<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
-			<% end %>
-
-
-			<!-- Wes Alum Bool -->
-			<%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-				<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
-			<% end %>
 
 
 
@@ -371,17 +414,15 @@
 <% end %>
 
 
-<!-- Organization Experience/Rec -->
-<%= form.input :organizationRecommendation, :label => "Describe your responsibilities and overall experiences. Would you recommend this experience to other Wesleyan students?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-<div class="col-md-12">
-	<%= form.text_area :organizationRecommendation, class: "form-control", rows: 5 %>
-</div>
-<% end %>
+
 
 
 <!-- Submit -->
-<%= form.button :submit, "Submit", class: "btn btn-primary", data: {title: 'Thanks for your submission!'} %>
-<% end %>
+<div class="col-md-offset-11">
+	<%= form.button :submit, "Submit", class: "btn btn-primary", style: "font-size: 25px;", data: {title: 'Thanks for your submission!'} %>
+	<% end %>
+</div>
+
 
 </div>
 
