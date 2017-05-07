@@ -10,10 +10,9 @@ class SubmissionsController < ApplicationController
       @submissions = Submission.where(submissionReview: false).search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
 
-
     #SORT
     if params[:sorting] == 'positionTitle'
-      @submissions = @submissions.order('positionTitle ASC')
+       @submissions = @submissions.order('positionTitle ASC')
     elsif params[:sorting] == 'rating'
       @submissions = @submissions.order('rating ASC')
     elsif params[:sorting] == 'organizationName'
@@ -48,20 +47,20 @@ def create
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
       AddReviewMailer.addreviewmailer_email(@submission).deliver_now
       flash[:success] = "SENT EMAIL"
-     redirect_to action:"thankyou"
-     return
-   else
-    render "new"
+      redirect_to action:"thankyou"
+      return
+    else
+      render "new"
+    end
   end
-end
 
 
-def edit
-  @submission = Submission.find(params[:id])
-end
+  def edit
+    @submission = Submission.find(params[:id])
+  end
 
-def update
-  if @submission.update(submission_params)
+  def update
+    if @submission.update(submission_params)
     #redirect_to @submission
     redirect_to(:submissions => 'index')
   else
@@ -80,8 +79,11 @@ end
 #approving review through email...
 def approvereview
   @submission = Submission.find(params[:id])
-  @submission.update_attribute(submissionReview: true)
- 
+  if @submission.update_attribute(:submissionReview, true)
+    redirect_to 'index'
+  else
+    render 'edit'
+  end
 end
 
 

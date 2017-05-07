@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   #flag boolean as true
   get 'submissions/approvereview'
+  put 'submissions/approvereview'
 
 
   get 'auth/:provider/callback', to: 'sessions#create'
