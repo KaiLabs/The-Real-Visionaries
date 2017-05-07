@@ -15,10 +15,11 @@ Rails.application.routes.draw do
   get 'home/submissions' => 'submissions#index'
 
   resource :home
-  resources :submissions
+  resources :submissions do
+    member { get :approvereview }
+  end
 
   #flag boolean as true
-  get 'submissions/approvereview'
 
 
   get 'auth/:provider/callback', to: 'sessions#create'
