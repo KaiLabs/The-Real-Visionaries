@@ -22,7 +22,7 @@ class Submission < ApplicationRecord
 
 	def self.search(search, compensationSearch, locationSearch)
 		# if search
-		positions = Submission.where("positionTitle LIKE ? AND city LIKE ? AND compensation LIKE ?", "%#{search}%", "%#{locationSearch}%", "%#{compensationSearch}")
+		positions = Submission.where('"positionTitle" LIKE ? AND city LIKE ? AND compensation LIKE ?', "%#{search}%", "%#{locationSearch}%", "%#{compensationSearch}") 
 		
 		return positions
 

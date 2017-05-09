@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   #reroute after searching
   get 'home/submissions' => 'submissions#index'
 
+
   resource :home
   resources :submissions do
     member { get :approvereview }

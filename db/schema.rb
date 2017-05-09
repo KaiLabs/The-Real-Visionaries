@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170507153349) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "submissions", force: :cascade do |t|
     t.string   "positionTitle"
     t.integer  "hours"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20170507153349) do
     t.string   "season"
     t.date     "year"
     t.string   "compensation"
-    t.         "country"
+    t.string   "country"
     t.string   "organizationURL"
     t.string   "organizationContactName"
     t.string   "organizationContactJobTitle"
