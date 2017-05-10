@@ -221,19 +221,19 @@
 											<thead>
 												<tr>
 													<!-- Sort by Position Title -->
-													<th style="text-align:center"><%= link_to "Position Title ⇂", submissions_path(:sorting => 'positionTitle'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Position Title ⇂", submissions_path(:sorting => 'positionTitle', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Rating -->
-													<th style="text-align:center"><%= link_to "Rating ⇂", submissions_path(:sorting => 'rating'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Rating ⇂", submissions_path(:sorting => 'rating', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Industry -->
-													<th style="text-align:center"><%= link_to "Industry ⇂", submissions_path(:sorting => 'agriculture'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Industry ⇂", submissions_path(:sorting => 'agriculture', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Organization -->
-													<th style="text-align:center"><%= link_to "Organization ⇂", submissions_path(:sorting => 'organizationName'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Organization ⇂", submissions_path(:sorting => 'organizationName', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Location -->
-													<th style="text-align:center"><%= link_to "Location ⇂", submissions_path(:sorting => 'city'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Location ⇂", submissions_path(:sorting => 'city', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Compensation -->
-													<th style="text-align:center"><%= link_to "Compensation ⇂", submissions_path(:sorting => 'compensation'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Compensation ⇂", submissions_path(:sorting => 'compensation', :search => params[:search]), class: "tabletitle"%></th>
 													<!-- Sort by Date -->
-													<th style="text-align:center"><%= link_to "Date ⇂", submissions_path(:sorting => 'year'), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Date ⇂", submissions_path(:sorting => 'year', :search => params[:search]), class: "tabletitle"%></th>
 												</tr>
 											</thead>
 											<tbody>

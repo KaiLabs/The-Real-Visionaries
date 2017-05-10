@@ -7,6 +7,7 @@ class SubmissionsController < ApplicationController
     #SEARCH
     if params[:search]
       @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
+
     end
 
 
