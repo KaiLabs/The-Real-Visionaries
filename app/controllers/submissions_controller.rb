@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
   	@submissions = Submission.all
     #SEARCH
     if params[:search]
-      @submissions = Submission.search(params[:search])
+      @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
     end
     #SORT---TEST!!!
     if params[:sorting] == 'positionTitle'
@@ -63,19 +63,20 @@ end
     # :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
     # :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
     @submission.current_step = session[:submission_step]
-
     if params[:back_button]
       @submission.previous_step
       @submission.previous_step
     elsif @submission.last_step?
       @submission.save
-      # AddReviewMailer.addreviewmailer_email(@submission).deliver_now
-      # flash[:success] = "SENT EMAIL"
-      # redirect_to action:"thankyou"
-      # return
+      session[:submission_step] = session[:submission_params] = nil
+      AddReviewMailer.addreviewmailer_email(@submission).deliver_now
+      flash[:success] = "SENT EMAIL"
+      redirect_to action:"thankyou"
+      return
     end
-
     session[:submission_step] = @submission.current_step
+
+
     if @submission.new_record?
       render "new"
     else
@@ -85,13 +86,6 @@ end
       redirect_to action:"thankyou"
       return
     end
-    #
-  	# if @submission.save
-  	# 	#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-    #  redirect_to action:"thankyou"
-    #  return
-    # else
-    # end
   end
 
   def show
