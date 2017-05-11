@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<p> A new review has been requested to be added to the Wesleyan Internship Website! 
+<p> A new review has been requested to be added to the Wesleyan Internship Website!
 </p>
 
 <p>
@@ -21,6 +21,7 @@
 
 <b> Field/Industry: </b> <br>
 
+<b> State: </b> <%= @submission.state %> <br>
 <b> Country: </b> <%= @submission.country %> <br>
 
 <b> Organization Name: </b> <%= @submission.organizationName %> <br>
@@ -52,7 +53,7 @@
 
 
 </p>
-<p> To approve, deny, or edit this link request, please follow this link: 
+<p> To approve, deny, or edit this link request, please follow this link:
 
 http://localhost:3000/submissions/<%= @submission.id %> and log in with your administrative credentials. </p>
 </body>

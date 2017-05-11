@@ -1,5 +1,5 @@
 class Submission < ApplicationRecord
-	attr_accessor :rating, :season, :year, :compensation, :country, :positionTitle, :hours, :organizationName, :mailingAddress, :city, :zipcode, :organizationMission, :organizationRecommendation
+	attr_accessor :rating, :season, :year, :state, :compensation, :country, :positionTitle, :hours, :organizationName, :mailingAddress, :city, :zipcode, :organizationMission, :organizationRecommendation
   attr_writer :current_step
 
 	validates :rating, presence: true

@@ -173,7 +173,7 @@
               <p class= "general">
                 <p class="general"><%= @submission.positionTitle %></p>
                 <p class="general"><%= @submission.organizationName %> <%= @submission.rating %></p>
-                <p class="general"><%= @submission.city %>, <%= @submission.country %></p>
+                <p class="general"><%= @submission.city %>, <%= @submission.state %>, <%= @submission.country %></p>
                 <p class="general"><%= @submission.compensation %></p>
                 <p class="general">Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}", style: "font-size: 35px; color: black; text-decoration: underline;" %></p>
               </p>
