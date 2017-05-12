@@ -11,12 +11,12 @@ class SubmissionsController < ApplicationController
     end
 
     #SORT
-    if params[:sorting] == 'positionTitle'
-       @submissions = @submissions.order('positionTitle ASC')
+    if params[:sorting] == '"positionTitle"'
+       @submissions = @submissions.order('"positionTitle" ASC')
     elsif params[:sorting] == 'rating'
       @submissions = @submissions.order('rating ASC')
-    elsif params[:sorting] == 'organizationName'
-      @submissions = @submissions.order('organizationName ASC')
+    elsif params[:sorting] == '"organizationName"'
+      @submissions = @submissions.order('"organizationName" ASC')
     elsif params[:sorting] == 'city'
       @submissions = @submissions.order('city ASC')
     elsif params[:sorting] == 'compensation'
