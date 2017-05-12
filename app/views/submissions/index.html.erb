@@ -318,27 +318,20 @@
 														<!-- show unapproved reviews -->
 														<% if submission.submissionReview == false %> 
 													<td><%= link_to "Approve", approvereview_submission_url(submission)%><td>
+													<td><%= link_to 'Deny', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
 													<% end %>
-													
-
-													<td><%= link_to 'Delete', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
-
-
 
 												</tr>
 												<% end %>
 
+												<!-- if NOT admin... -->
 												<% else %>
 														<% @submissions.each do |submission| %>
 												<tr>
 													<td><%= link_to submission.positionTitle, submission %></td>
 													<td><%= submission.rating %></td>
-													<!-- <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 
-													<!-- <td><%= link_to 'Edit', edit_submission_path(submission) %></td> -->
-
-
-													<!-- Do all industry boolean searching manually......... -->
+													<!-- Do all industry boolean searching -->
 													<td><% if  submission.agriculture  %>
 														Agriculture
 														<% end %>
