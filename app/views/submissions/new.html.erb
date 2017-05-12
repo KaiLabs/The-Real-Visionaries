@@ -47,7 +47,7 @@
 *{
   font-family: 'Pathway Gothic One';
   font-size: 24px;
-	
+
 }
 
 
@@ -351,6 +351,11 @@
 				<% end %>
 
 				<!-- MISSING STATE -->
+				<%= form.input :state, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+				<div class="col-md-1">
+					<%= form.input :state, label: false, collection: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "N/A"], :selected => @submission.state, class: "" %>
+				</div>
+				<% end %>
 
 				<!-- Country -->
 				<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>

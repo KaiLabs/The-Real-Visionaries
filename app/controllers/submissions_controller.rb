@@ -72,7 +72,7 @@ end
 def create
  @submission = Submission.new(params.require(:submission).permit(:positionTitle,
   :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-  :year, :compensation, :country, :organizationURL, :organizationContactName,
+  :year, :compensation, :state, :country, :organizationURL, :organizationContactName,
   :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
   :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
   :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
