@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170510001509) do
+ActiveRecord::Schema.define(version: 20170512162512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-=======
-ActiveRecord::Schema.define(version: 20170512162512) do
->>>>>>> c4c5bab83550b18a22f77fcb87544a17cc6901b9
 
   create_table "submissions", force: :cascade do |t|
     t.string   "positionTitle"
@@ -56,16 +52,13 @@ ActiveRecord::Schema.define(version: 20170512162512) do
     t.boolean  "technology"
     t.boolean  "transportation"
     t.boolean  "other"
-<<<<<<< HEAD
     t.boolean  "submissionReview",            default: false, null: false
     t.string   "rating"
     t.string   "season"
     t.date     "year"
     t.string   "compensation"
     t.string   "country"
-=======
     t.string   "state"
->>>>>>> c4c5bab83550b18a22f77fcb87544a17cc6901b9
   end
 
   create_table "users", force: :cascade do |t|
