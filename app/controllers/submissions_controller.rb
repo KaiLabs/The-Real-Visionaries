@@ -82,7 +82,8 @@ def create
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
       AddReviewMailer.addreviewmailer_email(@submission).deliver_now
       flash[:success] = "SENT EMAIL"
-      redirect_to action:"thankyou"
+      #redirect_to action:"thankyou"
+      render 'thankyou'
       return
     else
       render "new"
