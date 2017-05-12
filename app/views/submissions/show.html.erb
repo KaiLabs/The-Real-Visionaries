@@ -172,9 +172,12 @@
             <div class="general">
               <p class= "general">
                 <p class="general"><%= @submission.positionTitle %></p>
-                <p class="general"><%= @submission.organizationName %> <%= @submission.rating %></p>
-                <p class="general"><% if @submission.state.N/A? %> <%= @submission.city %>, <%= @submission.country %>
-                  <% else %> <%= @submission.city %>, <%= @submission.state %>, <%= @submission.country %></p>
+                <p class="general"><%= @submission.organizationName %> <%= @submission.rating %>
+                <p class="general"><% if @submission.state != "N/A" %>
+                  <%= @submission.city %>, <%= @submission.state %>, <%= @submission.country %>
+                  <% else %>
+                  <%= @submission.city %>, <%= @submission.country %>
+                  <% end %></p>
                 <p class="general"><%= @submission.compensation %></p>
                 <p class="general">Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}", style: "font-size: 35px; color: black; text-decoration: underline;" %></p>
               </p>
