@@ -1,5 +1,4 @@
 class Submission < ApplicationRecord
-	attr_accessor :rating, :season, :state, :compensation, :country, :positionTitle, :hours, :organizationName, :mailingAddress, :city, :zipcode, :organizationMission, :organizationRecommendation
 
 	validates :rating, presence: true
 	validates :season, presence: true
