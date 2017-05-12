@@ -11,6 +11,6 @@ class AddReviewMailer < ApplicationMailer
   def addreviewmailer_email(submission)
     @submission = submission
 
-    mail(to: "fcui@wesleyan.edu", subject: "New Internship Review Request")
+    mail(to: "she@wesleyan.edu", subject: "New Internship Review Request")
   end
 end
