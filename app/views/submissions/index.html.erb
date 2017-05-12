@@ -221,22 +221,21 @@
 											<thead>
 												<tr>
 													<!-- Sort by Position Title -->
-													<th style="text-align:center"><%= link_to "Position Title ⇂", submissions_path(:sorting => 'positionTitle', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Position Title ⇂", submissions_path(:sorting => 'positionTitle'), class: "tabletitle"%></th>
 													<!-- Sort by Rating -->
-													<th style="text-align:center"><%= link_to "Rating ⇂", submissions_path(:sorting => 'rating', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Rating ⇂", submissions_path(:sorting => 'rating'), class: "tabletitle"%></th>
 													<!-- Sort by Industry -->
-													<th style="text-align:center"><%= link_to "Industry ⇂", submissions_path(:sorting => 'agriculture', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Industry ⇂", submissions_path(:sorting => 'agriculture'), class: "tabletitle"%></th>
 													<!-- Sort by Organization -->
-													<th style="text-align:center"><%= link_to "Organization ⇂", submissions_path(:sorting => 'organizationName', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Organization ⇂", submissions_path(:sorting => 'organizationName'), class: "tabletitle"%></th>
 													<!-- Sort by Location -->
-													<th style="text-align:center"><%= link_to "Location ⇂", submissions_path(:sorting => 'city', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Location ⇂", submissions_path(:sorting => 'city'), class: "tabletitle"%></th>
 													<!-- Sort by Compensation -->
-													<th style="text-align:center"><%= link_to "Compensation ⇂", submissions_path(:sorting => 'compensation', :search => params[:search]), class: "tabletitle"%></th>
+													<th style="text-align:center"><%= link_to "Compensation ⇂", submissions_path(:sorting => 'compensation'), class: "tabletitle"%></th>
 													<!-- Sort by Date -->
 													<th style="text-align:center"><%= link_to "Date ⇂", submissions_path(:sorting => 'year'), class: "tabletitle"%></th>
-													<th style="text-align:center"><%= "", class: "tabletitle"%></th>
-													<th style="text-align:center"><%= "", class: "tabletitle"%></th>
-
+													<th style="text-align:center", class: "tabletitle"> </th>
+													<th style="text-align:center", class: "tabletitle"> </th>
 												</tr>
 											</thead>
 											<tbody>
@@ -315,34 +314,37 @@
 
 													<!-- All other fields -->
 													<td><%= submission.organizationName %></td>
-													<td><%= submission.city %>, <%= submission.state %></td>
+													<td><%= submission.city %></td>
 													<td><%= submission.compensation %></td>
 													<td><%= submission.season %>    <%=submission.year.to_s.slice(0..3) %>  </td>
 														<!-- show unapproved reviews -->
 														<% if submission.submissionReview == false %>
-													<td><%= link_to "Approve", approvereview_submission_url(submission)%><td>
-													<td><%= link_to 'Deny', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+															<td><%= link_to "Approve", approvereview_submission_url(submission)%><td>
+															<td><%= link_to 'Deny', submission, method: :delete, data: { confirm: 'Are you sure?' } %><td>
+														<% else %>
+															<td><td>
+															<td></td>
 													<% end %>
-<<<<<<< HEAD
-=======
 
 
-													<td><%= link_to 'Delete', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+													
 
 
->>>>>>> 85135cc3777d39505ece71556c73fe561d3d4f84
 
 												</tr>
 												<% end %>
 
-												<!-- if NOT admin... -->
 												<% else %>
 														<% @submissions.each do |submission| %>
 												<tr>
 													<td><%= link_to submission.positionTitle, submission %></td>
 													<td><%= submission.rating %></td>
+													<!-- <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
 
-													<!-- Do all industry boolean searching -->
+													<!-- <td><%= link_to 'Edit', edit_submission_path(submission) %></td> -->
+
+
+													<!-- Do all industry boolean searching manually......... -->
 													<td><% if  submission.agriculture  %>
 														Agriculture
 														<% end %>
