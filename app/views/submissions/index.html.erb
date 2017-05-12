@@ -234,8 +234,8 @@
 													<th style="text-align:center"><%= link_to "Compensation ⇂", submissions_path(:sorting => 'compensation'), class: "tabletitle"%></th>
 													<!-- Sort by Date -->
 													<th style="text-align:center"><%= link_to "Date ⇂", submissions_path(:sorting => 'year'), class: "tabletitle"%></th>
-													<th style="text-align:center", class: "tabletitle"> </th>
-													<th style="text-align:center", class: "tabletitle"> </th>
+													<th style="text-align:center", class: "tabletitle"> Admin: </th> 
+													
 												</tr>
 											</thead>
 											<tbody>
@@ -317,14 +317,14 @@
 													<td><%= submission.city %></td>
 													<td><%= submission.compensation %></td>
 													<td><%= submission.season %>    <%=submission.year.to_s.slice(0..3) %>  </td>
-														<!-- show unapproved reviews -->
+													<!-- show unapproved reviews -->
+													<td>
 														<% if submission.submissionReview == false %>
-															<td><%= link_to "Approve", approvereview_submission_url(submission)%><td>
-															<td><%= link_to 'Deny', submission, method: :delete, data: { confirm: 'Are you sure?' } %><td>
-														<% else %>
-															<td><td>
-															<td></td>
-													<% end %>
+														<%= link_to "Approve", approvereview_submission_url(submission)%> / <%= link_to 'Deny', submission, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+
+														<% end %></td>
 
 
 													
