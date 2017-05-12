@@ -237,8 +237,9 @@
 												</tr>
 											</thead>
 											<tbody>
-												<% @submissions.each do |submission| %>
 
+											<% if current_user.admin %>
+												<% @submissions.each do |submission| %>
 												<tr>
 													<td><%= link_to submission.positionTitle, submission %></td>
 													<td><%= submission.rating %></td>
@@ -314,8 +315,102 @@
 													<td><%= submission.city %></td>
 													<td><%= submission.compensation %></td>
 													<td><%= submission.season %>    <%=submission.year.to_s.slice(0..3) %>  </td>
+														<!-- show unapproved reviews -->
+														<% if submission.submissionReview == false %> 
+													<td><%= link_to "Approve", approvereview_submission_url(submission)%><td>
+													<% end %>
+													
+
+													<td><%= link_to 'Delete', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+
+
 
 												</tr>
+												<% end %>
+
+												<% else %>
+														<% @submissions.each do |submission| %>
+												<tr>
+													<td><%= link_to submission.positionTitle, submission %></td>
+													<td><%= submission.rating %></td>
+													<!-- <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
+													<!-- <td><%= link_to 'Edit', edit_submission_path(submission) %></td> -->
+
+
+													<!-- Do all industry boolean searching manually......... -->
+													<td><% if  submission.agriculture  %>
+														Agriculture
+														<% end %>
+														<% if  submission.architecture  %>
+														Architecture
+														<% end %>
+														<% if  submission.artsEntertainment %>
+														Arts/Entertainment
+														<% end %>
+														<% if  submission.education  %>
+														Education
+														<% end %>
+														<% if  submission.energy  %>
+														Energy
+														<% end %>
+														<% if  submission.financialServices  %>
+														Financial Services
+														<% end %>
+														<% if  submission.foodBeverageCPG  %>
+														Food/Beverage
+														<% end %>
+														<% if  submission.government  %>
+														Government
+														<% end %>
+														<% if  submission.healthcare  %>
+														Healthcare
+														<% end %>
+														<% if  submission.hospitality  %>
+														Hospitality
+														<% end %>
+														<% if  submission.manufacturing  %>
+														Manufacturing
+														<% end %>
+														<% if  submission.mediaMarketing  %>
+														Media Marketing
+														<% end %>
+														<% if  submission.nonProfit  %>
+														Non-Profit
+														<% end %>
+														<% if  submission.pharma  %>
+														Pharmaceutical
+														<% end %>
+														<% if  submission.professionalServices  %>
+														Professional Services
+														<% end %>
+														<% if  submission.retailStores  %>
+														Retail Stores
+														<% end %>
+														<% if  submission.technology %>
+														Technology
+														<% end %>
+														<% if  submission.transportation  %>
+														Transportation
+														<% end %>
+														<% if  submission.other  %>
+														Other
+
+														<% end %>
+													</td>
+
+
+													<!-- All other fields -->
+													<td><%= submission.organizationName %></td>
+													<td><%= submission.city %></td>
+													<td><%= submission.compensation %></td>
+													<td><%= submission.season %>    <%=submission.year.to_s.slice(0..3) %>  </td>
+												
+
+												
+
+												</tr>
+												<% end %>
 												<% end %>
 
 											</tbody>

@@ -3,7 +3,41 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-  	@submissions = Submission.where(submissionReview: true)
+    #admin
+    @current_user = User.find_by id: session[:user_id]
+    if @current_user.name == "Shirley He"
+      @current_user.update_attribute :admin, true
+      @submissions = Submission.all
+      if params[:search]
+        @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
+      end
+
+    #SORT
+    if params[:sorting] == '"positionTitle"'
+     @submissions = @submissions.order('"positionTitle" ASC')
+   elsif params[:sorting] == 'rating'
+    @submissions = @submissions.order('rating ASC')
+  elsif params[:sorting] == '"organizationName"'
+    @submissions = @submissions.order('"organizationName" ASC')
+  elsif params[:sorting] == 'city'
+    @submissions = @submissions.order('city ASC')
+  elsif params[:sorting] == 'compensation'
+    @submissions = @submissions.order('compensation ASC')
+  elsif params[:sorting] == 'year'
+    @submissions = @submissions.order('year ASC')
+    #Industry sorting.....
+  elsif params[:sorting] == 'agriculture'
+    @submissions = @submissions.order('agriculture ASC')
+  end
+
+
+
+
+
+else
+
+
+ @submissions = Submission.where(submissionReview: true)
     #@submissions = Submission.all
     #SEARCH
     if params[:search]
@@ -12,21 +46,22 @@ class SubmissionsController < ApplicationController
 
     #SORT
     if params[:sorting] == '"positionTitle"'
-       @submissions = @submissions.order('"positionTitle" ASC')
-    elsif params[:sorting] == 'rating'
-      @submissions = @submissions.order('rating ASC')
-    elsif params[:sorting] == '"organizationName"'
-      @submissions = @submissions.order('"organizationName" ASC')
-    elsif params[:sorting] == 'city'
-      @submissions = @submissions.order('city ASC')
-    elsif params[:sorting] == 'compensation'
-      @submissions = @submissions.order('compensation ASC')
-    elsif params[:sorting] == 'year'
-      @submissions = @submissions.order('year ASC')
+     @submissions = @submissions.order('"positionTitle" ASC')
+   elsif params[:sorting] == 'rating'
+    @submissions = @submissions.order('rating ASC')
+  elsif params[:sorting] == '"organizationName"'
+    @submissions = @submissions.order('"organizationName" ASC')
+  elsif params[:sorting] == 'city'
+    @submissions = @submissions.order('city ASC')
+  elsif params[:sorting] == 'compensation'
+    @submissions = @submissions.order('compensation ASC')
+  elsif params[:sorting] == 'year'
+    @submissions = @submissions.order('year ASC')
     #Industry sorting.....
   elsif params[:sorting] == 'agriculture'
     @submissions = @submissions.order('agriculture ASC')
   end
+end
 end
 
 def new
