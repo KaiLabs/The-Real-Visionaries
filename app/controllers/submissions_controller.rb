@@ -62,7 +62,7 @@ def create
   def update
     if @submission.update(submission_params)
     #redirect_to @submission
-    redirect_to(:submissions => 'index')
+    render 'show'
   else
     render 'edit'
   end
@@ -81,7 +81,7 @@ def approvereview
   @submission = Submission.find(params[:id])
   if @submission.update_attribute(:submissionReview, true)
     #redirect_to url_for(:controller => :submissions_controller, :action => :index)
-    redirect_to(:submissions => 'index')
+    render 'show'
   else
     render 'edit'
   end
