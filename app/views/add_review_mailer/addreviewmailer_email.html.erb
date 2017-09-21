@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<p> A new review has been requested to be added to the Wesleyan Internship Website! 
+<p> A new review has been requested to be added to the Wesleyan Internship Website!
 </p>
 
 <p>
@@ -20,6 +20,7 @@
 <b> Hours Per Week: </b> <%= @submission.hours %> <br>
 
 <b> Field/Industry: </b> <br>
+<b> State: </b> <%= @submission.state %> <br>
 
 <b> Country: </b> <%= @submission.country %> <br>
 
@@ -52,7 +53,9 @@
 
 
 </p>
+
 <p> To approve this internship review, click <%= link_to "here", approvereview_submission_url(@submission)%>. </p>
+
 </body>
 </html>
 

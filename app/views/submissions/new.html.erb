@@ -345,26 +345,35 @@
 			<div class="row">
 				<!-- City -->
 				<%= form.input :city, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
-				<div class="col-md-3">
+				<div class="col-md-2">
 					<%= form.input_field :city, class: "margintop" , style: ""%>
 				</div>
 				<% end %>
 
-				<!-- MISSING STATE -->
 
 				<!-- Country -->
 				<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
-				<div class="col-md-2">
+				<div class="col-md-1">
 					<%= form.input :country, :input_html => {:style=> 'background: white;
 					-webkit-appearance: square-button;
-					-webkit-border-radius: 2px;'}, label: false, as: :country, :selected => @submission.country, class: "" %>
+					-webkit-border-radius: 2px;width: 170px; margin-left:-90px;'}, label: false, as: :country, :selected => @submission.country, class: "" %>
 				</div>
 				<% end %>
 
-				<!-- Zipcode -->
-				<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+
+				<!-- US STATE -->
+				<%= form.input :state, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
 				<div class="col-md-1">
-					<%= form.input_field :zipcode, style: "width: 170px;", class: "" %>
+					<%= form.input :state, label: "US State", collection: ["N/A", "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MH", "MA", "MI", "FM", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA", "WV", "WI", "WY"], :selected => @submission.state, class: "" %>
+				</div>
+				<% end %>
+
+
+
+				<!-- Zipcode -->
+				<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label', style: 'margin-left: 30px'} do %>
+				<div class="col-md-1">
+					<%= form.input_field :zipcode, style: "width: 170px; margin-left: -30px;", class: "" %>
 				</div>
 				<% end %>
 			</div>

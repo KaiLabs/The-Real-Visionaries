@@ -1,4 +1,5 @@
 class Submission < ApplicationRecord
+
 	validates :rating, presence: true
 	validates :season, presence: true
 	validates :year, presence: true
@@ -9,6 +10,7 @@ class Submission < ApplicationRecord
 	validates :organizationName, presence: true
 	validates :mailingAddress, presence: true
 	validates :city, presence: true
+	validates :state, presence: true
 	validates :zipcode, presence: true
 	validates :organizationMission, presence:true
 	validates :organizationRecommendation, presence: true
@@ -23,7 +25,7 @@ class Submission < ApplicationRecord
 	def self.search(search, compensationSearch, locationSearch)
 		# if search
 		positions = Submission.where('"positionTitle" LIKE ? AND city LIKE ? AND compensation LIKE ?', "%#{search}%", "%#{locationSearch}%", "%#{compensationSearch}") 
-		
+
 		return positions
 
 	end

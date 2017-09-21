@@ -3,7 +3,41 @@ class SubmissionsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-  	@submissions = Submission.where(submissionReview: true)
+    #admin
+    @current_user = User.find_by id: session[:user_id]
+    if @current_user.name == "Shirley He"
+      @current_user.update_attribute :admin, true
+      @submissions = Submission.all
+      if params[:search]
+        @submissions = Submission.search(params[:search],params[:compensationSearch],params[:locationSearch])
+      end
+
+    #SORT
+    if params[:sorting] == '"positionTitle"'
+     @submissions = @submissions.order('"positionTitle" ASC')
+   elsif params[:sorting] == 'rating'
+    @submissions = @submissions.order('rating ASC')
+  elsif params[:sorting] == '"organizationName"'
+    @submissions = @submissions.order('"organizationName" ASC')
+  elsif params[:sorting] == 'city'
+    @submissions = @submissions.order('city ASC')
+  elsif params[:sorting] == 'compensation'
+    @submissions = @submissions.order('compensation ASC')
+  elsif params[:sorting] == 'year'
+    @submissions = @submissions.order('year ASC')
+    #Industry sorting.....
+  elsif params[:sorting] == 'agriculture'
+    @submissions = @submissions.order('agriculture ASC')
+  end
+
+
+
+
+
+else
+
+
+ @submissions = Submission.where(submissionReview: true)
     #@submissions = Submission.all
     #SEARCH
     if params[:search]
@@ -12,21 +46,22 @@ class SubmissionsController < ApplicationController
 
     #SORT
     if params[:sorting] == '"positionTitle"'
-       @submissions = @submissions.order('"positionTitle" ASC')
-    elsif params[:sorting] == 'rating'
-      @submissions = @submissions.order('rating ASC')
-    elsif params[:sorting] == '"organizationName"'
-      @submissions = @submissions.order('"organizationName" ASC')
-    elsif params[:sorting] == 'city'
-      @submissions = @submissions.order('city ASC')
-    elsif params[:sorting] == 'compensation'
-      @submissions = @submissions.order('compensation ASC')
-    elsif params[:sorting] == 'year'
-      @submissions = @submissions.order('year ASC')
+     @submissions = @submissions.order('"positionTitle" ASC')
+   elsif params[:sorting] == 'rating'
+    @submissions = @submissions.order('rating ASC')
+  elsif params[:sorting] == '"organizationName"'
+    @submissions = @submissions.order('"organizationName" ASC')
+  elsif params[:sorting] == 'city'
+    @submissions = @submissions.order('city ASC')
+  elsif params[:sorting] == 'compensation'
+    @submissions = @submissions.order('compensation ASC')
+  elsif params[:sorting] == 'year'
+    @submissions = @submissions.order('year ASC')
     #Industry sorting.....
   elsif params[:sorting] == 'agriculture'
     @submissions = @submissions.order('agriculture ASC')
   end
+end
 end
 
 def new
@@ -37,7 +72,7 @@ end
 def create
  @submission = Submission.new(params.require(:submission).permit(:positionTitle,
   :hours, :organizationName, :mailingAddress, :city, :zipcode, :rating, :season,
-  :year, :compensation, :country, :organizationURL, :organizationContactName,
+  :year, :compensation, :state, :country, :organizationURL, :organizationContactName,
   :organizationContactJobTitle, :organizationContactEmail, :outsideCompensation,
   :cardinalInternship, :wesAlum, :organizationMission, :organizationRecommendation,
   :agriculture, :architecture, :artsEntertainment, :education, :energy, :financialServices,
@@ -45,9 +80,10 @@ def create
   :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
  if @submission.save
   		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-      AddReviewMailer.addreviewmailer_email(@submission).deliver_now
+      AddReviewMailer.addreviewmailer_email(@submission)
       flash[:success] = "SENT EMAIL"
-      redirect_to action:"thankyou"
+      #redirect_to action:"thankyou"
+      render 'thankyou'
       return
     else
       render "new"

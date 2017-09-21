@@ -172,8 +172,12 @@
             <div class="general">
               <p class= "general">
                 <p class="general"><%= @submission.positionTitle %></p>
-                <p class="general"><%= @submission.organizationName %> <%= @submission.rating %></p>
-                <p class="general"><%= @submission.city %>, <%= @submission.country %></p>
+                <p class="general"><%= @submission.organizationName %> <%= @submission.rating %>
+                <p class="general"><% if @submission.state != "N/A" %>
+                  <%= @submission.city %>, <%= @submission.state %>, <%= @submission.country %>
+                  <% else %>
+                  <%= @submission.city %>, <%= @submission.country %>
+                  <% end %></p>
                 <p class="general"><%= @submission.compensation %></p>
                 <p class="general">Organization link: <%= link_to @submission.organizationURL, "http://#{@submission.organizationURL}", style: "font-size: 35px; color: black; text-decoration: underline;" %></p>
               </p>
@@ -186,7 +190,7 @@
             <div class="search-title" id="parent2">
               <div id="child2"><h3 class="title-text">Experience Review</h3></div>
             </div>
-            <div class="display", style="width: 524px;">
+            <div class="display">
               <!-- needs a default msg when empty -->
               <%= @submission.organizationRecommendation %>
             </div>
