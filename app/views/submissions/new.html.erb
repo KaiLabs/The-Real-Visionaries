@@ -47,7 +47,7 @@
 *{
   font-family: 'Pathway Gothic One';
   font-size: 24px;
-	
+
 }
 
 
@@ -120,7 +120,7 @@
 	          <% end -%>
 	        </div>
 	        <div class="search-title">
-	          <h3 style="font-size: 35px; margin-left: 5px;">SUBMISSION FORM</h3>
+	          <h3 style="font-size: 35px; margin-left: 5px;">ENTRY FORM</h3>
 	        </div>
 	      </div>
 	    </section>
@@ -417,10 +417,15 @@
 
 
 
-<!-- Submit -->
-<div class="col-md-offset-11">
-	<%= form.button :submit, "Submit", class: "btn btn-primary", style: "font-size: 25px;", data: {title: 'Thanks for your submission!'} %>
-	<% end %>
+<!-- Cancel & Submit -->
+<div class="col-md-offset-10">
+	<div class="col-md-6">
+		<%= link_to "Cancel", home_index_path, class: "btn btn-primary", style: "font-size: 25px;" %>
+	</div>
+	<div class="col-md-6">
+		<%= form.button :submit, "Submit", class: "btn btn-primary", style: "font-size: 25px;", data: {title: 'Thanks for your submission!'} %>
+		<% end %>
+	</div>
 </div>
 
 

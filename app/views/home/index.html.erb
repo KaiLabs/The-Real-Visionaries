@@ -19,87 +19,90 @@
 <style media="screen">
 
 
-  h1{
-    font-family: 'EB Garamond';
-    font-weight: lighter;
-    font-size: 40px;
-  }
+h1{
+  font-family: 'EB Garamond';
+  font-weight: lighter;
+  font-size: 40px;
+}
 
-  h4{
-    font-family: 'Pathway Gothic One';
-    font-weight: lighter;
-    font-size: 25px;
-    font-weight: lighter;
-  }
-  body {
-    background-image: url(/assets/background.jpg);
-    background-size: cover;
-  }
+h4{
+  font-family: 'Pathway Gothic One';
+  font-weight: lighter;
+  font-size: 25px;
+  font-weight: lighter;
+}
+body {
+  background: url(/assets/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .head {
   color : white;
   text-decoration: underline;
 }
 
-  @media (min-width: 768px) {
-    .container-fluid {
-      margin-top: 250px;
-      max-width: 1000px;
-      color: white;
-      text-align: center;
-    }
+@media (min-width: 768px) {
+  .container-fluid {
+    margin-top: 250px;
+    max-width: 1000px;
+    color: white;
+    text-align: center;
   }
-  .container-narrow > hr {
-    margin: 30px 0;
-  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
 
-  .row{
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
+.row{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
 
-  .change-height{
-    margin-top: 25px;
-  }
+.change-height{
+  margin-top: 25px;
+}
 
-  .searchclass {
-    text-align: left;
-  }
+.searchclass {
+  text-align: left;
+}
 
-  .height {
-    height: 120%;
-  }
-  .searchbutton {
-    width: 38%;
-    height: 38%;
+.height {
+  height: 120%;
+}
+.searchbutton {
+  width: 38%;
+  height: 38%;
 
-  }
+}
 
 </style>
 
 <body>
-	<div class="container-fluid">
-		<h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
+  <div class="container-fluid">
+    <h1>WESLEYAN STUDENT INTERNSHIP REVIEWS</h1>
     <div class="height">
-      <h4>By Wes students for Wes students</h4>
+      <h4>Build BY Wes students, FOR Wes students</h4>
     </br>
-    </div>
+  </div>
 
-    <div class="form-inline">
-      <!-- Keyword Search -->
+  <div class="form-inline">
+    <!-- Keyword Search -->
 
-  			<div class="col-md-offset-1 form-group">
-  				<%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
-  				<%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
+    <div class="col-md-offset-1 form-group">
+      <%= form_tag('submissions#index', :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Internship title", class: 'form-control' %>
 
 
-        <!-- Location Search -->
-  			<div class="form-group">
-  				<%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
-  			</div>
+      <!-- Location Search -->
+      <div class="form-group">
+        <%= text_field_tag :locationSearch, params[:locationSearch], placeholder: "Location (City)", class: 'form-control' %>
+      </div>
 
-        <!-- Industry/Field Search -->
-  			<div class="form-group">
+      <!-- Industry/Field Search -->
+      <div class="form-group">
         <%= select_tag "industrySearch", options_for_select(["Agriculture & Natural Resources", "Architecture, Real Estate & Construction",
           "Arts, Entertainment & Recreation","Education",
           "Energy", "Financial Services",
@@ -111,36 +114,36 @@
           "Pharma & Medical Devices", "Professional Services",
           "Retail Stores & Trade", "Technology",
           "Transportation & Logistics"],
-        params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
+          params[:industrySearch]), class: 'form-control', prompt: "Industry/Field" %>
         </div>
 
         <!-- Compensation Search -->
-  			<div class="form-group">
-  			<%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
-        params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
-  			</div>
+        <div class="form-group">
+          <%= select_tag "compensationSearch", options_for_select(["Unpaid", "Paid", "Stipend"],
+            params[:compensationSearch]), class: 'form-control', prompt: "Compensation" %>
+          </div>
 
 
-        <!-- Search button -->
-  			<div class="form-group searchclass">
-  				<%= image_submit_tag ("/assets/search.png"), class: 'searchbutton' %>
-  			</div>
+          <!-- Search button -->
+          <div class="form-group searchclass">
+            <%= image_submit_tag ("/assets/search.png"), class: 'searchbutton' %>
+          </div>
         </div>
 
 
-      <div class="change-height">
-  		<h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path, class: "head" %></h4>
-      </div>
+        <div class="change-height">
+          <h4>Share your past experience by submitting an <%= link_to "entry form", new_submission_path, class: "head" %></h4>
+        </div>
 
-  		<% end %>
-    </form>
+        <% end %>
+      </form>
 
-	</div>
+    </div>
 
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+  </html>
