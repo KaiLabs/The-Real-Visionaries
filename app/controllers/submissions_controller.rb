@@ -117,6 +117,8 @@ def approvereview
   @submission = Submission.find(params[:id])
   if @submission.update_attribute(:submissionReview, true)
     #redirect_to url_for(:controller => :submissions_controller, :action => :index)
+    #send mailer
+    # AddReviewMailer.addreviewmailer_email(@submission)
     render 'show'
   else
     render 'edit'

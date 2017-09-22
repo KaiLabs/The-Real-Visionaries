@@ -15,64 +15,64 @@
 </head>
 
 <style media="screen">
-.header {
-  width:100%;
-  position:fixed;
-  left: 0; right: 0;
-  top: 0;
-  z-index: 1;
-}
-.headcontainer {
-  color: black;
-  height: 60px;
-  line-height: 75px;
-}
-.head{
-  font-family: 'EB Garamond';
-  font-weight: lighter;
-  font-size: 37px;
-  color: white;
-}
-.head:hover {
-  color: white;
-  text-decoration: none;
-}
-.signout {
-  color: white;
-  font-size: 14px;
-}
-.textbox {
- font-size: 40px;
-}
-*{
-  font-family: 'Pathway Gothic One';
-  font-size: 24px;
+	.header {
+		width:100%;
+		position:fixed;
+		left: 0; right: 0;
+		top: 0;
+		z-index: 1;
+	}
+	.headcontainer {
+		color: black;
+		height: 60px;
+		line-height: 75px;
+	}
+	.head{
+		font-family: 'EB Garamond';
+		font-weight: lighter;
+		font-size: 37px;
+		color: white;
+	}
+	.head:hover {
+		color: white;
+		text-decoration: none;
+	}
+	.signout {
+		color: white;
+		font-size: 14px;
+	}
+	.textbox {
+		font-size: 40px;
+	}
+	*{
+		font-family: 'Pathway Gothic One';
+		font-size: 24px;
 
-}
+	}
 
 
-.parent {
-  background-color: black;
-  color: white;
-  width: 100%;
-  height: 200%;
-  display: table;
-  text-align: center;
-}
-.parent > .child {
-  display: table-cell;
-  vertical-align: middle;
-}
-.search-title{
-  background-color: #8B0000;
-  color: white;
-  width: 100%;
-  height: 50%;
-  text-align: left;
-}
-#sign {
-  text-align: right;
-}
+	.parent {
+		background-color: black;
+		color: white;
+		width: 100%;
+		height: 200%;
+		display: table;
+		text-align: center;
+	}
+	.parent > .child {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.search-title{
+		background-color: #8B0000;
+		color: white;
+		width: 100%;
+		height: 50%;
+		text-align: left;
+	}
+	#sign {
+		text-align: right;
+	}
 
 
 	.descr {
@@ -100,57 +100,57 @@
 		margin-top: 15px;
 	}
 	.select {
-	    background: white;
-			-webkit-appearance: square-button;
-			-webkit-border-radius: 2px;
+		background: white;
+		-webkit-appearance: square-button;
+		-webkit-border-radius: 2px;
 	}
 
 </style>
 
 <body>
-		<div class="header">
-	    <section class="parent">
-	      <div class="child row">
-					<div class="headcontainer">
-	          <%= content_tag :div, class: "col-md-11" do -%>
-	            <%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
-	          <% end -%>
-	          <%= content_tag :div, class: "col-md-1" do -%>
-	            <%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
-	          <% end -%>
-	        </div>
-	        <div class="search-title">
-	          <h3 style="font-size: 35px; margin-left: 5px;">ENTRY FORM</h3>
-	        </div>
-	      </div>
-	    </section>
-	  </div>
-		<%= simple_form_for @submission do |form| %>
+	<div class="header">
+		<section class="parent">
+			<div class="child row">
+				<div class="headcontainer">
+					<%= content_tag :div, class: "col-md-11" do -%>
+					<%= link_to "WESLEYAN STUDENT INTERNSHIP REVIEWS", home_index_path, class: "head" %>
+					<% end -%>
+					<%= content_tag :div, class: "col-md-1" do -%>
+					<%= link_to "Sign out", signout_path, id: "sign_out", class: "signout" %>
+					<% end -%>
+				</div>
+				<div class="search-title">
+					<h3 style="font-size: 35px; margin-left: 5px;">ENTRY FORM</h3>
+				</div>
+			</div>
+		</section>
+	</div>
+	<%= simple_form_for @submission do |form| %>
 
-		<div class="container" style="margin-top: 150px;">
+	<div class="container" style="margin-top: 150px;">
 
-			<!-- Position Title -->
-			<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-2 col-form-label'} do %>
-			<div class="col-md-10">
-				<%= form.input_field :positionTitle, class: "", style: "width: 950px;" %>
+		<!-- Position Title -->
+		<%= form.input :positionTitle, :label => "Position title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-2 col-form-label'} do %>
+		<div class="col-md-10">
+			<%= form.input_field :positionTitle, class: "", style: "width: 950px;" %>
+		</div>
+		<% end %>
+
+
+
+
+		<div class="row">
+			<!-- Season -->
+			<%= form.input :season, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
+			<div class="col-md-1 margintop">
+				<%= form.input :season, label: false, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "margintop" %>
 			</div>
 			<% end %>
 
-
-
-
-			<div class="row">
-				<!-- Season -->
-				<%= form.input :season, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
-				<div class="col-md-1 margintop">
-					<%= form.input :season, label: false, collection: ["Fall", "Winter", "Spring", "Summer"], :selected => @submission.season, class: "margintop" %>
-				</div>
-				<% end %>
-
-				<!-- Year -->
-				<%= form.input :year, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
-				<div class="col-md-2" style="margin-top: -3px;">
-					<%= form.input :year, :input_html => {:style=> 'width: 80px; background: white;
+			<!-- Year -->
+			<%= form.input :year, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
+			<div class="col-md-2" style="margin-top: -3px;">
+				<%= form.input :year, :input_html => {:style=> 'width: 80px; background: white;
 					-webkit-appearance: square-button;
 					-webkit-border-radius: 2px;'}, label: false, :as => :date,
 					:start_year => 2010, :end_year => 2017, order: [:year], :selected => @submission.year, class: "" %>
@@ -195,97 +195,97 @@
 			<div class="row">
 				<!-- Agriculture -->
 				<%= form.input :agriculture, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :agriculture, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :agriculture, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Architecture -->
 				<%= form.input :architecture, wrapper_html: { class: 'col-md-4 ' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :architecture, as: :boolean, checked_value:true, unchecked_value: false, :label => false, class: "form-control" %>
+				<%= form.input :architecture, as: :boolean, checked_value:true, unchecked_value: false, :label => false, class: "form-control" %>
 				<% end %>
 
 				<!-- Arts/Entertainment -->
 				<%= form.input :artsEntertainment,:label => "Arts/Entertainment", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Education -->
 				<%= form.input :education, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :education, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :education, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Energy -->
 				<%= form.input :energy, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :energy, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :energy, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Financial Services -->
 				<%= form.input :financialServices, :label => "Financial Services", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :financialServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :financialServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Food/Beverage -->
 				<%= form.input :foodBeverageCPG, :label => "Food/Beverage", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :foodBeverageCPG, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :foodBeverageCPG, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Gov -->
 				<%= form.input :government, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :government, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :government, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Healthcare -->
 				<%= form.input :healthcare, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :healthcare, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :healthcare, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Hospitality -->
 				<%= form.input :hospitality, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :hospitality, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :hospitality, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Manufacturing -->
 				<%= form.input :manufacturing, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :manufacturing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :manufacturing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Media Marketing -->
 				<%= form.input :mediaMarketing, :label => "Media Marketing", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :mediaMarketing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :mediaMarketing, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Nonprofit -->
 				<%= form.input :nonProfit, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :nonProfit, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :nonProfit, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Pharma -->
 				<%= form.input :pharma, :label => "Pharmaceuticals", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :pharma, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :pharma, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Professional Services -->
 				<%= form.input :professionalServices, :label => "Professional Services", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :professionalServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :professionalServices, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Retail Stores -->
 				<%= form.input :retailStores, :label => "Retail Stores", wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :artsEntertainment, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Technology -->
 				<%= form.input :technology, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :technology, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :technology, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Transportation -->
 				<%= form.input :transportation, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :transportation, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :transportation, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 
 				<!-- Other -->
 				<%= form.input :other, wrapper_html: { class: 'col-md-4' },label_html: { class: 'col-md-7 col-form-label'} do %>
-					<%= form.input :other, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+				<%= form.input :other, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 				<% end %>
 			</div>
 
@@ -311,14 +311,14 @@
 
 <!-- Cardinal Internship Bool -->
 <%= form.input :cardinalInternship, :label => "Was this a Cardinal Internship?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %></a>
-	<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+<%= form.input :cardinalInternship, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 
 <% end %>
 
 
 <!-- Wes Alum Bool -->
 <%= form.input :wesAlum, :label => "Is the contact a Wesleyan alum?", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-	<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
+<%= form.input :wesAlum, as: :boolean, checked_value:true, unchecked_value: false, :label => " ", class: "form-control" %>
 <% end %>
 
 
@@ -328,117 +328,118 @@
 
 
 
-			<!-- Organization Name -->
-			<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationName, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-			<!-- Mailing Address -->
-			<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :mailingAddress, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-			<div class="row">
-				<!-- City -->
-				<%= form.input :city, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
-				<div class="col-md-2">
-					<%= form.input_field :city, class: "margintop" , style: ""%>
-				</div>
-				<% end %>
-
-
-				<!-- Country -->
-				<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
-				<div class="col-md-1">
-					<%= form.input :country, :input_html => {:style=> 'background: white;
-					-webkit-appearance: square-button;
-					-webkit-border-radius: 2px;width: 170px; margin-left:-90px;'}, label: false, as: :country, :selected => @submission.country, class: "" %>
-				</div>
-				<% end %>
-
-
-				<!-- US STATE -->
-				<%= form.input :state, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
-				<div class="col-md-1">
-					<%= form.input :state, label: "US State", collection: ["N/A", "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MH", "MA", "MI", "FM", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA", "WV", "WI", "WY"], :selected => @submission.state, class: "" %>
-				</div>
-				<% end %>
-
-
-
-				<!-- Zipcode -->
-				<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label', style: 'margin-left: 30px'} do %>
-				<div class="col-md-1">
-					<%= form.input_field :zipcode, style: "width: 170px; margin-left: -30px;", class: "" %>
-				</div>
-				<% end %>
-			</div>
-
-
-
-
-			<!-- Organization URL (optional) -->
-			<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationURL, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-			<!-- Organization Contact Name (optional) -->
-			<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactName, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-			<!-- Organization Contact Job Title (optional) -->
-			<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactJobTitle, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-			<!-- Contact Email...(optional) -->
-			<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
-			<div class="col-md-8">
-				<%= form.input_field :organizationContactEmail, class: "" , style: "width: 755px;"%>
-			</div>
-			<% end %>
-
-
-
-
-
-
-
-<!-- Organization Mission/Description -->
-<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
-<div class="col-md-12">
-	<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
+<!-- Organization Name -->
+<%= form.input :organizationName, :label => "Organization Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-8">
+	<%= form.input_field :organizationName, class: "" , style: "width: 755px;"%>
 </div>
 <% end %>
 
+<!-- Mailing Address -->
+<%= form.input :mailingAddress, :label => "Mailing Address", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+<div class="col-md-8">
+	<%= form.input_field :mailingAddress, class: "" , style: "width: 755px;"%>
+</div>
+<% end %>
 
-
-
-
-<!-- Cancel & Submit -->
-<div class="col-md-offset-10">
-	<div class="col-md-6">
-		<%= link_to "Cancel", home_index_path, class: "btn btn-primary", style: "font-size: 25px;" %>
+<div class="row">
+	<!-- City -->
+	<%= form.input :city, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label margintop'} do %>
+	<div class="col-md-2">
+		<%= form.input_field :city, class: "margintop" , style: ""%>
 	</div>
-	<div class="col-md-6">
-		<%= form.button :submit, "Submit", class: "btn btn-primary", style: "font-size: 25px;", data: {title: 'Thanks for your submission!'} %>
+	<% end %>
+
+
+	<!-- Country -->
+	<%= form.input :country, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label'} do %>
+	<div class="col-md-1">
+		<%= form.input :country, :input_html => {:style=> 'background: white;
+			-webkit-appearance: square-button;
+			-webkit-border-radius: 2px;width: 170px; margin-left:-90px;'}, label: false, as: :country, priority: ["United States"], :selected => @submission.country, class: "" %>
+		</div>
+		<% end %>
+
+
+		<!-- US STATE -->
+		<%= form.input :state, wrapper_html: { class: '' },label_html: { class: 'col-md-1 col-form-label'} do %>
+		<div class="col-md-1">
+			<%= form.input :state, :label => "US State", collection: ["AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MH", "MA", "MI", "FM", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "VI", "WA", "WV", "WI", "WY"], :selected => @submission.state, class: "" %>
+		</div>
+		<% end %>
+
+		<!-- Zipcode -->
+		<%= form.input :zipcode, wrapper_html: { class: '' },label_html: { class: 'col-md-2 col-form-label', style: 'margin-left: 30px'} do %>
+		<div class="col-md-1">
+			<%= form.input_field :zipcode, style: "width: 170px; margin-left: -30px;", class: "" %>
+		</div>
 		<% end %>
 	</div>
-</div>
 
 
+
+
+	<!-- Organization URL (optional) -->
+	<%= form.input :organizationURL, :label => "Organization URL", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationURL, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Organization Contact Name (optional) -->
+	<%= form.input :organizationContactName, :label => "Contact Name", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactName, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Organization Contact Job Title (optional) -->
+	<%= form.input :organizationContactJobTitle, :label => "Contact Job Title", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactJobTitle, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+	<!-- Contact Email...(optional) -->
+	<%= form.input :organizationContactEmail, :label => "Contact Email", wrapper_html: { class: 'row' },label_html: { class: 'col-md-4 col-form-label'} do %>
+	<div class="col-md-8">
+		<%= form.input_field :organizationContactEmail, class: "" , style: "width: 755px;"%>
+	</div>
+	<% end %>
+
+
+
+
+
+
+
+	<!-- Organization Mission/Description -->
+	<%= form.input :organizationMission, :label => "Organization Mission/Description", wrapper_html: { class: 'row' },label_html: { class: 'col-md-12 col-form-label'} do %>
+	<div class="col-md-12">
+		<%= form.text_area :organizationMission, class: "form-control", rows: 3 %>
+	</div>
+	<% end %>
+
+
+
+
+
+	<!-- Cancel & Submit -->
+	<div class="col-md-offset-10">
+		<div class="col-md-6">
+			<%= link_to "Cancel", home_index_path, class: "btn btn-primary", style: "font-size: 25px;" %>
+		</div>
+		<div class="col-md-6">
+			<%= form.button :submit, "Submit", class: "btn btn-primary", style: "font-size: 25px;", data: {title: 'Thanks for your submission!'} %>
+			<% end %>
+		</div>
+	</div>
+
 </div>
+
+<br></br>
+
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
