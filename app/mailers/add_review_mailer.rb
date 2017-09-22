@@ -13,4 +13,11 @@ class AddReviewMailer < ApplicationMailer
 
     mail(to: "she@wesleyan.edu", subject: "New Internship Review Request")
   end
+
+  def approvereviewmailer_email(current_user)
+    @current_user = current_user
+
+    mail(to: @current_user.email, subject: "Your internship review has been approved")
+  end
+
 end

@@ -118,7 +118,8 @@ def approvereview
   if @submission.update_attribute(:submissionReview, true)
     #redirect_to url_for(:controller => :submissions_controller, :action => :index)
     #send mailer
-    # AddReviewMailer.addreviewmailer_email(@submission)
+    @current_user = User.find_by id: session[:user_id]
+    AddReviewMailer.approvereviewmailer_email(@current_user)
     render 'show'
   else
     render 'edit'
