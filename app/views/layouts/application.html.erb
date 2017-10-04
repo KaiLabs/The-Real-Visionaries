@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>SID</title>
-    <%= csrf_meta_tags %>
+<head>
+	<title>SID</title>
+	<%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body>
-    <%= yield %>
-  </body>
+	<!– Only set up google analytics when running in certain environments–>
+	<% if %w(development production).include? Rails.env %>
+	<%= render partial: ‘views/google_analytics’ %>
+	<% end %>
+
+</head>
+
+<body>
+	<%= yield %>
+</body>
 </html>
