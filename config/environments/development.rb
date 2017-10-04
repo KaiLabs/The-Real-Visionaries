@@ -40,10 +40,8 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: "wesleyansid",
-    password: "wessid"
+    password: "wesleyanSID06459"
   }
-
-
 
 
 

@@ -30,15 +30,10 @@ class SubmissionsController < ApplicationController
     @submissions = @submissions.order('agriculture ASC')
   end
 
-
-
-
-
 else
 
 
  @submissions = Submission.where(submissionReview: true)
-    #@submissions = Submission.all
     #SEARCH
     if params[:search]
       @submissions = Submission.where(submissionReview: true).search(params[:search],params[:compensationSearch],params[:locationSearch])
@@ -79,10 +74,8 @@ def create
   :foodBeverageCPG, :government, :healthcare, :hospitality, :manufacturing, :mediaMarketing,
   :nonProfit, :pharma, :professionalServices, :retailStores, :technology, :transportation, :other))
  if @submission.save
-  		#redirect_to url_for(:controller => :submissions_controller, :action => :index)
-      AddReviewMailer.addreviewmailer_email(@submission)
+      AddReviewMailer.addreviewmailer_email(@submission).deliver
       flash[:success] = "SENT EMAIL"
-      #redirect_to action:"thankyou"
       render 'thankyou'
       return
     else
@@ -97,7 +90,6 @@ def create
 
   def update
     if @submission.update(submission_params)
-    #redirect_to @submission
     render 'show'
   else
     render 'edit'
@@ -116,10 +108,9 @@ end
 def approvereview
   @submission = Submission.find(params[:id])
   if @submission.update_attribute(:submissionReview, true)
-    #redirect_to url_for(:controller => :submissions_controller, :action => :index)
     #send mailer
     @current_user = User.find_by id: session[:user_id]
-    AddReviewMailer.approvereviewmailer_email(@current_user)
+    AddReviewMailer.approvereviewmailer_email(@current_user).deliver
     render 'show'
   else
     render 'edit'
